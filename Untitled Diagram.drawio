@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-26T17:11:52.907Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="bt9uMzSPYuJReDkEYgch" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-26T17:14:30.006Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="xwzAvS98HzyyBRabzYtq" version="14.1.2" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -388,6 +388,43 @@
             <mxPoint x="550" y="1690" as="sourcePoint" />
             <mxPoint x="560" y="1600" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-143" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="495" y="1600" as="sourcePoint" />
+            <mxPoint x="625" y="1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-144" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="495" y="1630" as="sourcePoint" />
+            <mxPoint x="625" y="1630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-145" value="CT_TP" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="1610.34" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-146" value="" style="endArrow=classic;html=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="1610" as="sourcePoint" />
+            <mxPoint x="340" y="1610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-147" value="Lấy Thông Tin chi tiết Thuê Phòng" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="260" y="1572" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-148" value="" style="endArrow=classic;html=1;fontSize=14;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="tYLHyqTt-1DBQ8F93RRt-147" target="tYLHyqTt-1DBQ8F93RRt-62">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="1560" as="sourcePoint" />
+            <mxPoint x="160" y="830" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="1612" />
+              <mxPoint x="160" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tYLHyqTt-1DBQ8F93RRt-149" value="TT.Phòng" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1590.34" width="80" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

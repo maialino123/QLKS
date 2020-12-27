@@ -14,6 +14,11 @@ public class chiTietTPModel extends abstractModel {
     private int maKH;
     private String vaiTro;
 
+    public chiTietTPModel() {
+    }
+    
+    
+
     public chiTietTPModel(int soHopDongTP, int maKH, String vaiTro) {
         this.soHopDongTP = soHopDongTP;
         this.maKH = maKH;

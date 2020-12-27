@@ -12,5 +12,31 @@ package com.QLKS.model;
 public class quocGiaModel extends abstractModel {
    private String maQG;
    private String tenQG;
+
+    public quocGiaModel() {
+    }
+
+    public quocGiaModel(String maQG, String tenQG) {
+        this.maQG = maQG;
+        this.tenQG = tenQG;
+    }
+
+    public String getMaQG() {
+        return maQG;
+    }
+
+    public void setMaQG(String maQG) {
+        this.maQG = maQG;
+    }
+
+    public String getTenQG() {
+        return tenQG;
+    }
+
+    public void setTenQG(String tenQG) {
+        this.tenQG = tenQG;
+    }
+   
+   
    
 }

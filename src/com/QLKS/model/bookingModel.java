@@ -28,6 +28,11 @@ public class bookingModel extends abstractModel {
     private String maNV;
     private String maQG;
 
+    public bookingModel() {
+    }
+    
+    
+
     public bookingModel(int bkId, String hoTen, String cmnd, LocalDate ngaySinh, String gioiTinh, String thanhPho, String diaChi, String sdt, String email, LocalDate ngayDangKy, LocalDate ngayNhan, float datCoc, String yeuCau, String maNV, String maQG) {
         this.bkId = bkId;
         this.hoTen = hoTen;

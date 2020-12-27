@@ -13,6 +13,27 @@ public class loaiPhongModel extends abstractModel{
     private String maLp;
     private String tenLp;
     private float giaLp;
+    private int soNguoi;
+
+    public loaiPhongModel() {
+    }
+
+    public loaiPhongModel(String maLp, String tenLp, float giaLp, int soNguoi) {
+        this.maLp = maLp;
+        this.tenLp = tenLp;
+        this.giaLp = giaLp;
+        this.soNguoi = soNguoi;
+    }
+
+    public int getSoNguoi() {
+        return soNguoi;
+    }
+
+    public void setSoNguoi(int soNguoi) {
+        this.soNguoi = soNguoi;
+    }
+    
+    
 
     public String getMaLp() {
         return maLp;

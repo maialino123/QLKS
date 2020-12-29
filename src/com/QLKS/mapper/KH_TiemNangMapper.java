@@ -19,11 +19,11 @@ public class KH_TiemNangMapper  implements rowMapper<KH_TiemNangModel>{
     @Override
     public KH_TiemNangModel maprow(ResultSet rs) {
         try {
-            KH_TiemNangModel model = new KH_TiemNangModel();
+            KH_TiemNangModel model = KH_TiemNangModel.getInstance();
             model.setMaKH_TN(rs.getInt("maKH_TN"));
             model.setHoTen(rs.getString("hoTen"));
             model.setCmnd(rs.getString("CMND"));
-            model.setNgaySinh(convertDate.convertToLoCalDate(rs.getDate("ngaySinh")));
+            model.setNgaySinh(rs.getDate("ngaySinh"));
             model.setGioiTinh(rs.getString("gioiTinh"));
             model.setThanhPho(rs.getString("thanhPho"));
             model.setDiaChi(rs.getString("diaChi"));

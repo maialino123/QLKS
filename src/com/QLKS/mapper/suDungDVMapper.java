@@ -18,7 +18,7 @@ public class suDungDVMapper implements rowMapper<suDungDVModel>{
     @Override
     public suDungDVModel maprow(ResultSet rs) {
         try {
-            suDungDVModel model = new suDungDVModel();
+            suDungDVModel model = suDungDVModel.getInstance();
             model.setSoHopDongTp(rs.getInt("soHopDongTP"));
             model.setNgaySD(rs.getTimestamp("ngaySD"));
             model.setSoLuong(rs.getInt("soLuong"));

@@ -5,6 +5,7 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -12,10 +13,28 @@ import java.time.LocalDate;
  * @author Admin
  */
 public class khachHangModel extends abstractModel {
+    
+     //    singleTon pattern
+    private static khachHangModel instance = null;
+
+    public static khachHangModel getInstance() {
+        if (instance == null) {
+            instance = new khachHangModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
+    
+    
     private int maKH;
     private String hoTen;
     private String cmnd;
-    private LocalDate ngaySinh;
+    private Date ngaySinh;
     private String gioiTinh;
     private String thanhPho;
     private String diaChi;
@@ -26,10 +45,8 @@ public class khachHangModel extends abstractModel {
 
     public khachHangModel() {
     }
-    
-    
 
-    public khachHangModel(int maKH, String hoTen, String cmnd, LocalDate ngaySinh, String gioiTinh, String thanhPho, String diaChi, String sdt, int soLanCheckIn, String maQG, String maTT) {
+    public khachHangModel(int maKH, String hoTen, String cmnd, Date ngaySinh, String gioiTinh, String thanhPho, String diaChi, String sdt, int soLanCheckIn, String maQG, String maTT) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.cmnd = cmnd;
@@ -42,6 +59,10 @@ public class khachHangModel extends abstractModel {
         this.maQG = maQG;
         this.maTT = maTT;
     }
+    
+    
+
+   
 
     public int getMaKH() {
         return maKH;
@@ -67,13 +88,15 @@ public class khachHangModel extends abstractModel {
         this.cmnd = cmnd;
     }
 
-    public LocalDate getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDate ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
+
+   
 
     public String getGioiTinh() {
         return gioiTinh;

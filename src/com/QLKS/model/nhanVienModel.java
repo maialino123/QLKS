@@ -5,6 +5,7 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -12,11 +13,24 @@ import java.time.LocalDate;
  *
  * @author Admin
  */
-public class nhanVienModel extends abstractModel{
+public class nhanVienModel extends abstractModel {
+
+    //    singleTon pattern
+    private static nhanVienModel instance = null;
+
+    public static nhanVienModel getInstance() {
+        if (instance == null) {
+            instance = new nhanVienModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
     private String maNV;
     private String hoTen;
     private String cmnd;
-    private LocalDate ngaySinh;
+    private Date ngaySinh;
     private String gioiTinh;
     private String diaChi;
     private String sdt;
@@ -28,12 +42,10 @@ public class nhanVienModel extends abstractModel{
     private boolean status;
     private roleModel role;
 
-   
-    
     public nhanVienModel() {
     }
 
-    public nhanVienModel(String maNV, String hoTen, String cmnd, LocalDate ngaySinh, String gioiTinh, String diaChi, String sdt, Timestamp ngayVaoLam, String chucVu, float luong, String hinh, int roleId, boolean status) {
+    public nhanVienModel(String maNV, String hoTen, String cmnd, Date ngaySinh, String gioiTinh, String diaChi, String sdt, Timestamp ngayVaoLam, String chucVu, float luong, String hinh, int roleId, boolean status, roleModel role) {
         this.maNV = maNV;
         this.hoTen = hoTen;
         this.cmnd = cmnd;
@@ -47,7 +59,10 @@ public class nhanVienModel extends abstractModel{
         this.hinh = hinh;
         this.roleId = roleId;
         this.status = status;
+        this.role = role;
     }
+
+    
 
     public roleModel getRole() {
         return role;
@@ -56,7 +71,7 @@ public class nhanVienModel extends abstractModel{
     public void setRole(roleModel role) {
         this.role = role;
     }
-    
+
     public int getRoleId() {
         return roleId;
     }
@@ -64,8 +79,6 @@ public class nhanVienModel extends abstractModel{
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-   
 
     public String getMaNV() {
         return maNV;
@@ -91,13 +104,15 @@ public class nhanVienModel extends abstractModel{
         this.cmnd = cmnd;
     }
 
-    public LocalDate getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDate ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
+
+    
 
     public String getGioiTinh() {
         return gioiTinh;
@@ -162,6 +177,5 @@ public class nhanVienModel extends abstractModel{
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    
+
 }

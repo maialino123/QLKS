@@ -19,7 +19,7 @@ public class bookingMapper implements rowMapper<bookingModel>{
     @Override
     public bookingModel maprow(ResultSet rs) {
         try {
-           bookingModel model = new bookingModel();
+           bookingModel model = bookingModel.getInstance();
            model.setBkId(rs.getInt("BKID"));
            model.setHoTen(rs.getString("hoTenBK"));
            model.setCmnd(rs.getString("CMND"));
@@ -29,8 +29,8 @@ public class bookingMapper implements rowMapper<bookingModel>{
            model.setDiaChi(rs.getString("diaChi"));
            model.setSdt(rs.getString("SDT"));
            model.setEmail(rs.getString("email"));
-           model.setNgayDangKy(convertDate.convertToLoCalDate(rs.getDate("ngayDangKy")));
-           model.setNgayNhan(convertDate.convertToLoCalDate(rs.getDate("ngayNhan")));
+           model.setNgayDangKy(rs.getDate("ngayDangKy"));
+           model.setNgayNhan(rs.getDate("ngayNhan"));
            model.setDatCoc(rs.getFloat("datCoc"));
            model.setYeuCau(rs.getString("yeuCau"));
            model.setMaNV(rs.getString("maNV"));

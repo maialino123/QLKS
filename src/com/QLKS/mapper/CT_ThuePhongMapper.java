@@ -18,7 +18,7 @@ public class CT_ThuePhongMapper implements rowMapper<chiTietTPModel>{
     @Override
     public chiTietTPModel maprow(ResultSet rs) {
         try {
-            chiTietTPModel model = new chiTietTPModel();
+            chiTietTPModel model = chiTietTPModel.getInstance();
             model.setSoHopDongTP(rs.getInt("soHopDongTP"));
             model.setMaKH(rs.getInt("maKH"));
             model.setVaiTro(rs.getString("vaiTro"));

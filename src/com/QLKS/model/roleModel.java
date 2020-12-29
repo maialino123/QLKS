@@ -10,6 +10,22 @@ package com.QLKS.model;
  * @author Admin
  */
 public class roleModel extends abstractModel {
+    
+    
+    //    singleTon pattern
+    private static roleModel instance = null;
+
+    public static roleModel getInstance() {
+        if (instance == null) {
+            instance = new roleModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private int roleID;
     private String roleName;
     private String code;

@@ -10,6 +10,22 @@ package com.QLKS.model;
  * @author Admin
  */
 public class danhMucPhongModel extends abstractModel{
+    
+    //    singleTon pattern
+    private static danhMucPhongModel instance = null;
+
+    public static danhMucPhongModel getInstance() {
+        if (instance == null) {
+            instance = new danhMucPhongModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
     private String maPhong;
     private String tinhTrang;
     private String dacDiem;

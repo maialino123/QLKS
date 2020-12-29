@@ -10,6 +10,19 @@ package com.QLKS.model;
  * @author Admin
  */
 public class ThietBi_DichVuModel extends abstractModel{
+   //    singleTon pattern
+    private static ThietBi_DichVuModel instance = null;
+
+    public static ThietBi_DichVuModel getInstance() {
+        if (instance == null) {
+            instance = new ThietBi_DichVuModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
     private int maTb;
     private  String tenTb;
     private String donViTinh;

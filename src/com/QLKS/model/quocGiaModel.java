@@ -10,6 +10,22 @@ package com.QLKS.model;
  * @author Admin
  */
 public class quocGiaModel extends abstractModel {
+    
+    //    singleTon pattern
+    private static quocGiaModel instance = null;
+
+    public static quocGiaModel getInstance() {
+        if (instance == null) {
+            instance = new quocGiaModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
    private String maQG;
    private String tenQG;
 

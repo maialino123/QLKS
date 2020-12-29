@@ -18,7 +18,7 @@ public class TB_DichVuMapper implements rowMapper<ThietBi_DichVuModel>{
     @Override
     public ThietBi_DichVuModel maprow(ResultSet rs) {
         try {
-            ThietBi_DichVuModel model = new ThietBi_DichVuModel();
+            ThietBi_DichVuModel model = ThietBi_DichVuModel.getInstance();
             model.setMaTb(rs.getInt("maTB"));
             model.setTenTb(rs.getString("tenThietBi"));
             model.setDonViTinh(rs.getString("donViTinh"));

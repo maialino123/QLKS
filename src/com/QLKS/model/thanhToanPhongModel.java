@@ -12,6 +12,21 @@ import java.sql.Timestamp;
  * @author Admin
  */
 public class thanhToanPhongModel extends abstractModel {
+    
+    //    singleTon pattern
+    private static thanhToanPhongModel instance = null;
+
+    public static thanhToanPhongModel getInstance() {
+        if (instance == null) {
+            instance = new thanhToanPhongModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private int soTT;
     private Timestamp ngayThanhToan;
     private float tienPhong;

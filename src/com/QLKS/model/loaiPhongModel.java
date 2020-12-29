@@ -10,6 +10,24 @@ package com.QLKS.model;
  * @author Admin
  */
 public class loaiPhongModel extends abstractModel{
+    
+    
+      //    singleTon pattern
+    private static loaiPhongModel instance = null;
+
+    public static loaiPhongModel getInstance() {
+        if (instance == null) {
+            instance = new loaiPhongModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
+    
     private String maLp;
     private String tenLp;
     private float giaLp;

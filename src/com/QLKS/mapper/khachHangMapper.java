@@ -19,11 +19,11 @@ public class khachHangMapper implements rowMapper<khachHangModel>{
     @Override
     public khachHangModel maprow(ResultSet rs) {
         try {
-            khachHangModel model = new khachHangModel();
+            khachHangModel model = khachHangModel.getInstance();
             model.setMaKH(rs.getInt("maKH"));
             model.setHoTen(rs.getString("hoTen"));
             model.setCmnd(rs.getString("CMND"));
-            model.setNgaySinh(convertDate.convertToLoCalDate(rs.getDate("ngaySinh")));
+            model.setNgaySinh(rs.getDate("ngaySinh"));
             model.setGioiTinh(rs.getString("gioiTinh"));
             model.setThanhPho(rs.getString("thanhPho"));
             model.setDiaChi(rs.getString("diaChi"));

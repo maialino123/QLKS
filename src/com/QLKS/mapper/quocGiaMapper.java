@@ -18,7 +18,7 @@ public class quocGiaMapper implements rowMapper<quocGiaModel>{
     @Override
     public quocGiaModel maprow(ResultSet rs) {
         try {
-            quocGiaModel model = new quocGiaModel();
+            quocGiaModel model = quocGiaModel.getInstance();
             model.setMaQG(rs.getString("maQG"));
             model.setTenQG(rs.getString("tenQG"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));

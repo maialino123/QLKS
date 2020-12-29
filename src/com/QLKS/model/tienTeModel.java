@@ -10,6 +10,21 @@ package com.QLKS.model;
  * @author Admin
  */
 public class tienTeModel extends abstractModel {
+    
+      //    singleTon pattern
+    private static tienTeModel instance = null;
+
+    public static tienTeModel getInstance() {
+        if (instance == null) {
+            instance = new tienTeModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private String maTT;
     private String tenTienTe;
     private float doiSanVND;

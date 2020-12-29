@@ -18,7 +18,7 @@ public class tienTeMapper implements rowMapper<tienTeModel>{
     @Override
     public tienTeModel maprow(ResultSet rs) {
         try {
-            tienTeModel model = new tienTeModel();
+            tienTeModel model = tienTeModel.getInstance();
             model.setMaTT(rs.getString("maTT"));
             model.setTenTienTe(rs.getString("tenTienTe"));
             model.setDoiSanVND(rs.getFloat("doiSanVND"));

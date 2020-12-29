@@ -18,7 +18,7 @@ public class thanhToanPhongMapper implements rowMapper<thanhToanPhongModel>{
     @Override
     public thanhToanPhongModel maprow(ResultSet rs) {
         try {
-            thanhToanPhongModel model = new thanhToanPhongModel();
+            thanhToanPhongModel model = thanhToanPhongModel.getInstance();
             model.setSoTT(rs.getInt("soTT"));
             model.setNgayThanhToan(rs.getTimestamp("ngayThanhToan"));
             model.setTienPhong(rs.getFloat("tienPhong"));

@@ -10,6 +10,21 @@ package com.QLKS.model;
  * @author Admin
  */
 public class trangBiModel extends abstractModel {
+    
+     //    singleTon pattern
+    private static trangBiModel instance = null;
+
+    public static trangBiModel getInstance() {
+        if (instance == null) {
+            instance = new trangBiModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private int maTb;
     private String maLp;
     private int soLuong;

@@ -5,6 +5,7 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -12,6 +13,22 @@ import java.time.LocalDate;
  * @author Admin
  */
 public class bookingModel extends abstractModel {
+    
+    //    singleTon pattern
+    private static bookingModel instance = null;
+
+    public static bookingModel getInstance() {
+        if (instance == null) {
+            instance = new bookingModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
     private int bkId;
     private String hoTen;
     private String cmnd;
@@ -21,8 +38,8 @@ public class bookingModel extends abstractModel {
     private String diaChi;
     private String sdt;
     private String email;
-    private LocalDate ngayDangKy;
-    private LocalDate ngayNhan;
+    private Date ngayDangKy;
+    private Date ngayNhan;
     private float datCoc;
     private String yeuCau;
     private String maNV;
@@ -30,10 +47,8 @@ public class bookingModel extends abstractModel {
 
     public bookingModel() {
     }
-    
-    
 
-    public bookingModel(int bkId, String hoTen, String cmnd, LocalDate ngaySinh, String gioiTinh, String thanhPho, String diaChi, String sdt, String email, LocalDate ngayDangKy, LocalDate ngayNhan, float datCoc, String yeuCau, String maNV, String maQG) {
+    public bookingModel(int bkId, String hoTen, String cmnd, LocalDate ngaySinh, String gioiTinh, String thanhPho, String diaChi, String sdt, String email, Date ngayDangKy, Date ngayNhan, float datCoc, String yeuCau, String maNV, String maQG) {
         this.bkId = bkId;
         this.hoTen = hoTen;
         this.cmnd = cmnd;
@@ -50,6 +65,10 @@ public class bookingModel extends abstractModel {
         this.maNV = maNV;
         this.maQG = maQG;
     }
+    
+    
+
+    
 
     public int getBkId() {
         return bkId;
@@ -123,21 +142,22 @@ public class bookingModel extends abstractModel {
         this.email = email;
     }
 
-    public LocalDate getNgayDangKy() {
+    public Date getNgayDangKy() {
         return ngayDangKy;
     }
 
-    public void setNgayDangKy(LocalDate ngayDangKy) {
+    public void setNgayDangKy(Date ngayDangKy) {
         this.ngayDangKy = ngayDangKy;
     }
 
-    public LocalDate getNgayNhan() {
+    public Date getNgayNhan() {
         return ngayNhan;
     }
 
-    public void setNgayNhan(LocalDate ngayNhan) {
+    public void setNgayNhan(Date ngayNhan) {
         this.ngayNhan = ngayNhan;
     }
+
 
     public float getDatCoc() {
         return datCoc;

@@ -12,6 +12,22 @@ import java.sql.Timestamp;
  * @author Admin
  */
 public class suDungDVModel extends abstractModel {
+    
+    
+   //    singleTon pattern
+    private static suDungDVModel instance = null;
+
+    public static suDungDVModel getInstance() {
+        if (instance == null) {
+            instance = new suDungDVModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private int soHopDongTp;
     private int maTB;
     private Timestamp ngaySD;

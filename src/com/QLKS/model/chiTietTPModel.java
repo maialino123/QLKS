@@ -10,6 +10,22 @@ package com.QLKS.model;
  * @author Admin
  */
 public class chiTietTPModel extends abstractModel {
+    
+   //    singleTon pattern
+    private static chiTietTPModel instance = null;
+
+    public static chiTietTPModel getInstance() {
+        if (instance == null) {
+            instance = new chiTietTPModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
+    
     private int soHopDongTP;
     private int maKH;
     private String vaiTro;

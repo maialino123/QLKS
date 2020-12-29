@@ -5,6 +5,7 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -14,21 +15,32 @@ import java.time.LocalDate;
  * @author Admin
  */
 public class thuePhongModel {
+    
+    //    singleTon pattern
+    private static thuePhongModel instance = null;
+
+    public static thuePhongModel getInstance() {
+        if (instance == null) {
+            instance = new thuePhongModel();
+        }
+        return instance;
+
+    }
+
+//    singleTon pattern
+    
+    
     private int soHopDongTP;
     private String maNV;
     private int maKH;
     private Timestamp ngayThue;
-    private LocalDate ngayTra;
+    private Date ngayTra;
 
   
     public thuePhongModel() {
     }
-      
 
-    
-
- 
-    public thuePhongModel(int soHopDongTP, String maNV, int maKH, Timestamp ngayThue, LocalDate ngayTra) {
+    public thuePhongModel(int soHopDongTP, String maNV, int maKH, Timestamp ngayThue, Date ngayTra) {
         this.soHopDongTP = soHopDongTP;
         this.maNV = maNV;
         this.maKH = maKH;
@@ -36,13 +48,21 @@ public class thuePhongModel {
         this.ngayTra = ngayTra;
     }
 
-    public LocalDate getNgayTra() {
+    public Date getNgayTra() {
         return ngayTra;
     }
 
-    public void setNgayTra(LocalDate ngayTra) {
+    public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
+      
+
+    
+
+ 
+    
+
+   
     public int getSoHopDongTP() {
         return soHopDongTP;
     }

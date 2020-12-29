@@ -18,7 +18,7 @@ public class danhMucPhongMapper implements rowMapper<danhMucPhongModel>{
     @Override
     public danhMucPhongModel maprow(ResultSet rs) {
         try {
-            danhMucPhongModel model = new danhMucPhongModel();
+            danhMucPhongModel model = danhMucPhongModel.getInstance();
             model.setMaPhong(rs.getString("maPhong"));
             model.setTinhTrang(rs.getString("tinhTrang"));
             model.setDacDiem(rs.getString("dacDiem"));

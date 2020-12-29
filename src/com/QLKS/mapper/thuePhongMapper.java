@@ -19,12 +19,12 @@ public class thuePhongMapper implements  rowMapper<thuePhongModel>{
     @Override
     public thuePhongModel maprow(ResultSet rs) {
         try {
-            thuePhongModel model = new thuePhongModel();
+            thuePhongModel model = thuePhongModel.getInstance();
             model.setSoHopDongTP(rs.getInt("soHopDongTP"));
             model.setMaNV(rs.getString("maNV"));
             model.setMaKH(rs.getInt("maKH"));
             model.setNgayThue(rs.getTimestamp("ngayThue"));
-            model.setNgayTra(convertDate.convertToLoCalDate(rs.getDate("ngayTra")));
+            model.setNgayTra(rs.getDate("ngayTra"));
             return model;
         } catch (SQLException e) {
             e.printStackTrace();

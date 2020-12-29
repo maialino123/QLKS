@@ -18,7 +18,7 @@ public class loaiPhongMapper implements rowMapper<loaiPhongModel>{
     @Override
     public loaiPhongModel maprow(ResultSet rs) {
         try {
-            loaiPhongModel model = new loaiPhongModel();
+            loaiPhongModel model = loaiPhongModel.getInstance();
             model.setMaLp(rs.getString("maLP"));
             model.setTenLp(rs.getString("tenLP"));
             model.setGiaLp(rs.getFloat("giaLP"));

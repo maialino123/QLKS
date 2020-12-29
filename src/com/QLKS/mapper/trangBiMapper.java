@@ -18,7 +18,7 @@ public class trangBiMapper implements rowMapper<trangBiModel>{
     @Override
     public trangBiModel maprow(ResultSet rs) {
         try {
-            trangBiModel model = new trangBiModel();
+            trangBiModel model = trangBiModel.getInstance();
             model.setMaTb(rs.getInt("maTB"));
             model.setMaLp(rs.getString("maLP"));
             model.setSoLuong(rs.getInt("soLuong"));

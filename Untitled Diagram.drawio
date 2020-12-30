@@ -1,9 +1,33 @@
-<mxfile host="app.diagrams.net" modified="2020-12-30T13:34:57.392Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="uRPR8cWQn5FD_jrapL3j" version="14.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-30T13:36:08.275Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="w_R8B6g7wyUJaS_U0ehi" version="14.1.3" type="github">
   <diagram id="ZVVWfZMViWKJLwM7EidN" name="Page-1">
     <mxGraphModel dx="1422" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F1FAEE" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-250" value="Khách Hàng" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=#A8DADC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-251" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-250">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-253" value="Buồng Phòng" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=#A8DADC;" vertex="1" parent="1">
+          <mxGeometry x="330" y="160" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-254" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-253">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-255" value="Nhân Viên" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=#A8DADC;" vertex="1" parent="1">
+          <mxGeometry x="600" y="160" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-256" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-255">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-257" value="Loại Phòng" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=#A8DADC;" vertex="1" parent="1">
+          <mxGeometry x="330" y="350" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-258" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-257">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

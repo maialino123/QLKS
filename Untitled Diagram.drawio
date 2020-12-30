@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-30T13:36:59.956Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="SSzL6l9GrGc8azxk6cC2" version="14.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-30T13:37:29.571Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="HEqvxF-N7514oYkE7iVZ" version="14.1.3" type="github">
   <diagram id="ZVVWfZMViWKJLwM7EidN" name="Page-1">
     <mxGraphModel dx="1422" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F1FAEE" math="0" shadow="0">
       <root>
@@ -50,6 +50,12 @@
           <mxGeometry x="334" y="10" width="160" height="120" as="geometry" />
         </mxCell>
         <mxCell id="YB05C7Pb-uXemA97MWsQ-266" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-265">
+          <mxGeometry y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-267" value="Thông Tin Nhận Phòng" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fillColor=#A8DADC;" vertex="1" parent="1">
+          <mxGeometry x="40" y="510" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YB05C7Pb-uXemA97MWsQ-268" value="+Attribute1&#xa;+Attribute2&#xa;+Attribute3" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="YB05C7Pb-uXemA97MWsQ-267">
           <mxGeometry y="30" width="160" height="90" as="geometry" />
         </mxCell>
       </root>

@@ -6,22 +6,21 @@
 package com.QLKS.utils;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import com.QLKS.model.usersModel;
+import com.QLKS.model.nhan_vienModel;
+
 
 /**
  *
  * @author Admin
  */
 public class security {
-    public static final String bcryptHashString(){
-        usersModel model = usersModel.getInstance();
-        model.setPassword(BCrypt.withDefaults().hashToString(15, model.getPassword().toCharArray()));
-        return model.getPassword();
+    public static final String bcryptHashString(String T){
+        return (BCrypt.withDefaults().hashToString(15, T.toCharArray()));
     }
     
-    public static final BCrypt.Result result(){
-        usersModel model = usersModel.getInstance();
-        BCrypt.Result result = BCrypt.verifyer().verify(model.getPassword().toCharArray(), bcryptHashString());
-        return result;
-    }
+//    public static final BCrypt.Result result(){
+//        nhan_vienModel model = nhan_vienModel.getInstance();
+//        BCrypt.Result result = BCrypt.verifyer().verify(model.getPassword().toCharArray(), bcryptHashString(model.getPassword()));
+//        return result;
+//    }
 }

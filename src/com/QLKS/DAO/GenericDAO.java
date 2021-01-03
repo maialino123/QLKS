@@ -13,10 +13,7 @@ import java.util.List;
  * @author Admin
  */
 public interface GenericDAO<T> {
-
     <T> List<T> query(String sql, rowMapper<T> rowMapper, Object... parameters);
-
-    void insert(String sql, Object... parameters);
-    
-
+    Long insert(String sql,  Object... parameters);
+    void update(String sql, Object... parameters);
 }

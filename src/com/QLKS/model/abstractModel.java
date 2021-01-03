@@ -12,23 +12,22 @@ import java.sql.Timestamp;
  * @author Admin
  */
 public class abstractModel {
-    
-    
-    
-    
     private Timestamp createdDate;
     private String createdBy;
     private Timestamp modifiedDate;
     private String modifiedBy;
-    private int[] ids;
+    private Long[] ids;
 
-    public int[] getIds() {
+    public Long[] getIds() {
         return ids;
     }
 
-    public void setIds(int[] ids) {
+    public void setIds(Long[] ids) {
         this.ids = ids;
     }
+    
+    
+
     public Timestamp getCreatedDate() {
         return createdDate;
     }

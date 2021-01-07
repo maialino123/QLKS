@@ -60,8 +60,57 @@ public class mainFrame extends javax.swing.JFrame {
         line_small = new javax.swing.JPanel();
         button_so_so_phong = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        changeImageButtonIconSmall = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        line_small1 = new javax.swing.JPanel();
+        button_quan_ly_phong = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        changeImageButtonIconSmall1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        line_small2 = new javax.swing.JPanel();
+        button_quan_ly_loai_phong = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        changeImageButtonIconSmall2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        line_small3 = new javax.swing.JPanel();
+        button_quan_ly_thiet_bi = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        changeImageButtonIconSmall3 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        line_button_small = new javax.swing.JPanel();
+        custom_lineButton = new javax.swing.JLabel();
+        pnl_QLDV = new javax.swing.JPanel();
+        btn_click_menuSmall_P1 = new javax.swing.JPanel();
+        icon_menuSmall1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        menuBar_small1 = new javax.swing.JPanel();
+        line_small4 = new javax.swing.JPanel();
+        button_quan_ly_DV = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        changeImageButtonIconSmall4 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        line_small5 = new javax.swing.JPanel();
+        button_quan_ly_LDV = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        changeImageButtonIconSmall5 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        line_button_small1 = new javax.swing.JPanel();
+        custom_lineButton1 = new javax.swing.JLabel();
+        pnl_QLKH = new javax.swing.JPanel();
+        btn_click_menuSmall_P2 = new javax.swing.JPanel();
+        icon_menuSmall2 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        menuBar_small2 = new javax.swing.JPanel();
+        line_small6 = new javax.swing.JPanel();
+        button_quan_ly_DV1 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        changeImageButtonIconSmall6 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        line_small7 = new javax.swing.JPanel();
+        button_quan_ly_LDV1 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        changeImageButtonIconSmall7 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -226,7 +275,7 @@ public class mainFrame extends javax.swing.JFrame {
         menuBar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         pnl_QLphong.setBackground(new java.awt.Color(27, 27, 27));
-        pnl_QLphong.setPreferredSize(new java.awt.Dimension(260, 230));
+        pnl_QLphong.setPreferredSize(new java.awt.Dimension(260, 40));
         pnl_QLphong.setVerifyInputWhenFocusTarget(false);
         pnl_QLphong.setLayout(new java.awt.BorderLayout());
 
@@ -281,6 +330,17 @@ public class mainFrame extends javax.swing.JFrame {
 
         button_so_so_phong.setBackground(new java.awt.Color(48, 48, 48));
         button_so_so_phong.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_so_so_phong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_so_so_phongMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_so_so_phongMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_so_so_phongMouseExited(evt);
+            }
+        });
         button_so_so_phong.setLayout(new java.awt.BorderLayout());
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -288,10 +348,10 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(40, 40));
         button_so_so_phong.add(jLabel6, java.awt.BorderLayout.LINE_END);
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(5, 40));
-        button_so_so_phong.add(jLabel7, java.awt.BorderLayout.LINE_START);
+        changeImageButtonIconSmall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        changeImageButtonIconSmall.setPreferredSize(new java.awt.Dimension(5, 40));
+        button_so_so_phong.add(changeImageButtonIconSmall, java.awt.BorderLayout.LINE_START);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(154, 231, 246));
@@ -301,9 +361,450 @@ public class mainFrame extends javax.swing.JFrame {
 
         menuBar_small.add(button_so_so_phong);
 
+        line_small1.setBackground(new java.awt.Color(0, 0, 0));
+        line_small1.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small1Layout = new javax.swing.GroupLayout(line_small1);
+        line_small1.setLayout(line_small1Layout);
+        line_small1Layout.setHorizontalGroup(
+            line_small1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small1Layout.setVerticalGroup(
+            line_small1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small.add(line_small1);
+
+        button_quan_ly_phong.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_phong.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_phong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_phongMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_phongMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_phongMouseExited(evt);
+            }
+        });
+        button_quan_ly_phong.setLayout(new java.awt.BorderLayout());
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_room_20px.png"))); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_phong.add(jLabel7, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_phong.add(changeImageButtonIconSmall1, java.awt.BorderLayout.LINE_START);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Quản Lý Phòng");
+        button_quan_ly_phong.add(jLabel9, java.awt.BorderLayout.CENTER);
+
+        menuBar_small.add(button_quan_ly_phong);
+
+        line_small2.setBackground(new java.awt.Color(0, 0, 0));
+        line_small2.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small2Layout = new javax.swing.GroupLayout(line_small2);
+        line_small2.setLayout(line_small2Layout);
+        line_small2Layout.setHorizontalGroup(
+            line_small2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small2Layout.setVerticalGroup(
+            line_small2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small.add(line_small2);
+
+        button_quan_ly_loai_phong.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_loai_phong.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_loai_phong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_loai_phongMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_loai_phongMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_loai_phongMouseExited(evt);
+            }
+        });
+        button_quan_ly_loai_phong.setLayout(new java.awt.BorderLayout());
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_type_20px_1.png"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_loai_phong.add(jLabel10, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_loai_phong.add(changeImageButtonIconSmall2, java.awt.BorderLayout.LINE_START);
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Quản Lý Loại Phòng");
+        button_quan_ly_loai_phong.add(jLabel11, java.awt.BorderLayout.CENTER);
+
+        menuBar_small.add(button_quan_ly_loai_phong);
+
+        line_small3.setBackground(new java.awt.Color(0, 0, 0));
+        line_small3.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small3Layout = new javax.swing.GroupLayout(line_small3);
+        line_small3.setLayout(line_small3Layout);
+        line_small3Layout.setHorizontalGroup(
+            line_small3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small3Layout.setVerticalGroup(
+            line_small3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small.add(line_small3);
+
+        button_quan_ly_thiet_bi.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_thiet_bi.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_thiet_bi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_thiet_biMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_thiet_biMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_thiet_biMouseExited(evt);
+            }
+        });
+        button_quan_ly_thiet_bi.setLayout(new java.awt.BorderLayout());
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_service_20px.png"))); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_thiet_bi.add(jLabel12, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_thiet_bi.add(changeImageButtonIconSmall3, java.awt.BorderLayout.LINE_START);
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Quản Lý Thiết Bị");
+        button_quan_ly_thiet_bi.add(jLabel13, java.awt.BorderLayout.CENTER);
+
+        menuBar_small.add(button_quan_ly_thiet_bi);
+
         pnl_QLphong.add(menuBar_small, java.awt.BorderLayout.CENTER);
 
         menuBar.add(pnl_QLphong);
+
+        line_button_small.setBackground(new java.awt.Color(0, 0, 0));
+        line_button_small.setPreferredSize(new java.awt.Dimension(260, 5));
+        line_button_small.setLayout(new java.awt.BorderLayout());
+
+        custom_lineButton.setForeground(new java.awt.Color(255, 255, 255));
+        custom_lineButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        custom_lineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/lineButtonDefault.png"))); // NOI18N
+        line_button_small.add(custom_lineButton, java.awt.BorderLayout.CENTER);
+
+        menuBar.add(line_button_small);
+
+        pnl_QLDV.setBackground(new java.awt.Color(27, 27, 27));
+        pnl_QLDV.setPreferredSize(new java.awt.Dimension(260, 40));
+        pnl_QLDV.setVerifyInputWhenFocusTarget(false);
+        pnl_QLDV.setLayout(new java.awt.BorderLayout());
+
+        btn_click_menuSmall_P1.setBackground(new java.awt.Color(8, 13, 21));
+        btn_click_menuSmall_P1.setPreferredSize(new java.awt.Dimension(260, 40));
+        btn_click_menuSmall_P1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P1MouseExited(evt);
+            }
+        });
+        btn_click_menuSmall_P1.setLayout(new java.awt.BorderLayout());
+
+        icon_menuSmall1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_menuSmall1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png"))); // NOI18N
+        icon_menuSmall1.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_click_menuSmall_P1.add(icon_menuSmall1, java.awt.BorderLayout.LINE_END);
+
+        jLabel14.setBackground(new java.awt.Color(154, 231, 246));
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Dịch Vụ");
+        btn_click_menuSmall_P1.add(jLabel14, java.awt.BorderLayout.CENTER);
+
+        pnl_QLDV.add(btn_click_menuSmall_P1, java.awt.BorderLayout.PAGE_START);
+
+        menuBar_small1.setBackground(new java.awt.Color(32, 32, 32));
+        menuBar_small1.setPreferredSize(new java.awt.Dimension(260, 190));
+        menuBar_small1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        line_small4.setBackground(new java.awt.Color(0, 0, 0));
+        line_small4.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small4Layout = new javax.swing.GroupLayout(line_small4);
+        line_small4.setLayout(line_small4Layout);
+        line_small4Layout.setHorizontalGroup(
+            line_small4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small4Layout.setVerticalGroup(
+            line_small4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small1.add(line_small4);
+
+        button_quan_ly_DV.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_DV.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_DV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DVMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DVMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DVMouseExited(evt);
+            }
+        });
+        button_quan_ly_DV.setLayout(new java.awt.BorderLayout());
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_food_service_20px_2.png"))); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_DV.add(jLabel15, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_DV.add(changeImageButtonIconSmall4, java.awt.BorderLayout.LINE_START);
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Quản Lý Dịch Vụ");
+        button_quan_ly_DV.add(jLabel16, java.awt.BorderLayout.CENTER);
+
+        menuBar_small1.add(button_quan_ly_DV);
+
+        line_small5.setBackground(new java.awt.Color(0, 0, 0));
+        line_small5.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small5Layout = new javax.swing.GroupLayout(line_small5);
+        line_small5.setLayout(line_small5Layout);
+        line_small5Layout.setHorizontalGroup(
+            line_small5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small5Layout.setVerticalGroup(
+            line_small5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small1.add(line_small5);
+
+        button_quan_ly_LDV.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_LDV.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_LDV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDVMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDVMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDVMouseExited(evt);
+            }
+        });
+        button_quan_ly_LDV.setLayout(new java.awt.BorderLayout());
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_type_20px_1.png"))); // NOI18N
+        jLabel17.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_LDV.add(jLabel17, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_LDV.add(changeImageButtonIconSmall5, java.awt.BorderLayout.LINE_START);
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Quản Lý Loại Dịch Vụ");
+        button_quan_ly_LDV.add(jLabel18, java.awt.BorderLayout.CENTER);
+
+        menuBar_small1.add(button_quan_ly_LDV);
+
+        pnl_QLDV.add(menuBar_small1, java.awt.BorderLayout.CENTER);
+
+        menuBar.add(pnl_QLDV);
+
+        line_button_small1.setBackground(new java.awt.Color(0, 0, 0));
+        line_button_small1.setLayout(new java.awt.BorderLayout());
+
+        custom_lineButton1.setForeground(new java.awt.Color(255, 255, 255));
+        custom_lineButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        custom_lineButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/lineButtonDefault.png"))); // NOI18N
+        line_button_small1.add(custom_lineButton1, java.awt.BorderLayout.CENTER);
+
+        menuBar.add(line_button_small1);
+
+        pnl_QLKH.setBackground(new java.awt.Color(27, 27, 27));
+        pnl_QLKH.setPreferredSize(new java.awt.Dimension(260, 250));
+        pnl_QLKH.setVerifyInputWhenFocusTarget(false);
+        pnl_QLKH.setLayout(new java.awt.BorderLayout());
+
+        btn_click_menuSmall_P2.setBackground(new java.awt.Color(8, 13, 21));
+        btn_click_menuSmall_P2.setPreferredSize(new java.awt.Dimension(260, 40));
+        btn_click_menuSmall_P2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_P2MouseExited(evt);
+            }
+        });
+        btn_click_menuSmall_P2.setLayout(new java.awt.BorderLayout());
+
+        icon_menuSmall2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_menuSmall2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png"))); // NOI18N
+        icon_menuSmall2.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_click_menuSmall_P2.add(icon_menuSmall2, java.awt.BorderLayout.LINE_END);
+
+        jLabel19.setBackground(new java.awt.Color(154, 231, 246));
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Khách Hàng");
+        btn_click_menuSmall_P2.add(jLabel19, java.awt.BorderLayout.CENTER);
+
+        pnl_QLKH.add(btn_click_menuSmall_P2, java.awt.BorderLayout.PAGE_START);
+
+        menuBar_small2.setBackground(new java.awt.Color(32, 32, 32));
+        menuBar_small2.setPreferredSize(new java.awt.Dimension(260, 190));
+        menuBar_small2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        line_small6.setBackground(new java.awt.Color(0, 0, 0));
+        line_small6.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small6Layout = new javax.swing.GroupLayout(line_small6);
+        line_small6.setLayout(line_small6Layout);
+        line_small6Layout.setHorizontalGroup(
+            line_small6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small6Layout.setVerticalGroup(
+            line_small6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small2.add(line_small6);
+
+        button_quan_ly_DV1.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_DV1.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_DV1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DV1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DV1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_DV1MouseExited(evt);
+            }
+        });
+        button_quan_ly_DV1.setLayout(new java.awt.BorderLayout());
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_food_service_20px_2.png"))); // NOI18N
+        jLabel20.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_DV1.add(jLabel20, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_DV1.add(changeImageButtonIconSmall6, java.awt.BorderLayout.LINE_START);
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Quản Lý Dịch Vụ");
+        button_quan_ly_DV1.add(jLabel21, java.awt.BorderLayout.CENTER);
+
+        menuBar_small2.add(button_quan_ly_DV1);
+
+        line_small7.setBackground(new java.awt.Color(0, 0, 0));
+        line_small7.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_small7Layout = new javax.swing.GroupLayout(line_small7);
+        line_small7.setLayout(line_small7Layout);
+        line_small7Layout.setHorizontalGroup(
+            line_small7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_small7Layout.setVerticalGroup(
+            line_small7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small2.add(line_small7);
+
+        button_quan_ly_LDV1.setBackground(new java.awt.Color(48, 48, 48));
+        button_quan_ly_LDV1.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_quan_ly_LDV1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDV1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDV1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_quan_ly_LDV1MouseExited(evt);
+            }
+        });
+        button_quan_ly_LDV1.setLayout(new java.awt.BorderLayout());
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_room_20px.png"))); // NOI18N
+        jLabel22.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_quan_ly_LDV1.add(jLabel22, java.awt.BorderLayout.LINE_END);
+
+        changeImageButtonIconSmall7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeImageButtonIconSmall7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        button_quan_ly_LDV1.add(changeImageButtonIconSmall7, java.awt.BorderLayout.LINE_START);
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Quản Lý Loại Dịch Vụ");
+        button_quan_ly_LDV1.add(jLabel23, java.awt.BorderLayout.CENTER);
+
+        menuBar_small2.add(button_quan_ly_LDV1);
+
+        pnl_QLKH.add(menuBar_small2, java.awt.BorderLayout.CENTER);
+
+        menuBar.add(pnl_QLKH);
 
         menu.add(menuBar, java.awt.BorderLayout.CENTER);
 
@@ -357,11 +858,23 @@ public class mainFrame extends javax.swing.JFrame {
 
     public void hideShowMenuPhong(JPanel menuClicka, boolean check, JLabel button) {
         if (check == true) {
-            menuClicka.setPreferredSize(new Dimension(260, 230));
-            changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
+            menuClicka.setPreferredSize(new Dimension(260, 221));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
+            
         } else {
             menuClicka.setPreferredSize(new Dimension(260, 40));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
+        }
+    }
+    
+    public void hideShowMenuDV(JPanel menuClickb, boolean check, JLabel button){
+        if (check == true) {
+            menuClickb.setPreferredSize(new Dimension(260, 130));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
+            
+        } else {
+            menuClickb.setPreferredSize(new Dimension(260, 40));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
         }
     }
 
@@ -434,11 +947,11 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_icon_settingMouseClicked
 
     private void btn_click_menuSmall_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseEntered
-        changeColor(line_small, new Color(0, 0, 0));
+        changeColor(btn_click_menuSmall_P, new Color(0, 0, 0));
     }//GEN-LAST:event_btn_click_menuSmall_PMouseEntered
 
     private void btn_click_menuSmall_PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseExited
-        changeColor(line_small, new Color(8,13,21));
+        changeColor(btn_click_menuSmall_P, new Color(8, 13, 21));
     }//GEN-LAST:event_btn_click_menuSmall_PMouseExited
 
     private void btn_click_menuSmall_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseClicked
@@ -452,6 +965,160 @@ public class mainFrame extends javax.swing.JFrame {
             a = true;
         }
     }//GEN-LAST:event_btn_click_menuSmall_PMouseClicked
+
+    private void button_so_so_phongMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_so_so_phongMouseEntered
+        changeColor(button_so_so_phong, new Color(23, 23, 23));
+        changeColor(line_small, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_so_so_phongMouseEntered
+
+    private void button_so_so_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_so_so_phongMouseExited
+        changeColor(button_so_so_phong, new Color(48, 48, 48));
+        changeColor(line_small, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_so_so_phongMouseExited
+
+    private void button_so_so_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_so_so_phongMouseClicked
+        changeColor(line_small, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_so_so_phongMouseClicked
+
+    private void button_quan_ly_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_phongMouseClicked
+        changeColor(line_small1, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall1, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_quan_ly_phongMouseClicked
+
+    private void button_quan_ly_phongMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_phongMouseEntered
+        changeColor(button_quan_ly_phong, new Color(23, 23, 23));
+        changeColor(line_small1, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_quan_ly_phongMouseEntered
+
+    private void button_quan_ly_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_phongMouseExited
+        changeColor(button_quan_ly_phong, new Color(48, 48, 48));
+        changeColor(line_small1, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall1, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_quan_ly_phongMouseExited
+
+    private void button_quan_ly_loai_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseClicked
+       changeColor(line_small2, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall2, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_quan_ly_loai_phongMouseClicked
+
+    private void button_quan_ly_loai_phongMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseEntered
+       changeColor(button_quan_ly_loai_phong, new Color(23, 23, 23));
+        changeColor(line_small2, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_quan_ly_loai_phongMouseEntered
+
+    private void button_quan_ly_loai_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseExited
+         changeColor(button_quan_ly_loai_phong, new Color(48, 48, 48));
+        changeColor(line_small2, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall2, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_quan_ly_loai_phongMouseExited
+
+    private void button_quan_ly_thiet_biMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_thiet_biMouseClicked
+        changeColor(line_small3, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall3, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_quan_ly_thiet_biMouseClicked
+
+    private void button_quan_ly_thiet_biMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_thiet_biMouseEntered
+        changeColor(button_quan_ly_thiet_bi, new Color(23, 23, 23));
+        changeColor(line_small3, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_quan_ly_thiet_biMouseEntered
+
+    private void button_quan_ly_thiet_biMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_thiet_biMouseExited
+        changeColor(button_quan_ly_thiet_bi, new Color(48, 48, 48));
+        changeColor(line_small3, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall3, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_quan_ly_thiet_biMouseExited
+
+    private void btn_click_menuSmall_P1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P1MouseClicked
+        changeimage(custom_lineButton, "/com/QLKS/icon/icon_button/clickIconLine.png");
+        if (a == true) {
+            hideShowMenuDV(pnl_QLDV, a, icon_menuSmall1);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = false;
+        } else {
+            hideShowMenuDV(pnl_QLDV, a, icon_menuSmall1);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = true;
+        }
+    }//GEN-LAST:event_btn_click_menuSmall_P1MouseClicked
+
+    private void btn_click_menuSmall_P1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P1MouseEntered
+       changeColor(btn_click_menuSmall_P1, new Color(0, 0, 0));
+    }//GEN-LAST:event_btn_click_menuSmall_P1MouseEntered
+
+    private void btn_click_menuSmall_P1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P1MouseExited
+        changeColor(btn_click_menuSmall_P1, new Color(8, 13, 21));
+        changeimage(custom_lineButton, "/com/QLKS/icon/icon_button/lineButtonDefault.png");
+    }//GEN-LAST:event_btn_click_menuSmall_P1MouseExited
+
+    private void button_quan_ly_DVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DVMouseClicked
+        changeColor(line_small4, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall4, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_quan_ly_DVMouseClicked
+
+    private void button_quan_ly_DVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DVMouseEntered
+        changeColor(button_quan_ly_DV, new Color(23, 23, 23));
+        changeColor(line_small4, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_quan_ly_DVMouseEntered
+
+    private void button_quan_ly_DVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DVMouseExited
+        changeColor(button_quan_ly_DV, new Color(48, 48, 48));
+        changeColor(line_small4, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall4, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_quan_ly_DVMouseExited
+
+    private void button_quan_ly_LDVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDVMouseClicked
+       changeColor(line_small5, new Color(6, 255, 0));
+        changeimage(changeImageButtonIconSmall5, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+    }//GEN-LAST:event_button_quan_ly_LDVMouseClicked
+
+    private void button_quan_ly_LDVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDVMouseEntered
+        changeColor(button_quan_ly_LDV, new Color(23, 23, 23));
+        changeColor(line_small5, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_quan_ly_LDVMouseEntered
+
+    private void button_quan_ly_LDVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDVMouseExited
+        changeColor(button_quan_ly_LDV, new Color(48, 48, 48));
+        changeColor(line_small5, new Color(0, 0, 0));
+        changeimage(changeImageButtonIconSmall5, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
+    }//GEN-LAST:event_button_quan_ly_LDVMouseExited
+
+    private void btn_click_menuSmall_P2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_click_menuSmall_P2MouseClicked
+
+    private void btn_click_menuSmall_P2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_click_menuSmall_P2MouseEntered
+
+    private void btn_click_menuSmall_P2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_click_menuSmall_P2MouseExited
+
+    private void button_quan_ly_DV1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DV1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_DV1MouseClicked
+
+    private void button_quan_ly_DV1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DV1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_DV1MouseEntered
+
+    private void button_quan_ly_DV1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_DV1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_DV1MouseExited
+
+    private void button_quan_ly_LDV1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDV1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_LDV1MouseClicked
+
+    private void button_quan_ly_LDV1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDV1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_LDV1MouseEntered
+
+    private void button_quan_ly_LDV1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDV1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_quan_ly_LDV1MouseExited
 
     /**
      * @param args the command line arguments
@@ -490,33 +1157,82 @@ public class mainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btn_click_menuSmall_P;
+    private javax.swing.JPanel btn_click_menuSmall_P1;
+    private javax.swing.JPanel btn_click_menuSmall_P2;
     private javax.swing.JPanel button_close;
     private javax.swing.JPanel button_fullSize;
+    private javax.swing.JPanel button_quan_ly_DV;
+    private javax.swing.JPanel button_quan_ly_DV1;
+    private javax.swing.JPanel button_quan_ly_LDV;
+    private javax.swing.JPanel button_quan_ly_LDV1;
+    private javax.swing.JPanel button_quan_ly_loai_phong;
+    private javax.swing.JPanel button_quan_ly_phong;
+    private javax.swing.JPanel button_quan_ly_thiet_bi;
     private javax.swing.JPanel button_so_so_phong;
+    private javax.swing.JLabel changeImageButtonIconSmall;
+    private javax.swing.JLabel changeImageButtonIconSmall1;
+    private javax.swing.JLabel changeImageButtonIconSmall2;
+    private javax.swing.JLabel changeImageButtonIconSmall3;
+    private javax.swing.JLabel changeImageButtonIconSmall4;
+    private javax.swing.JLabel changeImageButtonIconSmall5;
+    private javax.swing.JLabel changeImageButtonIconSmall6;
+    private javax.swing.JLabel changeImageButtonIconSmall7;
     private javax.swing.JPanel content;
+    private javax.swing.JLabel custom_lineButton;
+    private javax.swing.JLabel custom_lineButton1;
     private javax.swing.JPanel header;
     private javax.swing.JPanel iconMinMaxClose;
     private javax.swing.JLabel icon_hideShow_menu;
     private javax.swing.JPanel icon_menu;
     private javax.swing.JLabel icon_menuSmall;
+    private javax.swing.JLabel icon_menuSmall1;
+    private javax.swing.JLabel icon_menuSmall2;
     private javax.swing.JPanel icon_setting;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel line_button_small;
+    private javax.swing.JPanel line_button_small1;
     private javax.swing.JPanel line_menu;
     private javax.swing.JPanel line_menu1;
     private javax.swing.JPanel line_menuSmall;
     private javax.swing.JPanel line_menuSmall4;
     private javax.swing.JPanel line_small;
+    private javax.swing.JPanel line_small1;
+    private javax.swing.JPanel line_small2;
+    private javax.swing.JPanel line_small3;
+    private javax.swing.JPanel line_small4;
+    private javax.swing.JPanel line_small5;
+    private javax.swing.JPanel line_small6;
+    private javax.swing.JPanel line_small7;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel menuBar;
     private javax.swing.JPanel menuBar_small;
+    private javax.swing.JPanel menuBar_small1;
+    private javax.swing.JPanel menuBar_small2;
     private javax.swing.JPanel menuIcon;
+    private javax.swing.JPanel pnl_QLDV;
+    private javax.swing.JPanel pnl_QLKH;
     private javax.swing.JPanel pnl_QLphong;
     // End of variables declaration//GEN-END:variables
 }

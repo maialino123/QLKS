@@ -5,9 +5,12 @@
  */
 package com.QLKS.views;
 
-import java.awt.Component;
-import javax.swing.JButton;
-import javax.swing.plaf.basic.BasicButtonUI;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,16 +21,10 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
+    boolean a = true;
+
     public mainFrame() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        Component[] components = this.getContentPane().getComponents();
-        
-        for (Component component : components) {
-            if (component instanceof JButton) {
-                ((JButton) component).setUI(new BasicButtonUI());
-            }
-        }
     }
 
     /**
@@ -39,104 +36,422 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        header = new javax.swing.JPanel();
+        iconMinMaxClose = new javax.swing.JPanel();
+        button_close = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        button_fullSize = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        menu = new javax.swing.JPanel();
+        menuIcon = new javax.swing.JPanel();
+        line_menu = new javax.swing.JPanel();
+        icon_menu = new javax.swing.JPanel();
+        icon_hideShow_menu = new javax.swing.JLabel();
+        line_menu1 = new javax.swing.JPanel();
+        icon_setting = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        menuBar = new javax.swing.JPanel();
+        pnl_QLphong = new javax.swing.JPanel();
+        btn_click_menuSmall_P = new javax.swing.JPanel();
+        icon_menuSmall = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        menuBar_small = new javax.swing.JPanel();
+        line_small = new javax.swing.JPanel();
+        button_so_so_phong = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        jPanel3.setBackground(new java.awt.Color(39, 39, 39));
+        header.setBackground(new java.awt.Color(16, 14, 17));
+        header.setPreferredSize(new java.awt.Dimension(1232, 50));
+        header.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(39, 39, 39));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 200));
+        iconMinMaxClose.setBackground(new java.awt.Color(8, 13, 23));
+        iconMinMaxClose.setPreferredSize(new java.awt.Dimension(150, 50));
+        iconMinMaxClose.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        button_close.setBackground(new java.awt.Color(16, 14, 17));
+        button_close.setPreferredSize(new java.awt.Dimension(50, 50));
+        button_close.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_delete_20px.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+        button_close.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        iconMinMaxClose.add(button_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+
+        button_fullSize.setBackground(new java.awt.Color(16, 14, 17));
+        button_fullSize.setPreferredSize(new java.awt.Dimension(50, 50));
+        button_fullSize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_fullSizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_fullSizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_fullSizeMouseExited(evt);
+            }
+        });
+        button_fullSize.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_full_screen_20px.png"))); // NOI18N
+        button_fullSize.add(jLabel2, java.awt.BorderLayout.CENTER);
+
+        iconMinMaxClose.add(button_fullSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(16, 14, 17));
+        jPanel3.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        iconMinMaxClose.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        header.add(iconMinMaxClose, java.awt.BorderLayout.LINE_END);
+
+        getContentPane().add(header, java.awt.BorderLayout.PAGE_START);
+
+        menu.setPreferredSize(new java.awt.Dimension(310, 634));
+        menu.setLayout(new java.awt.BorderLayout());
+
+        menuIcon.setBackground(new java.awt.Color(16, 14, 17));
+        menuIcon.setPreferredSize(new java.awt.Dimension(50, 634));
+        menuIcon.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        line_menu.setBackground(new java.awt.Color(0, 0, 0));
+        line_menu.setPreferredSize(new java.awt.Dimension(100, 5));
+
+        javax.swing.GroupLayout line_menuLayout = new javax.swing.GroupLayout(line_menu);
+        line_menu.setLayout(line_menuLayout);
+        line_menuLayout.setHorizontalGroup(
+            line_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        line_menuLayout.setVerticalGroup(
+            line_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel1);
+        menuIcon.add(line_menu);
 
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton2.setText("Nhấn");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton2);
+        icon_menu.setBackground(new java.awt.Color(16, 14, 17));
+        icon_menu.setPreferredSize(new java.awt.Dimension(50, 50));
+        icon_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_menuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                icon_menuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                icon_menuMouseExited(evt);
+            }
+        });
+        icon_menu.setLayout(new java.awt.BorderLayout());
 
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton3.setText("Nhấn");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton3);
+        icon_hideShow_menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_hideShow_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_menu_20px.png"))); // NOI18N
+        icon_menu.add(icon_hideShow_menu, java.awt.BorderLayout.CENTER);
 
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton4.setText("Nhấn");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton4);
+        menuIcon.add(icon_menu);
 
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton5.setText("Nhấn");
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton5);
+        line_menu1.setBackground(new java.awt.Color(0, 0, 0));
+        line_menu1.setPreferredSize(new java.awt.Dimension(100, 5));
 
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton6.setText("Nhấn");
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton6);
-
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/Group 2.png"))); // NOI18N
-        jButton7.setText("Nhấn");
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setPreferredSize(new java.awt.Dimension(170, 40));
-        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover2.png"))); // NOI18N
-        jButton7.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/hover.png"))); // NOI18N
-        jPanel3.add(jButton7);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1091, Short.MAX_VALUE))
+        javax.swing.GroupLayout line_menu1Layout = new javax.swing.GroupLayout(line_menu1);
+        line_menu1.setLayout(line_menu1Layout);
+        line_menu1Layout.setHorizontalGroup(
+            line_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
+        line_menu1Layout.setVerticalGroup(
+            line_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
         );
 
-        pack();
+        menuIcon.add(line_menu1);
+
+        icon_setting.setBackground(new java.awt.Color(16, 14, 17));
+        icon_setting.setPreferredSize(new java.awt.Dimension(50, 50));
+        icon_setting.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_settingMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                icon_settingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                icon_settingMouseExited(evt);
+            }
+        });
+        icon_setting.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_settings_20px.png"))); // NOI18N
+        icon_setting.add(jLabel4, java.awt.BorderLayout.CENTER);
+
+        menuIcon.add(icon_setting);
+
+        menu.add(menuIcon, java.awt.BorderLayout.LINE_START);
+
+        menuBar.setBackground(new java.awt.Color(27, 27, 27));
+        menuBar.setPreferredSize(new java.awt.Dimension(260, 230));
+        menuBar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        pnl_QLphong.setBackground(new java.awt.Color(27, 27, 27));
+        pnl_QLphong.setPreferredSize(new java.awt.Dimension(260, 230));
+        pnl_QLphong.setVerifyInputWhenFocusTarget(false);
+        pnl_QLphong.setLayout(new java.awt.BorderLayout());
+
+        btn_click_menuSmall_P.setBackground(new java.awt.Color(8, 13, 21));
+        btn_click_menuSmall_P.setPreferredSize(new java.awt.Dimension(260, 40));
+        btn_click_menuSmall_P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_PMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_PMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_click_menuSmall_PMouseExited(evt);
+            }
+        });
+        btn_click_menuSmall_P.setLayout(new java.awt.BorderLayout());
+
+        icon_menuSmall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_menuSmall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png"))); // NOI18N
+        icon_menuSmall.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_click_menuSmall_P.add(icon_menuSmall, java.awt.BorderLayout.LINE_END);
+
+        jLabel5.setBackground(new java.awt.Color(154, 231, 246));
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Phòng");
+        btn_click_menuSmall_P.add(jLabel5, java.awt.BorderLayout.CENTER);
+
+        pnl_QLphong.add(btn_click_menuSmall_P, java.awt.BorderLayout.PAGE_START);
+
+        menuBar_small.setBackground(new java.awt.Color(32, 32, 32));
+        menuBar_small.setPreferredSize(new java.awt.Dimension(260, 190));
+        menuBar_small.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        line_small.setBackground(new java.awt.Color(0, 0, 0));
+        line_small.setPreferredSize(new java.awt.Dimension(260, 5));
+
+        javax.swing.GroupLayout line_smallLayout = new javax.swing.GroupLayout(line_small);
+        line_small.setLayout(line_smallLayout);
+        line_smallLayout.setHorizontalGroup(
+            line_smallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        line_smallLayout.setVerticalGroup(
+            line_smallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar_small.add(line_small);
+
+        button_so_so_phong.setBackground(new java.awt.Color(48, 48, 48));
+        button_so_so_phong.setPreferredSize(new java.awt.Dimension(260, 40));
+        button_so_so_phong.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_stacked_organizational_chart_highlighted_first_node_20px_4.png"))); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(40, 40));
+        button_so_so_phong.add(jLabel6, java.awt.BorderLayout.LINE_END);
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png"))); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(5, 40));
+        button_so_so_phong.add(jLabel7, java.awt.BorderLayout.LINE_START);
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Sơ Đồ Phòng");
+        button_so_so_phong.add(jLabel8, java.awt.BorderLayout.CENTER);
+
+        menuBar_small.add(button_so_so_phong);
+
+        pnl_QLphong.add(menuBar_small, java.awt.BorderLayout.CENTER);
+
+        menuBar.add(pnl_QLphong);
+
+        menu.add(menuBar, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(menu, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 922, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(content, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(1232, 684));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void changeColor(JPanel hover, Color rand) {
+        hover.setBackground(rand);
+    }
+
+    public void clickMenu(JPanel h1, JPanel h2, int numberBool) {
+        if (numberBool == 1) {
+            h1.setBackground(new Color(27, 27, 27));
+            h2.setBackground(new Color(14, 16, 17));
+        } else {
+            h1.setBackground(new Color(14, 16, 17));
+            h2.setBackground(new Color(27, 27, 27));
+        }
+    }
+
+    public void changeimage(JLabel btn, String resourceImage) {
+        ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
+        btn.setIcon(a);
+    }
+
+    public void hideShowMenu(JPanel menuClick, boolean check, JLabel button) {
+        if (check == true) {
+            menuClick.setPreferredSize(new Dimension(310, this.getHeight()));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_back_20px.png");
+        } else {
+            menuClick.setPreferredSize(new Dimension(50, this.getHeight()));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_menu_20px.png");
+        }
+    }
+
+    public void hideShowMenuPhong(JPanel menuClicka, boolean check, JLabel button) {
+        if (check == true) {
+            menuClicka.setPreferredSize(new Dimension(260, 230));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
+        } else {
+            menuClicka.setPreferredSize(new Dimension(260, 40));
+            changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
+        }
+    }
+
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        changeColor(button_close, new Color(62, 60, 63));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        changeColor(button_close, new Color(16, 14, 17));
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void button_fullSizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_fullSizeMouseEntered
+        changeColor(button_fullSize, new Color(62, 60, 63));
+    }//GEN-LAST:event_button_fullSizeMouseEntered
+
+    private void button_fullSizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_fullSizeMouseExited
+        changeColor(button_fullSize, new Color(16, 14, 17));
+    }//GEN-LAST:event_button_fullSizeMouseExited
+
+    private void button_fullSizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_fullSizeMouseClicked
+        if (this.getExtendedState() != mainFrame.MAXIMIZED_BOTH) {
+            this.setExtendedState(mainFrame.MAXIMIZED_BOTH);
+        } else {
+            this.setExtendedState(mainFrame.NORMAL);
+        }
+    }//GEN-LAST:event_button_fullSizeMouseClicked
+
+    private void icon_menuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_menuMouseEntered
+        changeColor(icon_menu, new Color(0, 0, 0));
+        changeColor(line_menu, new Color(16, 0, 255));
+    }//GEN-LAST:event_icon_menuMouseEntered
+
+    private void icon_menuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_menuMouseExited
+        changeColor(icon_menu, new Color(16, 14, 17));
+        changeColor(line_menu, new Color(0, 0, 0));
+    }//GEN-LAST:event_icon_menuMouseExited
+
+    private void icon_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_menuMouseClicked
+        changeColor(line_menu, new Color(6, 255, 0));
+        clickMenu(icon_menu, icon_setting, 1);
+        if (a == true) {
+            hideShowMenu(menu, a, icon_hideShow_menu);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = false;
+        } else {
+            hideShowMenu(menu, a, icon_hideShow_menu);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = true;
+        }
+    }//GEN-LAST:event_icon_menuMouseClicked
+
+    private void icon_settingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingMouseEntered
+        changeColor(icon_setting, new Color(0, 0, 0));
+        changeColor(line_menu1, new Color(16, 0, 255));
+    }//GEN-LAST:event_icon_settingMouseEntered
+
+    private void icon_settingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingMouseExited
+        changeColor(icon_setting, new Color(16, 14, 17));
+        changeColor(line_menu1, new Color(0, 0, 0));
+    }//GEN-LAST:event_icon_settingMouseExited
+
+    private void icon_settingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingMouseClicked
+        changeColor(line_menu1, new Color(6, 255, 0));
+        clickMenu(icon_setting, icon_menu, 1);
+    }//GEN-LAST:event_icon_settingMouseClicked
+
+    private void btn_click_menuSmall_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseEntered
+        changeColor(line_small, new Color(0, 0, 0));
+    }//GEN-LAST:event_btn_click_menuSmall_PMouseEntered
+
+    private void btn_click_menuSmall_PMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseExited
+        changeColor(line_small, new Color(8,13,21));
+    }//GEN-LAST:event_btn_click_menuSmall_PMouseExited
+
+    private void btn_click_menuSmall_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseClicked
+        if (a == true) {
+            hideShowMenuPhong(pnl_QLphong, a, icon_menuSmall);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = false;
+        } else {
+            hideShowMenuPhong(pnl_QLphong, a, icon_menuSmall);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = true;
+        }
+    }//GEN-LAST:event_btn_click_menuSmall_PMouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,13 +489,34 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel btn_click_menuSmall_P;
+    private javax.swing.JPanel button_close;
+    private javax.swing.JPanel button_fullSize;
+    private javax.swing.JPanel button_so_so_phong;
+    private javax.swing.JPanel content;
+    private javax.swing.JPanel header;
+    private javax.swing.JPanel iconMinMaxClose;
+    private javax.swing.JLabel icon_hideShow_menu;
+    private javax.swing.JPanel icon_menu;
+    private javax.swing.JLabel icon_menuSmall;
+    private javax.swing.JPanel icon_setting;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel line_menu;
+    private javax.swing.JPanel line_menu1;
+    private javax.swing.JPanel line_menuSmall;
+    private javax.swing.JPanel line_menuSmall4;
+    private javax.swing.JPanel line_small;
+    private javax.swing.JPanel menu;
+    private javax.swing.JPanel menuBar;
+    private javax.swing.JPanel menuBar_small;
+    private javax.swing.JPanel menuIcon;
+    private javax.swing.JPanel pnl_QLphong;
     // End of variables declaration//GEN-END:variables
 }

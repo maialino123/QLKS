@@ -7,6 +7,7 @@ package com.QLKS.DAO.impl;
 
 import com.QLKS.DAO.GenericDAO;
 import com.QLKS.mapper.rowMapper;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -47,12 +48,12 @@ public class abstractDAO<T> implements GenericDAO<T> {
     @Override
     public <T> List<T> query(String sql, rowMapper<T> rowMapper, Object... parameters) {
         Connection conn = null;
-        PreparedStatement stm = null;
+        CallableStatement stm = null;
         ResultSet rs = null;
         List<T> data = new ArrayList<T>();
         try {
             conn = getConnection();
-            stm = conn.prepareStatement(sql);
+            stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -83,20 +84,26 @@ public class abstractDAO<T> implements GenericDAO<T> {
     @Override
     public Long insert(String sql, Object... parameters) {
         Connection conn = null;
-        PreparedStatement stm = null;
+        CallableStatement stm = null;
         ResultSet rs = null;
-        Long id = null;
         try {
             conn = getConnection();
-            stm = conn.prepareStatement(sql, stm.RETURN_GENERATED_KEYS);
+            stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
             stm.executeUpdate();
-            rs = stm.getGeneratedKeys();
-            if (rs.next()) {
-                id = rs.getLong(1);
+            int iUpdCount = stm.getUpdateCount();
+            boolean bMoreResults = true;
+            long myIdentVal = -1;
+            while (bMoreResults || iUpdCount!= -1) {
+                rs = stm.getResultSet();
+                if (rs != null) {
+                    rs.next();
+                    myIdentVal = rs.getLong(1);
+                }
+                bMoreResults = stm.getMoreResults();
+                iUpdCount = stm.getUpdateCount();
             }
-            conn.commit();
-            return id;
+            return myIdentVal;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             try {
@@ -125,10 +132,10 @@ public class abstractDAO<T> implements GenericDAO<T> {
     @Override
     public void update(String sql, Object... parameters) {
         Connection conn = null;
-        PreparedStatement stm = null;
+        CallableStatement stm = null;
         try {
             conn = getConnection();
-            stm = conn.prepareStatement(sql);
+            stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
             stm.executeUpdate();
             conn.commit();

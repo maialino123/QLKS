@@ -9,20 +9,18 @@ package com.QLKS.model;
  *
  * @author Admin
  */
-public class thiet_biModel extends abstractModel{
-     //singleTon pattern
-    private static thiet_biModel instance = null;
-    public static thiet_biModel getInstance(){
+public class trang_thai_hoa_donModel extends abstractModel {
+    //singleTon pattern
+    private static trang_thai_hoa_donModel instance = null;
+    public static trang_thai_hoa_donModel getInstance(){
         if (instance == null) {
-            instance = new thiet_biModel();
+            instance = new trang_thai_hoa_donModel();
         }
         return instance;
     }
     //singleTon pattern
     private Long id;
-    private Long id_LP;
     private String name;
-    private int amount;
 
     public Long getId() {
         return id;
@@ -32,28 +30,12 @@ public class thiet_biModel extends abstractModel{
         this.id = id;
     }
 
-    public Long getId_LP() {
-        return id_LP;
-    }
-
-    public void setId_LP(Long id_LP) {
-        this.id_LP = id_LP;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
     
     

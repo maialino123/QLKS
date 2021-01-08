@@ -71,12 +71,15 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         line_button_click4 = new javax.swing.JLabel();
+        content_Jinternal = new javax.swing.JPanel();
+        pnl_tableContent = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_hotel_star_40px.png"))); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1100, 600));
 
         header.setBackground(new java.awt.Color(8, 13, 23));
         header.setPreferredSize(new java.awt.Dimension(1132, 50));
@@ -111,7 +114,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         getContentPane().add(header, java.awt.BorderLayout.PAGE_START);
 
         menu_barQLNV.setBackground(new java.awt.Color(16, 14, 17));
-        menu_barQLNV.setPreferredSize(new java.awt.Dimension(0, 582));
+        menu_barQLNV.setPreferredSize(new java.awt.Dimension(150, 582));
         menu_barQLNV.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         line_button.setBackground(new java.awt.Color(0, 0, 0));
@@ -322,7 +325,24 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
         getContentPane().add(menu_barQLNV, java.awt.BorderLayout.LINE_START);
 
-        pack();
+        content_Jinternal.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout pnl_tableContentLayout = new javax.swing.GroupLayout(pnl_tableContent);
+        pnl_tableContent.setLayout(pnl_tableContentLayout);
+        pnl_tableContentLayout.setHorizontalGroup(
+            pnl_tableContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1040, Short.MAX_VALUE)
+        );
+        pnl_tableContentLayout.setVerticalGroup(
+            pnl_tableContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 656, Short.MAX_VALUE)
+        );
+
+        content_Jinternal.add(pnl_tableContent, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(content_Jinternal, java.awt.BorderLayout.CENTER);
+
+        setBounds(0, 0, 1206, 736);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -433,6 +453,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel button_refesh_NV1;
     private javax.swing.JPanel button_search_NV;
     private javax.swing.JPanel button_update_NV;
+    private javax.swing.JPanel content_Jinternal;
     private javax.swing.JLabel custom_line;
     private javax.swing.JLabel custom_line1;
     private javax.swing.JLabel custom_line2;
@@ -463,5 +484,6 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel line_button_click4;
     private javax.swing.JPanel menu_barQLNV;
     private javax.swing.JLabel menu_icon;
+    private javax.swing.JPanel pnl_tableContent;
     // End of variables declaration//GEN-END:variables
 }

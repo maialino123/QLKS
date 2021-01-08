@@ -23,7 +23,7 @@ public class nhom_quyenMapper implements rowMapper<nhom_quyenModel>{
             model.setName(rs.getString("name"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));
             model.setCreatedBy(rs.getString("createdBy"));
-            if (rs.getTimestamp("modifiedDate")!= null) {
+            if (rs.getTimestamp("modifiedDate") != null) {
                 model.setModifiedDate(rs.getTimestamp("modifiedDate"));
             }
             if (rs.getString("modifiedBy") != null) {
@@ -31,7 +31,7 @@ public class nhom_quyenMapper implements rowMapper<nhom_quyenModel>{
             }
             return model;
         } catch (SQLException e) {
-             System.err.println(e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }

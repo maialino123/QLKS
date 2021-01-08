@@ -10,21 +10,18 @@ package com.QLKS.model;
  * @author Admin
  */
 public class phongModel extends abstractModel {
-    
-    //singleTon Pattern
+    //singleTon pattern
     private static phongModel instance = null;
-    
     public static phongModel getInstance(){
         if (instance == null) {
             instance = new phongModel();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
     
     private String id;
     private Long id_LP;
-    private Long id_TTP;
 
     public String getId() {
         return id;
@@ -40,14 +37,6 @@ public class phongModel extends abstractModel {
 
     public void setId_LP(Long id_LP) {
         this.id_LP = id_LP;
-    }
-
-    public Long getId_TTP() {
-        return id_TTP;
-    }
-
-    public void setId_TTP(Long id_TTP) {
-        this.id_TTP = id_TTP;
     }
     
     

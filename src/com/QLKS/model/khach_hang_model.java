@@ -11,17 +11,17 @@ import java.sql.Date;
  *
  * @author Admin
  */
-public class khach_hangModel extends abstractModel{
-    //singleTon Pattern
-    private static khach_hangModel instance = null;
-    
-    public static khach_hangModel getInstance(){
+public class khach_hang_model extends abstractModel {
+    //singleTon pattern
+    private static khach_hang_model instance = null;
+    public static khach_hang_model getInstance(){
         if (instance == null) {
-            instance = new khach_hangModel();
+            instance = new khach_hang_model();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
+    
     private Long id;
     private String name;
     private Date birthDay;
@@ -105,5 +105,4 @@ public class khach_hangModel extends abstractModel{
     }
     
     
-  
 }

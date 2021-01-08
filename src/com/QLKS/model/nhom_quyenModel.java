@@ -10,19 +10,19 @@ package com.QLKS.model;
  * @author Admin
  */
 public class nhom_quyenModel extends abstractModel {
-     //singleTon Pattern
-    private static nhom_quyenModel instance = null;
     
+     //singleTon pattern
+    private static nhom_quyenModel instance = null;
     public static nhom_quyenModel getInstance(){
         if (instance == null) {
             instance = new nhom_quyenModel();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
     
     private Long id;
-    private String name;
+    private String  name;
 
     public Long getId() {
         return id;

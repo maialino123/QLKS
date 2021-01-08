@@ -10,19 +10,15 @@ package com.QLKS.model;
  * @author Admin
  */
 public class khuyen_maiModel extends abstractModel {
-    
-     //singleTon Pattern
+    //singleTon pattern
     private static khuyen_maiModel instance = null;
-    
     public static khuyen_maiModel getInstance(){
         if (instance == null) {
             instance = new khuyen_maiModel();
         }
         return instance;
     }
-    //singleTon Pattern
-
-    
+    //singleTon pattern
     private Long id;
     private String code;
     private float value;

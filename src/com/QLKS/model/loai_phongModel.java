@@ -10,17 +10,15 @@ package com.QLKS.model;
  * @author Admin
  */
 public class loai_phongModel extends abstractModel {
-    
-    //singleTon Pattern
+    //singleTon pattern
     private static loai_phongModel instance = null;
-    
     public static loai_phongModel getInstance(){
         if (instance == null) {
             instance = new loai_phongModel();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
     
     private Long id;
     private String name;

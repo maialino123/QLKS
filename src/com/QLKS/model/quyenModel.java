@@ -5,25 +5,23 @@
  */
 package com.QLKS.model;
 
-
 /**
  *
  * @author Admin
  */
-public class nhan_phongModel extends abstractModel{
-    //singleTon Pattern
-    private static nhan_phongModel instance = null;
-    
-    public static nhan_phongModel getInstance(){
+public class quyenModel extends abstractModel {
+     //singleTon pattern
+    private static quyenModel instance = null;
+    public static quyenModel getInstance(){
         if (instance == null) {
-            instance = new nhan_phongModel();
+            instance = new quyenModel();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
     
     private Long id;
-    private Long id_KH;
+    private String name;
 
     public Long getId() {
         return id;
@@ -33,12 +31,12 @@ public class nhan_phongModel extends abstractModel{
         this.id = id;
     }
 
-    public Long getId_KH() {
-        return id_KH;
+    public String getName() {
+        return name;
     }
 
-    public void setId_KH(Long id_KH) {
-        this.id_KH = id_KH;
+    public void setName(String name) {
+        this.name = name;
     }
     
     

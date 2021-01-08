@@ -10,22 +10,26 @@ package com.QLKS.model;
  * @author Admin
  */
 public class hoa_donModel extends abstractModel {
-    
-     //singleTon Pattern
-    private static thiet_biModel instance = null;
-    
-    public static thiet_biModel getInstance(){
+    //singleTon pattern
+    private static hoa_donModel instance = null;
+    public static hoa_donModel getInstance(){
         if (instance == null) {
-            instance = new thiet_biModel();
+            instance = new hoa_donModel();
         }
         return instance;
     }
-    //singleTon Pattern
-    
+    //singleTon pattern
     private Long id;
     private Long id_KH;
-    private Long id_NP;
-    private Long id_KM;
+    private String id_P;
+    private Long id_TTHD;
+    private Long id_SDDV;
+    private String hinh_thucTT;
+    private float phu_phi;
+    private float tien_phong;
+    private float giam_giaKH;
+    private float so_ngay;
+    private float thanh_tien;
 
     public Long getId() {
         return id;
@@ -43,20 +47,76 @@ public class hoa_donModel extends abstractModel {
         this.id_KH = id_KH;
     }
 
-    public Long getId_NP() {
-        return id_NP;
+    public String getId_P() {
+        return id_P;
     }
 
-    public void setId_NP(Long id_NP) {
-        this.id_NP = id_NP;
+    public void setId_P(String id_P) {
+        this.id_P = id_P;
     }
 
-    public Long getId_KM() {
-        return id_KM;
+    public Long getId_TTHD() {
+        return id_TTHD;
     }
 
-    public void setId_KM(Long id_KM) {
-        this.id_KM = id_KM;
+    public void setId_TTHD(Long id_TTHD) {
+        this.id_TTHD = id_TTHD;
+    }
+
+    public Long getId_SDDV() {
+        return id_SDDV;
+    }
+
+    public void setId_SDDV(Long id_SDDV) {
+        this.id_SDDV = id_SDDV;
+    }
+
+    public String getHinh_thucTT() {
+        return hinh_thucTT;
+    }
+
+    public void setHinh_thucTT(String hinh_thucTT) {
+        this.hinh_thucTT = hinh_thucTT;
+    }
+
+    public float getPhu_phi() {
+        return phu_phi;
+    }
+
+    public void setPhu_phi(float phu_phi) {
+        this.phu_phi = phu_phi;
+    }
+
+    public float getTien_phong() {
+        return tien_phong;
+    }
+
+    public void setTien_phong(float tien_phong) {
+        this.tien_phong = tien_phong;
+    }
+
+    public float getGiam_giaKH() {
+        return giam_giaKH;
+    }
+
+    public void setGiam_giaKH(float giam_giaKH) {
+        this.giam_giaKH = giam_giaKH;
+    }
+
+    public float getSo_ngay() {
+        return so_ngay;
+    }
+
+    public void setSo_ngay(float so_ngay) {
+        this.so_ngay = so_ngay;
+    }
+
+    public float getThanh_tien() {
+        return thanh_tien;
+    }
+
+    public void setThanh_tien(float thanh_tien) {
+        this.thanh_tien = thanh_tien;
     }
     
     

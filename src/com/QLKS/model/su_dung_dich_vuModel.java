@@ -11,20 +11,18 @@ package com.QLKS.model;
  */
 public class su_dung_dich_vuModel {
     
-     //singleTon Pattern
+     //singleTon pattern
     private static su_dung_dich_vuModel instance = null;
-    
     public static su_dung_dich_vuModel getInstance(){
         if (instance == null) {
             instance = new su_dung_dich_vuModel();
         }
         return instance;
     }
-    //singleTon Pattern
+    //singleTon pattern
     
     private Long id;
     private Long id_DV;
-    private Long id_NP;
     private int amount;
 
     public Long getId() {
@@ -41,14 +39,6 @@ public class su_dung_dich_vuModel {
 
     public void setId_DV(Long id_DV) {
         this.id_DV = id_DV;
-    }
-
-    public Long getId_NP() {
-        return id_NP;
-    }
-
-    public void setId_NP(Long id_NP) {
-        this.id_NP = id_NP;
     }
 
     public int getAmount() {

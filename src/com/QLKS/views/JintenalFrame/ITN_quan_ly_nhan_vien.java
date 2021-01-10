@@ -5,10 +5,13 @@
  */
 package com.QLKS.views.JintenalFrame;
 
+import com.QLKS.views.JintenalFrame.action.ITN_add_nhan_vien;
 import static com.QLKS.views.mainFrame.changeColor;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -22,9 +25,11 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     /**
      * Creates new form ITN_quan_ly_nhan_vien
      */
+     private JDesktopPane jdek;
     boolean a = true;
     public ITN_quan_ly_nhan_vien() {
         initComponents();
+        
     }
 
     /**
@@ -73,6 +78,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         line_button_click4 = new javax.swing.JLabel();
         content_Jinternal = new javax.swing.JPanel();
         pnl_tableContent = new javax.swing.JPanel();
+        add_dsktop_pnl = new javax.swing.JDesktopPane();
 
         setClosable(true);
         setIconifiable(true);
@@ -91,7 +97,6 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
         menu_icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menu_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/custom-iconMenu.png"))); // NOI18N
-        menu_icon.setPreferredSize(new java.awt.Dimension(50, 50));
         menu_icon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menu_iconMouseClicked(evt);
@@ -327,16 +332,20 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
         content_Jinternal.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout pnl_tableContentLayout = new javax.swing.GroupLayout(pnl_tableContent);
-        pnl_tableContent.setLayout(pnl_tableContentLayout);
-        pnl_tableContentLayout.setHorizontalGroup(
-            pnl_tableContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnl_tableContent.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout add_dsktop_pnlLayout = new javax.swing.GroupLayout(add_dsktop_pnl);
+        add_dsktop_pnl.setLayout(add_dsktop_pnlLayout);
+        add_dsktop_pnlLayout.setHorizontalGroup(
+            add_dsktop_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1040, Short.MAX_VALUE)
         );
-        pnl_tableContentLayout.setVerticalGroup(
-            pnl_tableContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        add_dsktop_pnlLayout.setVerticalGroup(
+            add_dsktop_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 656, Short.MAX_VALUE)
         );
+
+        pnl_tableContent.add(add_dsktop_pnl, java.awt.BorderLayout.CENTER);
 
         content_Jinternal.add(pnl_tableContent, java.awt.BorderLayout.CENTER);
 
@@ -345,7 +354,23 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         setBounds(0, 0, 1206, 736);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public void centerJIF(JInternalFrame jif) {
+        Dimension desktopSize = jdek.getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+    }
+    public void showInternalFrame(JInternalFrame jif) {
+        if (!jif.isVisible()) {
+            jdek = getDesktopPane();
+            jdek.add(jif);
+            centerJIF(jif);
+            jif.setVisible(true);
+            jdek.show();
+        }
+    }
      public  void changeimage(JLabel btn, String resourceImage) {
         ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
         btn.setIcon(a);
@@ -372,6 +397,9 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
     private void button_add_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_add_NVMouseClicked
        changeimage(custom_line, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
+        ITN_add_nhan_vien add_nhan_vien = new ITN_add_nhan_vien();
+        add_dsktop_pnl.add(add_nhan_vien);
+        add_nhan_vien.setVisible(true);
     }//GEN-LAST:event_button_add_NVMouseClicked
 
     private void button_update_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_update_NVMouseClicked
@@ -448,6 +476,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane add_dsktop_pnl;
     private javax.swing.JPanel button_add_NV;
     private javax.swing.JPanel button_delete_NV;
     private javax.swing.JPanel button_refesh_NV1;

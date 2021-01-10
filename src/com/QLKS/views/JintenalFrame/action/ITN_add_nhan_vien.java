@@ -5,6 +5,7 @@
  */
 package com.QLKS.views.JintenalFrame.action;
 
+import com.QLKS.Service.impl.nhan_vienService;
 import com.QLKS.model.nhan_vienModel;
 import com.QLKS.utils.FileTypeFiler;
 import com.QLKS.utils.fileUsingStream;
@@ -14,9 +15,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -28,10 +31,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     /**
      * Creates new form ITN_add_nhan_Viet
      */
+    nhan_vienService nhan_vienService = new nhan_vienService();
     nhan_vienModel nhan_vien = nhan_vienModel.getInstance();
 
     public ITN_add_nhan_vien() {
         initComponents();
+        
     }
 
     /**
@@ -56,12 +61,17 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txt_inputName = new javax.swing.JTextField();
         line_space1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        txt_message = new javax.swing.JPanel();
+        mess_error = new javax.swing.JLabel();
         pnl_birthDay = new javax.swing.JPanel();
         pnl_name_content1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         line_space2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         pnl_gender = new javax.swing.JPanel();
         pnl_name_content2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -87,30 +97,46 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txt_inputEmail = new javax.swing.JTextField();
         line_space5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        mess_err_email = new javax.swing.JLabel();
         add_userName = new javax.swing.JPanel();
         pnl_name_content4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txt_inputUsername1 = new javax.swing.JTextField();
         line_space6 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        mess_err_userName = new javax.swing.JLabel();
         add_passWord = new javax.swing.JPanel();
         pnl_name_content5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         line_space7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        mess_err_password = new javax.swing.JLabel();
         add_passWord1 = new javax.swing.JPanel();
         pnl_name_content6 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         line_space8 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        mess_err_password_check = new javax.swing.JLabel();
         add_CMND = new javax.swing.JPanel();
         pnl_name_content7 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         txt_inputCMND = new javax.swing.JTextField();
         line_space9 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        messa_err_cmnd = new javax.swing.JLabel();
         add_nhom_quyen = new javax.swing.JPanel();
         pnl_name_content8 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -194,6 +220,26 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space1.setBackground(new java.awt.Color(48, 48, 48));
         line_space1.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space1.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel1.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space1.add(jPanel1, java.awt.BorderLayout.LINE_END);
+
+        jPanel2.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel2.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space1.add(jPanel2, java.awt.BorderLayout.LINE_START);
+
+        txt_message.setBackground(new java.awt.Color(48, 48, 48));
+        txt_message.setLayout(new java.awt.BorderLayout());
+
+        mess_error.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        mess_error.setForeground(new java.awt.Color(255, 0, 0));
+        mess_error.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        txt_message.add(mess_error, java.awt.BorderLayout.CENTER);
+
+        line_space1.add(txt_message, java.awt.BorderLayout.CENTER);
+
         content1.add(line_space1);
 
         pnl_birthDay.setBackground(new java.awt.Color(36, 36, 36));
@@ -226,6 +272,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space2.setBackground(new java.awt.Color(48, 48, 48));
         line_space2.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space2.setLayout(new java.awt.BorderLayout());
+
+        jPanel5.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+        line_space2.add(jPanel5, java.awt.BorderLayout.CENTER);
+
         content1.add(line_space2);
 
         pnl_gender.setBackground(new java.awt.Color(36, 36, 36));
@@ -382,12 +434,32 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         txt_inputEmail.setForeground(new java.awt.Color(154, 231, 246));
         txt_inputEmail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         txt_inputEmail.setCaretColor(new java.awt.Color(154, 231, 246));
+        txt_inputEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_inputEmailActionPerformed(evt);
+            }
+        });
         add_email.add(txt_inputEmail, java.awt.BorderLayout.CENTER);
 
         content2.add(add_email);
 
         line_space5.setBackground(new java.awt.Color(48, 48, 48));
         line_space5.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space5.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel4.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space5.add(jPanel4, java.awt.BorderLayout.LINE_END);
+
+        jPanel3.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel3.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space5.add(jPanel3, java.awt.BorderLayout.LINE_START);
+
+        mess_err_email.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        mess_err_email.setForeground(new java.awt.Color(255, 0, 0));
+        mess_err_email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        line_space5.add(mess_err_email, java.awt.BorderLayout.CENTER);
+
         content2.add(line_space5);
 
         add_userName.setBackground(new java.awt.Color(36, 36, 36));
@@ -422,6 +494,21 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space6.setBackground(new java.awt.Color(48, 48, 48));
         line_space6.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space6.setLayout(new java.awt.BorderLayout());
+
+        jPanel6.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel6.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space6.add(jPanel6, java.awt.BorderLayout.LINE_START);
+
+        jPanel7.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel7.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space6.add(jPanel7, java.awt.BorderLayout.LINE_END);
+
+        mess_err_userName.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        mess_err_userName.setForeground(new java.awt.Color(255, 0, 0));
+        mess_err_userName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        line_space6.add(mess_err_userName, java.awt.BorderLayout.CENTER);
+
         content2.add(line_space6);
 
         add_passWord.setBackground(new java.awt.Color(36, 36, 36));
@@ -456,6 +543,21 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space7.setBackground(new java.awt.Color(48, 48, 48));
         line_space7.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space7.setLayout(new java.awt.BorderLayout());
+
+        jPanel8.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel8.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space7.add(jPanel8, java.awt.BorderLayout.LINE_START);
+
+        jPanel9.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel9.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space7.add(jPanel9, java.awt.BorderLayout.LINE_END);
+
+        mess_err_password.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        mess_err_password.setForeground(new java.awt.Color(255, 0, 0));
+        mess_err_password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        line_space7.add(mess_err_password, java.awt.BorderLayout.CENTER);
+
         content2.add(line_space7);
 
         add_passWord1.setBackground(new java.awt.Color(36, 36, 36));
@@ -490,6 +592,21 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space8.setBackground(new java.awt.Color(48, 48, 48));
         line_space8.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space8.setLayout(new java.awt.BorderLayout());
+
+        jPanel10.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel10.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space8.add(jPanel10, java.awt.BorderLayout.LINE_START);
+
+        jPanel11.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel11.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space8.add(jPanel11, java.awt.BorderLayout.LINE_END);
+
+        mess_err_password_check.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        mess_err_password_check.setForeground(new java.awt.Color(255, 0, 0));
+        mess_err_password_check.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        line_space8.add(mess_err_password_check, java.awt.BorderLayout.CENTER);
+
         content2.add(line_space8);
 
         add_CMND.setBackground(new java.awt.Color(36, 36, 36));
@@ -524,6 +641,26 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space9.setBackground(new java.awt.Color(48, 48, 48));
         line_space9.setPreferredSize(new java.awt.Dimension(550, 40));
+        line_space9.setLayout(new java.awt.BorderLayout());
+
+        jPanel12.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel12.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space9.add(jPanel12, java.awt.BorderLayout.LINE_END);
+
+        jPanel13.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel13.setPreferredSize(new java.awt.Dimension(80, 40));
+        line_space9.add(jPanel13, java.awt.BorderLayout.LINE_START);
+
+        jPanel14.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        messa_err_cmnd.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        messa_err_cmnd.setForeground(new java.awt.Color(255, 0, 0));
+        messa_err_cmnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        jPanel14.add(messa_err_cmnd, java.awt.BorderLayout.CENTER);
+
+        line_space9.add(jPanel14, java.awt.BorderLayout.CENTER);
+
         content2.add(line_space9);
 
         add_nhom_quyen.setBackground(new java.awt.Color(36, 36, 36));
@@ -586,7 +723,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_icon_button.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         line_icon_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        line_icon_button.setPreferredSize(new java.awt.Dimension(5, 40));
         pnl_add.add(line_icon_button, java.awt.BorderLayout.LINE_END);
 
         jLabel26.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -616,12 +752,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel28.setBackground(new java.awt.Color(0, 0, 0));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        jLabel28.setPreferredSize(new java.awt.Dimension(5, 40));
         pnl_out.add(jLabel28, java.awt.BorderLayout.LINE_END);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        jLabel30.setPreferredSize(new java.awt.Dimension(5, 40));
         pnl_out.add(jLabel30, java.awt.BorderLayout.LINE_START);
 
         jLabel29.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -650,7 +784,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        jLabel25.setPreferredSize(new java.awt.Dimension(5, 40));
         pnl_reset.add(jLabel25, java.awt.BorderLayout.LINE_END);
 
         jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -665,7 +798,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         getContentPane().add(content2, java.awt.BorderLayout.CENTER);
 
-        pack();
+        setBounds(0, 0, 1138, 734);
     }// </editor-fold>//GEN-END:initComponents
 
     public void changeimage(JLabel btn, String resourceImage) {
@@ -713,13 +846,169 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_pnl_addMouseExited
 
     private void pnl_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseClicked
+        boolean check = true;
+        List<nhan_vienModel> Listnhan_vien = nhan_vienService.findAll();
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
         String name = txt_inputName.getText();
         String email = txt_inputEmail.getText();
         String userName = txt_inputUsername1.getText();
         String passwordStr = new String(jPasswordField1.getPassword());
         String passwordStr_check = new String(jPasswordField2.getPassword());
-        String cmnd  = txt_inputCMND.getText();
+        String cmnd = txt_inputCMND.getText();
+        String gioiTinh = "nam";
+        java.util.Date utilStartDate = jDateChooser1.getDate();
+        java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+        nhan_vien.setBirthDay(sqlStartDate);
+
+        if (Listnhan_vien.isEmpty()) {
+            try {
+                if (name.length() == 0) {
+                    mess_error.setText("Tên không được để trống!");
+                    check = false;
+                } else if (name.length() > 100) {
+                    mess_error.setText("Tên phải lớn hơn 100 ký tự!");
+                    check = false;
+                } else {
+                    mess_error.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                if (email.length() == 0) {
+                    mess_err_email.setText("Email Không được để trống!");
+                    check = false;
+                } else if (email.length() > 150) {
+                    mess_err_email.setText("Email phải lớn hơn 150 ký tự!");
+                    check = false;
+                } else {
+                    mess_err_email.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                if (radio_nam.isSelected()) {
+                    nhan_vien.setGender(gioiTinh);
+                    check = true;
+                } else if (radio_nu.isSelected()) {
+                    gioiTinh = "nữ";
+                    nhan_vien.setGender(gioiTinh);
+                    check = true;
+                } else if (radio_khac.isSelected()) {
+                    gioiTinh = "Khác";
+                    nhan_vien.setGender(gioiTinh);
+                    check = true;
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+//                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> userName.equals(nhan_vien.getUserName())).findAny().orElse(nhan_vien);
+                if (userName.length() == 0) {
+                    mess_err_userName.setText("Tên đăng nhập không được để trống!");
+                    check = false;
+                } else if (userName.length() > 50) {
+                    mess_err_userName.setText("Tên đăng nhập phải nhỏ hơn 50 ký tự!");
+                    check = false;
+                } 
+//                else if (nhan_vien != null) {
+//                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
+//                    check = false;
+//                } 
+                else {
+                    mess_err_email.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                if (passwordStr.length() == 0) {
+                    mess_err_password.setText("Mật khẩu không được để trống!");
+                    check = false;
+                } else if (passwordStr.length() < 8 || passwordStr.length() > 50) {
+                    mess_err_password.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
+                    check = false;
+                } else {
+                    mess_err_password.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                if (passwordStr_check.length() == 0) {
+                    mess_err_password_check.setText("Không được để trống!");
+                    check = false;
+                } else if (passwordStr_check.length() < 3 || passwordStr_check.length() > 50) {
+                    mess_err_password_check.setText("Mật khẩu phải từ 3 -> 50 ký tự!");
+                    check = false;
+                }
+                if (passwordStr_check.equals(passwordStr) == false) {
+                    mess_err_password_check.setText("Mật khẩu nhập lại không đúng!");
+                    check = false;
+                } else {
+                    mess_err_password_check.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+//                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> cmnd.equals(nhan_vien.getCmnd())).findAny().orElse(nhan_vien);
+                if (cmnd.length() == 0) {
+                    messa_err_cmnd.setText("CMND không Được để Trống!");
+                    check = false;
+                } else if (cmnd.length() > 12 || cmnd.length() < 12) {
+                    messa_err_cmnd.setText("CMND phải bằng 12 ký tự");
+                    check = false;
+                } 
+//                else if (nhan_vien != null) {
+//                    messa_err_cmnd.setText("CMND đã tồn tại");
+//                    check = false;
+//                } 
+                else {
+                    messa_err_cmnd.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+//            nhan_vien = Listnhan_vien.stream().filter(nhan_vienModel -> email.equals(nhan_vienModel.getEmail())).findAny().orElse(nhan_vien);
+            if (email.length() == 0) {
+                mess_err_email.setText("Email không được để trống!");
+                check = false;
+
+            } else if (email.length() > 150) {
+                mess_err_email.setText("Email phải nhở hơn 150 ký tự!");
+                check = false;
+            }
+//            } else if (nhan_vien != null) {
+//                mess_err_email.setText("Email đã tồn tại!");
+//                check = false;
+//            }
+            else {
+                mess_err_email.setText("");
+            }
+
+            while (check = true) {
+                nhan_vien.setName(name);
+
+                nhan_vien.setEmail(email);
+                nhan_vien.setCmnd(cmnd);
+                nhan_vien.setUserName(userName);
+                nhan_vien.setPassword(passwordStr);
+                System.out.println(nhan_vien.getName().toString());
+
+                nhan_vien = nhan_vienService.add(nhan_vien);
+                if (nhan_vien != null) {
+                    JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thành Công!");
+                    resetText();
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thất Bại!");
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_pnl_addMouseClicked
 
     private void button_image_fileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_image_fileMouseEntered
@@ -742,7 +1031,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         int resutl = jFileChooser.showOpenDialog(null);
         if (resutl == jFileChooser.APPROVE_OPTION) {
             File fileSource = jFileChooser.getSelectedFile();
-            File fileDest = new File(("src/com/qlks/image/avatar/" + fileSource.getName()));
+            File fileDest = new File(("src/com/QLKS/icon/image/avatar/" + fileSource.getName()));
             try {
                 fileUsingStream.copyFileUsingStream(fileSource, fileDest);
                 ImageIcon icon = new ImageIcon(fileDest.getPath());
@@ -773,7 +1062,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_pnl_resetMouseClicked
 
     private void pnl_outMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_outMouseEntered
-          changeColor(pnl_out, new Color(0, 0, 0));
+        changeColor(pnl_out, new Color(0, 0, 0));
     }//GEN-LAST:event_pnl_outMouseEntered
 
     private void pnl_outMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_outMouseExited
@@ -788,6 +1077,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         resetText();
         dispose();
     }//GEN-LAST:event_pnl_outMouseClicked
+
+    private void txt_inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inputEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_inputEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -834,6 +1127,20 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel lbl_showImage;
@@ -851,6 +1158,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel line_space7;
     private javax.swing.JPanel line_space8;
     private javax.swing.JPanel line_space9;
+    private javax.swing.JLabel mess_err_email;
+    private javax.swing.JLabel mess_err_password;
+    private javax.swing.JLabel mess_err_password_check;
+    private javax.swing.JLabel mess_err_userName;
+    private javax.swing.JLabel mess_error;
+    private javax.swing.JLabel messa_err_cmnd;
     private javax.swing.JPanel pnl_add;
     private javax.swing.JPanel pnl_birthDay;
     private javax.swing.JPanel pnl_button_click;
@@ -876,5 +1189,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_inputEmail;
     private javax.swing.JTextField txt_inputName;
     private javax.swing.JTextField txt_inputUsername1;
+    private javax.swing.JPanel txt_message;
     // End of variables declaration//GEN-END:variables
 }

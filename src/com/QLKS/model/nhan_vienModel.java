@@ -34,7 +34,7 @@ public class nhan_vienModel extends abstractModel {
     private String password;
     private String cmnd;
     private String degree;
-    private Long id_NQ;
+    private long id_NQ;
     private nhom_quyenModel nhom_quyen = nhom_quyenModel.getInstance();
 
     public Long getId() {
@@ -126,11 +126,11 @@ public class nhan_vienModel extends abstractModel {
         this.degree = degree;
     }
 
-    public Long getId_NQ() {
+    public long getId_NQ() {
         return id_NQ;
     }
 
-    public void setId_NQ(Long id_NQ) {
+    public void setId_NQ(long id_NQ) {
         this.id_NQ = id_NQ;
     }
     

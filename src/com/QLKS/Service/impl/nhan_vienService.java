@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package com.QLKS.Service.impl;
-import com.QLKS.DAO.INhan_vienDAO;
 import com.QLKS.DAO.authorization.IAuthorization;
+import com.QLKS.DAO.impl.nhan_vienDAO;
 import com.QLKS.Service.Inhan_vienService;
 import com.QLKS.model.nhan_vienModel;
 import java.sql.Timestamp;
 import java.util.List;
-import javax.inject.Inject;
+
 
 /**
  *
@@ -18,7 +18,7 @@ import javax.inject.Inject;
  */
 public class nhan_vienService implements Inhan_vienService{
     
-    @Inject private INhan_vienDAO nhan_vienDAO;
+     nhan_vienDAO nhan_vienDAO = new nhan_vienDAO();
 
     @Override
     public List<nhan_vienModel> findAll() {
@@ -34,6 +34,7 @@ public class nhan_vienService implements Inhan_vienService{
     public nhan_vienModel add(nhan_vienModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
+        model.setId_NQ(1);
         Long id = nhan_vienDAO.add(model);
         return nhan_vienDAO.findOne(id);
     }

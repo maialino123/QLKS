@@ -7,6 +7,7 @@ package com.QLKS.DAO.impl;
 
 import com.QLKS.DAO.GenericDAO;
 import com.QLKS.mapper.rowMapper;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialBlob;
 
 /**
  *
@@ -27,8 +29,8 @@ import java.util.logging.Logger;
  */
 public class abstractDAO<T> implements GenericDAO<T> {
    
-    ResourceBundle resourceBundleSQL = ResourceBundle.getBundle("query_sql");
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
+    ResourceBundle resourceBundleSQL = ResourceBundle.getBundle("com.QLKS.resource.query_sql");
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("com.QLKS.resource.db");
 
     private Connection getConnection() {
         try {
@@ -88,6 +90,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
         ResultSet rs = null;
         try {
             conn = getConnection();
+            conn.setAutoCommit(false);
             stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
             stm.executeUpdate();
@@ -103,6 +106,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
                 bMoreResults = stm.getMoreResults();
                 iUpdCount = stm.getUpdateCount();
             }
+            conn.commit();
             return myIdentVal;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -135,6 +139,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
         CallableStatement stm = null;
         try {
             conn = getConnection();
+            conn.setAutoCommit(false);
             stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
             stm.executeUpdate();
@@ -172,8 +177,6 @@ public class abstractDAO<T> implements GenericDAO<T> {
                     stm.setInt(index, (int) param);
                 } else if (param instanceof Boolean) {
                     stm.setBoolean(index, (Boolean) param);
-                } else if (param instanceof Byte) {
-                    stm.setByte(index, (byte) param);
                 } else if (param instanceof Timestamp) {
                     stm.setTimestamp(index, (Timestamp) param);
                 } else if (param instanceof Date) {
@@ -186,6 +189,15 @@ public class abstractDAO<T> implements GenericDAO<T> {
                     stm.setLong(index, (long) param);
                 } else if (param instanceof Double) {
                     stm.setDouble(index, (double) param);
+                } else if (param instanceof byte[]) {
+                    Blob image;
+                    if ((byte[]) param != null) {
+                        image = new SerialBlob((byte[]) param);
+                       stm.setBlob(index, image);
+                    } else {
+                        image = null;
+                        stm.setBlob(index, image);
+                    }
                 }
             }
         } catch (SQLException e) {

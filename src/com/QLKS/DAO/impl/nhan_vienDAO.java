@@ -36,7 +36,7 @@ public class nhan_vienDAO extends abstractDAO<nhan_vienModel> implements INhan_v
         String sql = resourceBundleSQL.getString("insert_NhanVien");
         return insert(sql, model.getName(), model.getBirthDay(), model.getGender(),
                 model.getImage(), model.getEmail(), model.getUserName(),
-                security.bcryptHashString(model.getPassword()), model.getId_NQ(),
+                security.hashPassword(model.getPassword()),model.getCmnd() ,model.getId_NQ(),
                 model.getCreatedDate(), model.getCreatedBy()
         );
     }
@@ -45,7 +45,7 @@ public class nhan_vienDAO extends abstractDAO<nhan_vienModel> implements INhan_v
     public void edit(nhan_vienModel model) {
         String sql = resourceBundleSQL.getString("upate_nhan_vien");
         update(sql, model.getName(), model.getBirthDay(), model.getGender(),
-                model.getImage(), model.getEmail(), model.getUserName(), security.bcryptHashString(model.getPassword()), model.getId_NQ(),
+                model.getImage(), model.getEmail(), model.getUserName(), security.hashPassword(model.getPassword()), model.getId_NQ(),
                 model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
 

@@ -7,12 +7,12 @@ package com.QLKS.views;
 
 import com.QLKS.DAO.authorization.Authorization;
 import com.QLKS.DAO.authorization.IAuthorization;
-import com.QLKS.Service.Inhan_vienService;
+import com.QLKS.Service.impl.nhan_vienService;
 import com.QLKS.model.nhan_vienModel;
+import com.QLKS.utils.security;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import javax.inject.Inject;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.plaf.basic.BasicButtonUI;
@@ -26,12 +26,12 @@ public class SigninForm extends javax.swing.JFrame {
     /**
      * Creates new form SigninForm
      */
-    @Inject
-    private Inhan_vienService nhan_vienService;
+     nhan_vienService nhanService;
 
     public SigninForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        nhanService = new nhan_vienService();
         Component[] components = this.getContentPane().getComponents();
 
         for (Component component : components) {
@@ -61,9 +61,15 @@ public class SigninForm extends javax.swing.JFrame {
         if (check == true) {
             nhan_vienModel model = nhan_vienModel.getInstance();
             IAuthorization authorization = new Authorization(userName, passwordStr);
-            model = nhan_vienService.findByUserNameAndPassword(authorization);
+            model = nhanService.findByUserNameAndPassword(authorization);
             if (model != null) {
-                return model;
+                boolean check_pass = security.checkPassword(passwordStr, model.getPassword());
+                if (check_pass == true) {
+                    return model;
+                }
+                else {
+                    jPanel2.add(makeLoginMs(passwordStr + message_error));
+                }
             } else {
                 jPanel2.removeAll();
                 jPanel2.add(makeLoginMs(message_error));
@@ -171,6 +177,11 @@ public class SigninForm extends javax.swing.JFrame {
         jButton1.setPreferredSize(new java.awt.Dimension(75, 40));
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/loginHover.png"))); // NOI18N
         jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/loginClickVer2.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +201,11 @@ public class SigninForm extends javax.swing.JFrame {
     private void userName_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userName_txtActionPerformed
 
     }//GEN-LAST:event_userName_txtActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       loginController loController = new loginController();
+       loController.login(this);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

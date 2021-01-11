@@ -33,10 +33,16 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
      */
     nhan_vienService nhan_vienService = new nhan_vienService();
     nhan_vienModel nhan_vien = nhan_vienModel.getInstance();
+    CallBackAdd cb;
+    boolean check = true;
 
-    public ITN_add_nhan_vien() {
+    public interface CallBackAdd {
+        void doAdd();
+    }
+
+    public ITN_add_nhan_vien(CallBackAdd cb) {
         initComponents();
-        
+        this.cb = cb;
     }
 
     /**
@@ -72,6 +78,9 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         line_space2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        txt_err_date = new javax.swing.JLabel();
         pnl_gender = new javax.swing.JPanel();
         pnl_name_content2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -276,6 +285,19 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         jPanel5.setBackground(new java.awt.Color(48, 48, 48));
         jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel15.setPreferredSize(new java.awt.Dimension(80, 40));
+        jPanel5.add(jPanel15, java.awt.BorderLayout.LINE_END);
+
+        jPanel16.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel16.setPreferredSize(new java.awt.Dimension(80, 40));
+        jPanel5.add(jPanel16, java.awt.BorderLayout.LINE_START);
+
+        txt_err_date.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        txt_err_date.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel5.add(txt_err_date, java.awt.BorderLayout.CENTER);
+
         line_space2.add(jPanel5, java.awt.BorderLayout.CENTER);
 
         content1.add(line_space2);
@@ -403,6 +425,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         getContentPane().add(content1, java.awt.BorderLayout.LINE_START);
 
         content2.setBackground(new java.awt.Color(48, 48, 48));
+        content2.setPreferredSize(new java.awt.Dimension(550, 500));
 
         line_space4.setBackground(new java.awt.Color(48, 48, 48));
         line_space4.setPreferredSize(new java.awt.Dimension(550, 40));
@@ -798,7 +821,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         getContentPane().add(content2, java.awt.BorderLayout.CENTER);
 
-        setBounds(0, 0, 1138, 734);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public void changeimage(JLabel btn, String resourceImage) {
@@ -806,8 +829,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         btn.setIcon(a);
     }
 
-    public void hideShowMenu(JPanel menuClick, boolean check, JLabel button) {
-        if (check == true) {
+    public void hideShowMenu(JPanel menuClick, boolean check1, JLabel button) {
+        if (check1 == true) {
             menuClick.setPreferredSize(new Dimension(150, this.getHeight()));
             changeimage(button, "/com/QLKS/icon/icon_button/icon_menuJpanelClick.png");
         } else {
@@ -846,7 +869,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_pnl_addMouseExited
 
     private void pnl_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseClicked
-        boolean check = true;
         List<nhan_vienModel> Listnhan_vien = nhan_vienService.findAll();
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
         String name = txt_inputName.getText();
@@ -857,10 +879,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         String cmnd = txt_inputCMND.getText();
         String gioiTinh = "nam";
         java.util.Date utilStartDate = jDateChooser1.getDate();
-        java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-        nhan_vien.setBirthDay(sqlStartDate);
 
-        if (Listnhan_vien.isEmpty()) {
+        if (!Listnhan_vien.isEmpty()) {
             try {
                 if (name.length() == 0) {
                     mess_error.setText("Tên không được để trống!");
@@ -870,6 +890,18 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     check = false;
                 } else {
                     mess_error.setText("");
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                if (utilStartDate == null) {
+                    txt_err_date.setText("Không được để trống!");
+                    check = false;
+
+                } else {
+                    txt_err_date.setText("");
+
                 }
             } catch (Exception e) {
             }
@@ -888,22 +920,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             }
 
             try {
-                if (radio_nam.isSelected()) {
-                    nhan_vien.setGender(gioiTinh);
-                    check = true;
-                } else if (radio_nu.isSelected()) {
-                    gioiTinh = "nữ";
-                    nhan_vien.setGender(gioiTinh);
-                    check = true;
-                } else if (radio_khac.isSelected()) {
-                    gioiTinh = "Khác";
-                    nhan_vien.setGender(gioiTinh);
-                    check = true;
-                }
-            } catch (Exception e) {
-            }
-
-            try {
 //                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> userName.equals(nhan_vien.getUserName())).findAny().orElse(nhan_vien);
                 if (userName.length() == 0) {
                     mess_err_userName.setText("Tên đăng nhập không được để trống!");
@@ -911,11 +927,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                 } else if (userName.length() > 50) {
                     mess_err_userName.setText("Tên đăng nhập phải nhỏ hơn 50 ký tự!");
                     check = false;
-                } 
-//                else if (nhan_vien != null) {
-//                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
-//                    check = false;
-//                } 
+                } //                else if (nhan_vien != null) {
+                //                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
+                //                    check = false;
+                //                } 
                 else {
                     mess_err_email.setText("");
                 }
@@ -960,11 +975,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                 } else if (cmnd.length() > 12 || cmnd.length() < 12) {
                     messa_err_cmnd.setText("CMND phải bằng 12 ký tự");
                     check = false;
-                } 
-//                else if (nhan_vien != null) {
-//                    messa_err_cmnd.setText("CMND đã tồn tại");
-//                    check = false;
-//                } 
+                } //                else if (nhan_vien != null) {
+                //                    messa_err_cmnd.setText("CMND đã tồn tại");
+                //                    check = false;
+                //                } 
                 else {
                     messa_err_cmnd.setText("");
                 }
@@ -979,18 +993,34 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             } else if (email.length() > 150) {
                 mess_err_email.setText("Email phải nhở hơn 150 ký tự!");
                 check = false;
-            }
-//            } else if (nhan_vien != null) {
-//                mess_err_email.setText("Email đã tồn tại!");
-//                check = false;
-//            }
+            } //            } else if (nhan_vien != null) {
+            //                mess_err_email.setText("Email đã tồn tại!");
+            //                check = false;
+            //            }
             else {
                 mess_err_email.setText("");
             }
 
             while (check = true) {
                 nhan_vien.setName(name);
-
+                if (utilStartDate != null) {
+                    java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+                    nhan_vien.setBirthDay(sqlStartDate);
+                } else {
+                    nhan_vien.setBirthDay(null);
+                }
+                try {
+                    if (radio_nam.isSelected()) {
+                        nhan_vien.setGender(gioiTinh);
+                    } else if (radio_nu.isSelected()) {
+                        gioiTinh = "nữ";
+                        nhan_vien.setGender(gioiTinh);
+                    } else if (radio_khac.isSelected()) {
+                        gioiTinh = "Khác";
+                        nhan_vien.setGender(gioiTinh);
+                    }
+                } catch (Exception e) {
+                }
                 nhan_vien.setEmail(email);
                 nhan_vien.setCmnd(cmnd);
                 nhan_vien.setUserName(userName);
@@ -1000,6 +1030,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                 nhan_vien = nhan_vienService.add(nhan_vien);
                 if (nhan_vien != null) {
                     JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thành Công!");
+                    cb.doAdd();
                     resetText();
                     dispose();
                 } else {
@@ -1133,6 +1164,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1185,6 +1218,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton radio_khac;
     private javax.swing.JRadioButton radio_nam;
     private javax.swing.JRadioButton radio_nu;
+    private javax.swing.JLabel txt_err_date;
     private javax.swing.JTextField txt_inputCMND;
     private javax.swing.JTextField txt_inputEmail;
     private javax.swing.JTextField txt_inputName;

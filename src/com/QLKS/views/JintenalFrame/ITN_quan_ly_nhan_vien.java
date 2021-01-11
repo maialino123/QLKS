@@ -5,31 +5,41 @@
  */
 package com.QLKS.views.JintenalFrame;
 
+import com.QLKS.Service.impl.nhan_vienService;
+import com.QLKS.model.nhan_vienModel;
 import com.QLKS.views.JintenalFrame.action.ITN_add_nhan_vien;
 import static com.QLKS.views.mainFrame.changeColor;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
-public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
+public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame implements ITN_add_nhan_vien.CallBackAdd{
 
     /**
      * Creates new form ITN_quan_ly_nhan_vien
      */
-     private JDesktopPane jdek;
+    private JDesktopPane jdek;
     boolean a = true;
+    List<nhan_vienModel> data = new ArrayList<>();
+    nhan_vienService nhan_vienService;
+    private DefaultTableModel dtmThietBi;
+
     public ITN_quan_ly_nhan_vien() {
         initComponents();
-        
+        nhan_vienService = new nhan_vienService();
+        loadData();
     }
 
     /**
@@ -78,7 +88,8 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         line_button_click4 = new javax.swing.JLabel();
         content_Jinternal = new javax.swing.JPanel();
         pnl_tableContent = new javax.swing.JPanel();
-        add_dsktop_pnl = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_nhan_vien = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -330,28 +341,38 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
         getContentPane().add(menu_barQLNV, java.awt.BorderLayout.LINE_START);
 
+        content_Jinternal.setBackground(new java.awt.Color(27, 27, 27));
         content_Jinternal.setLayout(new java.awt.BorderLayout());
 
+        pnl_tableContent.setBackground(new java.awt.Color(68, 68, 68));
         pnl_tableContent.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout add_dsktop_pnlLayout = new javax.swing.GroupLayout(add_dsktop_pnl);
-        add_dsktop_pnl.setLayout(add_dsktop_pnlLayout);
-        add_dsktop_pnlLayout.setHorizontalGroup(
-            add_dsktop_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
-        );
-        add_dsktop_pnlLayout.setVerticalGroup(
-            add_dsktop_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
-        );
+        jScrollPane1.setBackground(new java.awt.Color(68, 68, 68));
 
-        pnl_tableContent.add(add_dsktop_pnl, java.awt.BorderLayout.CENTER);
+        table_nhan_vien.setBackground(new java.awt.Color(98, 98, 98));
+        table_nhan_vien.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        table_nhan_vien.setForeground(new java.awt.Color(154, 231, 246));
+        table_nhan_vien.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        table_nhan_vien.setGridColor(new java.awt.Color(0, 204, 204));
+        jScrollPane1.setViewportView(table_nhan_vien);
+
+        pnl_tableContent.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         content_Jinternal.add(pnl_tableContent, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(content_Jinternal, java.awt.BorderLayout.CENTER);
 
-        setBounds(0, 0, 1206, 736);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public void centerJIF(JInternalFrame jif) {
@@ -362,6 +383,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
         jif.setLocation(width, height);
         jif.setVisible(true);
     }
+
     public void showInternalFrame(JInternalFrame jif) {
         if (!jif.isVisible()) {
             jdek = getDesktopPane();
@@ -371,11 +393,43 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
             jdek.show();
         }
     }
-     public  void changeimage(JLabel btn, String resourceImage) {
+
+    public void loadData() {
+        data = nhan_vienService.findAll();
+        Object[] columnName = {
+            "STT",
+            "Họ, Tên",
+            "Ngày Sinh",
+            "Giới Tính",
+            "Email",
+            "CMND",
+            "Tài Khoản",
+            "Mật Khẩu",
+            ""
+        };
+        dtmThietBi = new DefaultTableModel(new Object[0][0], columnName);
+        int index = 1;
+        for (nhan_vienModel model : data) {
+            Object[] ob = new Object[8];
+            ob[0] = index;
+            ob[1] = model.getName();
+            ob[2] = model.getBirthDay();
+            ob[3] = model.getGender();
+            ob[4] = model.getEmail();
+            ob[5] = model.getCmnd();
+            ob[6] = model.getUserName();
+            ob[7] = model.getPassword();
+            dtmThietBi.addRow(ob);
+            index++;
+        }
+        table_nhan_vien.setModel(dtmThietBi);
+    }
+
+    public void changeimage(JLabel btn, String resourceImage) {
         ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
         btn.setIcon(a);
-    } 
-     
+    }
+
     public void hideShowMenu(JPanel menuClick, boolean check, JLabel button) {
         if (check == true) {
             menuClick.setPreferredSize(new Dimension(150, this.getHeight()));
@@ -385,7 +439,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
             changeimage(button, "/com/QLKS/icon/icon_button/custom-iconMenu.png");
         }
     }
-    
+
     private void button_add_NVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_add_NVMouseEntered
         changeColor(button_add_NV, new Color(0, 0, 0));
     }//GEN-LAST:event_button_add_NVMouseEntered
@@ -396,14 +450,13 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_button_add_NVMouseExited
 
     private void button_add_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_add_NVMouseClicked
-       changeimage(custom_line, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
-        ITN_add_nhan_vien add_nhan_vien = new ITN_add_nhan_vien();
-        add_dsktop_pnl.add(add_nhan_vien);
-        add_nhan_vien.setVisible(true);
+        changeimage(custom_line, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
+        ITN_add_nhan_vien add_nhan_vien = new ITN_add_nhan_vien(this);
+        showInternalFrame(add_nhan_vien);
     }//GEN-LAST:event_button_add_NVMouseClicked
 
     private void button_update_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_update_NVMouseClicked
-       changeimage(custom_line1, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
+        changeimage(custom_line1, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
     }//GEN-LAST:event_button_update_NVMouseClicked
 
     private void button_update_NVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_update_NVMouseEntered
@@ -411,20 +464,20 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_button_update_NVMouseEntered
 
     private void button_update_NVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_update_NVMouseExited
-       changeColor(button_update_NV, new Color(8, 13, 21));
+        changeColor(button_update_NV, new Color(8, 13, 21));
         changeimage(custom_line1, "/com/QLKS/icon/icon_button/custom-lineJinternal.png");
     }//GEN-LAST:event_button_update_NVMouseExited
 
     private void button_delete_NVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_delete_NVMouseClicked
-       changeimage(custom_line2, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
+        changeimage(custom_line2, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
     }//GEN-LAST:event_button_delete_NVMouseClicked
 
     private void button_delete_NVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_delete_NVMouseEntered
-       changeColor(button_delete_NV, new Color(0, 0, 0));
+        changeColor(button_delete_NV, new Color(0, 0, 0));
     }//GEN-LAST:event_button_delete_NVMouseEntered
 
     private void button_delete_NVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_delete_NVMouseExited
-       changeColor(button_delete_NV, new Color(8, 13, 21));
+        changeColor(button_delete_NV, new Color(8, 13, 21));
         changeimage(custom_line2, "/com/QLKS/icon/icon_button/custom-lineJinternal.png");
     }//GEN-LAST:event_button_delete_NVMouseExited
 
@@ -442,7 +495,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_button_search_NVMouseExited
 
     private void button_refesh_NV1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_refesh_NV1MouseClicked
-       changeimage(custom_line4, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
+        changeimage(custom_line4, "/com/QLKS/icon/icon_button/line_custom_hover_jinternal.png");
     }//GEN-LAST:event_button_refesh_NV1MouseClicked
 
     private void button_refesh_NV1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_refesh_NV1MouseEntered
@@ -450,16 +503,16 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_button_refesh_NV1MouseEntered
 
     private void button_refesh_NV1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_refesh_NV1MouseExited
-       changeColor(button_refesh_NV1, new Color(8, 13, 21));
+        changeColor(button_refesh_NV1, new Color(8, 13, 21));
         changeimage(custom_line4, "/com/QLKS/icon/icon_button/custom-lineJinternal.png");
     }//GEN-LAST:event_button_refesh_NV1MouseExited
 
     private void menu_iconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_iconMouseEntered
-       
+
     }//GEN-LAST:event_menu_iconMouseEntered
 
     private void menu_iconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_iconMouseExited
-        
+
     }//GEN-LAST:event_menu_iconMouseExited
 
     private void menu_iconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_iconMouseClicked
@@ -476,7 +529,6 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane add_dsktop_pnl;
     private javax.swing.JPanel button_add_NV;
     private javax.swing.JPanel button_delete_NV;
     private javax.swing.JPanel button_refesh_NV1;
@@ -501,6 +553,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel line_button;
     private javax.swing.JPanel line_button1;
     private javax.swing.JPanel line_button2;
@@ -514,5 +567,11 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel menu_barQLNV;
     private javax.swing.JLabel menu_icon;
     private javax.swing.JPanel pnl_tableContent;
+    private javax.swing.JTable table_nhan_vien;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void doAdd() {
+        loadData();
+    }
 }

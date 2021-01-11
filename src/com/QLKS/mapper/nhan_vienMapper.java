@@ -28,6 +28,7 @@ public class nhan_vienMapper implements rowMapper<nhan_vienModel> {
             if (blob != null) {
                 model.setImage(blob.getBytes(1, (int) blob.length()));
             }
+            model.setGender(rs.getString("gender"));
             model.setEmail(rs.getString("email"));
             model.setUserName(rs.getString("userName"));
             model.setPassword(rs.getString("passWord"));

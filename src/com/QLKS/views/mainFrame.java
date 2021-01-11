@@ -5,7 +5,8 @@
  */
 package com.QLKS.views;
 
-
+import com.QLKS.model.nhan_vienModel;
+import com.QLKS.views.JintenalFrame.ITN_doi_mat_khau;
 import com.QLKS.views.JintenalFrame.ITN_quan_ly_nhan_vien;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,9 +26,11 @@ public class mainFrame extends javax.swing.JFrame {
      */
     boolean a = true;
 
-    public mainFrame() {
+    public mainFrame(nhan_vienModel nhanModel) {
         initComponents();
         this.setExtendedState(mainFrame.MAXIMIZED_BOTH);
+
+
     }
 
     /**
@@ -148,6 +151,15 @@ public class mainFrame extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         desktop_content = new javax.swing.JDesktopPane();
+        menuBar2 = new javax.swing.JPanel();
+        pnl_avatar = new javax.swing.JPanel();
+        lbl_avatar = new javax.swing.JLabel();
+        line_avatar = new javax.swing.JPanel();
+        button_doi_mk = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        line_avatar1 = new javax.swing.JPanel();
+        button_logout = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1139,16 +1151,92 @@ public class mainFrame extends javax.swing.JFrame {
 
         content.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout desktop_contentLayout = new javax.swing.GroupLayout(desktop_content);
-        desktop_content.setLayout(desktop_contentLayout);
-        desktop_contentLayout.setHorizontalGroup(
-            desktop_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1182, Short.MAX_VALUE)
+        desktop_content.setBackground(new java.awt.Color(255, 255, 255));
+        desktop_content.setLayout(new java.awt.BorderLayout());
+
+        menuBar2.setBackground(new java.awt.Color(68, 68, 68));
+        menuBar2.setPreferredSize(new java.awt.Dimension(200, 634));
+        menuBar2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        pnl_avatar.setBackground(new java.awt.Color(27, 27, 27));
+        pnl_avatar.setMinimumSize(new java.awt.Dimension(200, 250));
+        pnl_avatar.setPreferredSize(new java.awt.Dimension(200, 200));
+        pnl_avatar.setLayout(new java.awt.BorderLayout());
+
+        lbl_avatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_avatar.setToolTipText("avatar");
+        pnl_avatar.add(lbl_avatar, java.awt.BorderLayout.CENTER);
+
+        menuBar2.add(pnl_avatar);
+
+        line_avatar.setBackground(new java.awt.Color(0, 0, 0));
+        line_avatar.setPreferredSize(new java.awt.Dimension(200, 5));
+
+        javax.swing.GroupLayout line_avatarLayout = new javax.swing.GroupLayout(line_avatar);
+        line_avatar.setLayout(line_avatarLayout);
+        line_avatarLayout.setHorizontalGroup(
+            line_avatarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        desktop_contentLayout.setVerticalGroup(
-            desktop_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+        line_avatarLayout.setVerticalGroup(
+            line_avatarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
         );
+
+        menuBar2.add(line_avatar);
+
+        button_doi_mk.setBackground(new java.awt.Color(29, 29, 29));
+        button_doi_mk.setPreferredSize(new java.awt.Dimension(200, 40));
+        button_doi_mk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_doi_mkMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_doi_mkMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_doi_mkMouseExited(evt);
+            }
+        });
+        button_doi_mk.setLayout(new java.awt.BorderLayout());
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Đổi Mật Khẩu");
+        button_doi_mk.add(jLabel3, java.awt.BorderLayout.CENTER);
+
+        menuBar2.add(button_doi_mk);
+
+        line_avatar1.setBackground(new java.awt.Color(0, 0, 0));
+        line_avatar1.setPreferredSize(new java.awt.Dimension(200, 5));
+
+        javax.swing.GroupLayout line_avatar1Layout = new javax.swing.GroupLayout(line_avatar1);
+        line_avatar1.setLayout(line_avatar1Layout);
+        line_avatar1Layout.setHorizontalGroup(
+            line_avatar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        line_avatar1Layout.setVerticalGroup(
+            line_avatar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        menuBar2.add(line_avatar1);
+
+        button_logout.setBackground(new java.awt.Color(29, 29, 29));
+        button_logout.setPreferredSize(new java.awt.Dimension(200, 40));
+        button_logout.setLayout(new java.awt.BorderLayout());
+
+        jLabel35.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Đăng Xuất");
+        button_logout.add(jLabel35, java.awt.BorderLayout.CENTER);
+
+        menuBar2.add(button_logout);
+
+        desktop_content.add(menuBar2, java.awt.BorderLayout.LINE_START);
 
         content.add(desktop_content, java.awt.BorderLayout.CENTER);
 
@@ -1172,7 +1260,7 @@ public class mainFrame extends javax.swing.JFrame {
         }
     }
 
-    public  void changeimage(JLabel btn, String resourceImage) {
+    public void changeimage(JLabel btn, String resourceImage) {
         ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
         btn.setIcon(a);
     }
@@ -1187,25 +1275,39 @@ public class mainFrame extends javax.swing.JFrame {
         }
     }
 
+    public void hideShowMenu2(JPanel menuClick, boolean check) {
+        if (check == true) {
+            menuClick.setPreferredSize(new Dimension(200, this.getHeight()));
+        } else {
+            menuClick.setPreferredSize(new Dimension(0, this.getHeight()));
+        }
+    }
+
     public void hideShowMenuPhong(JPanel menuClicka, boolean check, JLabel button) {
         if (check == true) {
             menuClicka.setPreferredSize(new Dimension(260, 356));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
-            
+
         } else {
             menuClicka.setPreferredSize(new Dimension(260, 40));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
         }
     }
-    
-    public void hideShowMenuDV(JPanel menuClickb, boolean check, JLabel button){
+
+    public void hideShowMenuDV(JPanel menuClickb, boolean check, JLabel button) {
         if (check == true) {
             menuClickb.setPreferredSize(new Dimension(260, 130));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
-            
+
         } else {
             menuClickb.setPreferredSize(new Dimension(260, 40));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
+        }
+    }
+    
+    public void getAvatar(nhan_vienModel nhan_vienModel, JLabel avatar){
+        if (nhan_vienModel.getImage() != null) {
+//            changeimage(lbl_avatar, nhan_vienModel.getImage());
         }
     }
 
@@ -1275,6 +1377,15 @@ public class mainFrame extends javax.swing.JFrame {
     private void icon_settingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_settingMouseClicked
         changeColor(line_menu1, new Color(6, 255, 0));
         clickMenu(icon_setting, icon_menu, 1);
+        if (a == true) {
+            hideShowMenu2(menuBar2, a);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = false;
+        } else {
+            hideShowMenu2(menuBar2, a);
+            SwingUtilities.updateComponentTreeUI(this);
+            a = true;
+        }
     }//GEN-LAST:event_icon_settingMouseClicked
 
     private void btn_click_menuSmall_PMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_PMouseEntered
@@ -1330,17 +1441,17 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_quan_ly_phongMouseExited
 
     private void button_quan_ly_loai_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseClicked
-       changeColor(line_small2, new Color(6, 255, 0));
+        changeColor(line_small2, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall2, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_quan_ly_loai_phongMouseClicked
 
     private void button_quan_ly_loai_phongMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseEntered
-       changeColor(button_quan_ly_loai_phong, new Color(23, 23, 23));
+        changeColor(button_quan_ly_loai_phong, new Color(23, 23, 23));
         changeColor(line_small2, new Color(16, 0, 255));
     }//GEN-LAST:event_button_quan_ly_loai_phongMouseEntered
 
     private void button_quan_ly_loai_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_loai_phongMouseExited
-         changeColor(button_quan_ly_loai_phong, new Color(48, 48, 48));
+        changeColor(button_quan_ly_loai_phong, new Color(48, 48, 48));
         changeColor(line_small2, new Color(0, 0, 0));
         changeimage(changeImageButtonIconSmall2, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_quan_ly_loai_phongMouseExited
@@ -1375,7 +1486,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_click_menuSmall_P1MouseClicked
 
     private void btn_click_menuSmall_P1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P1MouseEntered
-       changeColor(btn_click_menuSmall_P1, new Color(0, 0, 0));
+        changeColor(btn_click_menuSmall_P1, new Color(0, 0, 0));
     }//GEN-LAST:event_btn_click_menuSmall_P1MouseEntered
 
     private void btn_click_menuSmall_P1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P1MouseExited
@@ -1400,7 +1511,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_quan_ly_DVMouseExited
 
     private void button_quan_ly_LDVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_LDVMouseClicked
-       changeColor(line_small5, new Color(6, 255, 0));
+        changeColor(line_small5, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall5, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_quan_ly_LDVMouseClicked
 
@@ -1416,7 +1527,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_quan_ly_LDVMouseExited
 
     private void btn_click_menuSmall_P2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseClicked
-      changeimage(custom_lineButton1, "/com/QLKS/icon/icon_button/clickIconLine.png");
+        changeimage(custom_lineButton1, "/com/QLKS/icon/icon_button/clickIconLine.png");
         if (a == true) {
             hideShowMenuDV(pnl_QLKH, a, icon_menuSmall2);
             SwingUtilities.updateComponentTreeUI(this);
@@ -1429,7 +1540,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_click_menuSmall_P2MouseClicked
 
     private void btn_click_menuSmall_P2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseEntered
-       changeColor(btn_click_menuSmall_P2, new Color(0, 0, 0));
+        changeColor(btn_click_menuSmall_P2, new Color(0, 0, 0));
     }//GEN-LAST:event_btn_click_menuSmall_P2MouseEntered
 
     private void btn_click_menuSmall_P2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P2MouseExited
@@ -1438,7 +1549,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_click_menuSmall_P2MouseExited
 
     private void button_quan_ly_KHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_KHMouseClicked
-       changeColor(line_small6, new Color(6, 255, 0));
+        changeColor(line_small6, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall6, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_quan_ly_KHMouseClicked
 
@@ -1454,7 +1565,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_quan_ly_KHMouseExited
 
     private void button_quan_ly_KMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_KMMouseClicked
-       changeColor(line_small7, new Color(6, 255, 0));
+        changeColor(line_small7, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall7, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_quan_ly_KMMouseClicked
 
@@ -1464,7 +1575,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_quan_ly_KMMouseEntered
 
     private void button_quan_ly_KMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_KMMouseExited
-       changeColor(button_quan_ly_KM, new Color(48, 48, 48));
+        changeColor(button_quan_ly_KM, new Color(48, 48, 48));
         changeColor(line_small7, new Color(0, 0, 0));
         changeimage(changeImageButtonIconSmall7, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_quan_ly_KMMouseExited
@@ -1480,13 +1591,13 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_dat_phongMouseEntered
 
     private void button_dat_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_dat_phongMouseExited
-       changeColor(button_dat_phong, new Color(48, 48, 48));
+        changeColor(button_dat_phong, new Color(48, 48, 48));
         changeColor(line_small8, new Color(0, 0, 0));
         changeimage(changeImageButtonIconSmall8, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_dat_phongMouseExited
 
     private void button_tra_phongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_tra_phongMouseClicked
-       changeColor(line_small9, new Color(6, 255, 0));
+        changeColor(line_small9, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall9, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_tra_phongMouseClicked
 
@@ -1496,18 +1607,18 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_tra_phongMouseEntered
 
     private void button_tra_phongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_tra_phongMouseExited
-         changeColor(button_tra_phong, new Color(48, 48, 48));
+        changeColor(button_tra_phong, new Color(48, 48, 48));
         changeColor(line_small9, new Color(0, 0, 0));
         changeimage(changeImageButtonIconSmall9, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_tra_phongMouseExited
 
     private void button_Quan_ly_hoa_donMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_Quan_ly_hoa_donMouseClicked
-       changeColor(line_small10, new Color(6, 255, 0));
+        changeColor(line_small10, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall10, "/com/QLKS/icon/icon_button/iconclick_btn.png");
     }//GEN-LAST:event_button_Quan_ly_hoa_donMouseClicked
 
     private void button_Quan_ly_hoa_donMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_Quan_ly_hoa_donMouseEntered
-       changeColor(button_Quan_ly_hoa_don, new Color(23, 23, 23));
+        changeColor(button_Quan_ly_hoa_don, new Color(23, 23, 23));
         changeColor(line_small10, new Color(16, 0, 255));
     }//GEN-LAST:event_button_Quan_ly_hoa_donMouseEntered
 
@@ -1535,7 +1646,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_click_menuSmall_P3MouseEntered
 
     private void btn_click_menuSmall_P3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_click_menuSmall_P3MouseExited
-         changeColor(btn_click_menuSmall_P3, new Color(8, 13, 21));
+        changeColor(btn_click_menuSmall_P3, new Color(8, 13, 21));
         changeimage(custom_lineButton2, "/com/QLKS/icon/icon_button/lineButtonDefault.png");
     }//GEN-LAST:event_btn_click_menuSmall_P3MouseExited
 
@@ -1543,12 +1654,18 @@ public class mainFrame extends javax.swing.JFrame {
         changeColor(line_small11, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall11, "/com/QLKS/icon/icon_button/iconclick_btn.png");
         ITN_quan_ly_nhan_vien qlnv_itn = new ITN_quan_ly_nhan_vien();
+        Dimension desktopSize = desktop_content.getSize();
+        Dimension jInternalFrameSize = qlnv_itn.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        qlnv_itn.setLocation(width, height);
         desktop_content.add(qlnv_itn);
         qlnv_itn.setVisible(true);
+
     }//GEN-LAST:event_button_quan_ly_NVMouseClicked
 
     private void button_quan_ly_NVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_NVMouseEntered
-       changeColor(button_quan_ly_NV, new Color(23, 23, 23));
+        changeColor(button_quan_ly_NV, new Color(23, 23, 23));
         changeColor(line_small11, new Color(16, 0, 255));
     }//GEN-LAST:event_button_quan_ly_NVMouseEntered
 
@@ -1574,6 +1691,29 @@ public class mainFrame extends javax.swing.JFrame {
         changeimage(changeImageButtonIconSmall12, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_quan_ly_QMouseExited
 
+    private void button_doi_mkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseExited
+         changeColor(button_doi_mk, new Color(29,29,29));
+        changeColor(line_avatar, new Color(0, 0, 0));
+    }//GEN-LAST:event_button_doi_mkMouseExited
+
+    private void button_doi_mkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseEntered
+        changeColor(button_doi_mk, new Color(0,0,0));
+        changeColor(line_avatar, new Color(16, 0, 255));
+    }//GEN-LAST:event_button_doi_mkMouseEntered
+
+    private void button_doi_mkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseClicked
+        changeColor(line_avatar, new Color(6, 255, 0));
+//        changeimage(changeImageButtonIconSmall11, "/com/QLKS/icon/icon_button/iconclick_btn.png");
+        ITN_doi_mat_khau doi_mk = new ITN_doi_mat_khau();
+        Dimension desktopSize = desktop_content.getSize();
+        Dimension jInternalFrameSize = doi_mk.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        doi_mk.setLocation(width, height);
+        desktop_content.add(doi_mk);
+        doi_mk.setVisible(true);       
+    }//GEN-LAST:event_button_doi_mkMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1585,7 +1725,7 @@ public class mainFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1602,11 +1742,6 @@ public class mainFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mainFrame().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1617,7 +1752,9 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel button_Quan_ly_hoa_don;
     private javax.swing.JPanel button_close;
     private javax.swing.JPanel button_dat_phong;
+    private javax.swing.JPanel button_doi_mk;
     private javax.swing.JPanel button_fullSize;
+    private javax.swing.JPanel button_logout;
     private javax.swing.JPanel button_quan_ly_DV;
     private javax.swing.JPanel button_quan_ly_KH;
     private javax.swing.JPanel button_quan_ly_KM;
@@ -1678,11 +1815,13 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1690,6 +1829,9 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_avatar;
+    private javax.swing.JPanel line_avatar;
+    private javax.swing.JPanel line_avatar1;
     private javax.swing.JPanel line_button_small;
     private javax.swing.JPanel line_button_small1;
     private javax.swing.JPanel line_button_small2;
@@ -1710,6 +1852,7 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel line_small9;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel menuBar;
+    private javax.swing.JPanel menuBar2;
     private javax.swing.JPanel menuBar_small;
     private javax.swing.JPanel menuBar_small1;
     private javax.swing.JPanel menuBar_small2;
@@ -1719,5 +1862,6 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_QLKH;
     private javax.swing.JPanel pnl_QLNV;
     private javax.swing.JPanel pnl_QLphong;
+    private javax.swing.JPanel pnl_avatar;
     // End of variables declaration//GEN-END:variables
 }

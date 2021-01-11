@@ -57,11 +57,27 @@ public class nhan_vienDAO extends abstractDAO<nhan_vienModel> implements INhan_v
 
     @Override
     public nhan_vienModel findByUserNameAndPassword(IAuthorization authorization) {
-        StringBuilder sql = new StringBuilder("get_by_userName_passWord");
+//        StringBuilder sql = new StringBuilder("get_by_userName_passWord");
+        String sql = resourceBundleSQL.getString("get_by_userName_passWord");
         if (authorization.getUserName() != null && authorization.getPassWord() != null) {
-            List<nhan_vienModel> list = query(sql.toString(), new nhan_vienMapper(),authorization.getUserName(),authorization.getPassWord());
+            List<nhan_vienModel> list = query(sql.toString(), new nhan_vienMapper(),authorization.getUserName());
             return list.isEmpty() ? null : list.get(0);
         }
+        return null;
+    }
+
+    @Override
+    public nhan_vienModel findByUserName(String userName) {
+      return null;
+    }
+
+    @Override
+    public nhan_vienModel findByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public nhan_vienModel findByCmnd(String cmnd) {
         return null;
     }
 }

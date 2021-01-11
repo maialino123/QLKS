@@ -20,6 +20,7 @@ public class miniFarme {
     public static void main(String[] args) {
         runSystem running = new runSystem();
         SigninForm signin = new SigninForm();
+        loginController logiController = new loginController();
         running.setVisible(true);
         try {
             for (int i = 0; i <= 100; i++) {
@@ -29,8 +30,8 @@ public class miniFarme {
                 if (i == 100) {
                     running.setVisible(false);
                     signin.setVisible(true);
+                    logiController.login(signin);
                 }
-                
             }
         } catch (Exception e) {
         }

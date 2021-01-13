@@ -22,7 +22,16 @@ public class phongModel extends abstractModel {
     
     private String id;
     private Long id_LP;
+    private boolean status;
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
     public String getId() {
         return id;
     }

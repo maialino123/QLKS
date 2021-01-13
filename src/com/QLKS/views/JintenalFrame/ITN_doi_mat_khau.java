@@ -5,17 +5,64 @@
  */
 package com.QLKS.views.JintenalFrame;
 
+import com.QLKS.SendEmail.ConfigUtility;
+import com.QLKS.Service.impl.nhan_vienService;
+import com.QLKS.model.nhan_vienModel;
+import com.QLKS.utils.randomCode;
+import com.QLKS.utils.security;
+import com.QLKS.views.JintenalFrame.action.ITN_check_code_Email;
+import java.awt.Dimension;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
-public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
+public class ITN_doi_mat_khau extends javax.swing.JInternalFrame implements ITN_check_code_Email.CallbackSend {
 
     /**
      * Creates new form ITN_doi_mat_khau
      */
-    public ITN_doi_mat_khau() {
+    nhan_vienModel nhan_vien;
+    nhan_vienService nhan_vienService;
+    private JDesktopPane jdek;
+    boolean check_pass = true;
+
+    public ITN_doi_mat_khau(nhan_vienModel nhan_vien) {
         initComponents();
+        this.nhan_vien = nhan_vien;
+        nhan_vienService = new nhan_vienService();
+    }
+
+    public void centerJIF(JInternalFrame jif) {
+        Dimension desktopSize = jdek.getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+    }
+
+    public void showInternalFrame(JInternalFrame jif) {
+        if (!jif.isVisible()) {
+            jdek = getDesktopPane();
+            jdek.add(jif);
+            centerJIF(jif);
+            jif.setVisible(true);
+            jdek.show();
+        }
     }
 
     /**
@@ -64,7 +111,7 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
         setClosable(true);
         setToolTipText("");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_hotel_star_20px.png"))); // NOI18N
-        setPreferredSize(new java.awt.Dimension(500, 300));
+        setPreferredSize(new java.awt.Dimension(510, 474));
 
         jPanel1.setBackground(new java.awt.Color(27, 27, 27));
         jPanel1.setPreferredSize(new java.awt.Dimension(503, 50));
@@ -75,8 +122,6 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đổi Mật Khẩu");
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(78, 78, 78));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
@@ -333,11 +378,31 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
 
         jPanel2.add(submit);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean check_code_email(String oldCode, String newCode) {
+        if (oldCode.equals(newCode) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     private void submitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitMouseExited
 
     }//GEN-LAST:event_submitMouseExited
@@ -350,7 +415,7 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
         String oldPassword = new String(old_password_txt.getPassword());
         String newPassword = new String(new_password_txt.getPassword());
         String nhap_laiPassword = new String(nhap_lai_newPassword_txt.getPassword());
-        boolean check_pass = true;
+        
         try {
             if (oldPassword.length() == 0) {
                 txt_err_password.setText("Mật khẩu không được để trống!");
@@ -358,46 +423,84 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
             } else if (oldPassword.length() < 8 || oldPassword.length() > 50) {
                 txt_err_password.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
                 check_pass = false;
+            } else if (security.checkPassword(oldPassword, nhan_vien.getPassword()) == false) {
+                txt_err_password.setText("Mật khẩu không đúng!");
+                check_pass = false;
             } else {
                 txt_err_password.setText("");
             }
         } catch (Exception e) {
+             e.printStackTrace();
         }
-        
+
         try {
             if (newPassword.length() == 0) {
                 txt_password_new.setText("Mật khẩu mới không được dể trống");
                 check_pass = false;
-            } else if(newPassword.length() < 8 || newPassword.length() > 50) {
+            } else if (newPassword.length() < 8 || newPassword.length() > 50) {
                 txt_password_new.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
                 check_pass = false;
-            } else if(newPassword.equals(oldPassword) == true){
+            } else if (newPassword.equals(oldPassword) == true) {
                 txt_password_new.setText("Mật khẩu mới trùng mật khẩu cũ!");
                 check_pass = false;
             } else {
                 txt_password_new.setText("");
             }
         } catch (Exception e) {
+             e.printStackTrace();
         }
-        
+
         try {
             if (nhap_laiPassword.length() == 0) {
                 txt_xn_passordnew.setText("Mật khẩu nhập lại không được rỗng!");
                 check_pass = false;
-            } else if(nhap_laiPassword.length() < 8 || nhap_laiPassword.length() > 50) {
+            } else if (nhap_laiPassword.length() < 8 || nhap_laiPassword.length() > 50) {
                 txt_xn_passordnew.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
                 check_pass = false;
-            } else if(nhap_laiPassword.equals(newPassword) == false) {
+            } else if (nhap_laiPassword.equals(newPassword) == false) {
                 txt_xn_passordnew.setText("Mật khẩu xác nhận không trùng!");
                 check_pass = false;
             } else {
                 txt_xn_passordnew.setText("");
             }
         } catch (Exception e) {
+             e.printStackTrace();
         }
-        
-        while (check_pass = true) {
-          
+
+        if (check_pass = true) {
+            nhan_vien.setPassword(newPassword);
+            nhan_vien.setRandom_code_pass(String.valueOf(randomCode.randomCodeCheck(1000, 9999)));
+            final String userName_email = "Nguyenbatu10111@gmail.com";
+            final String password_email = "yagl aioh afxg tvvt";
+            Properties pops = new Properties();
+            ConfigUtility configUtility = new ConfigUtility();
+            try {
+                pops = configUtility.loadProperties();
+            } catch (IOException ex) {
+                Logger.getLogger(ITN_doi_mat_khau.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            //dang nhap gmail
+            Session session = Session.getInstance(pops, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(userName_email, password_email);
+                }
+            });
+
+            try {
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress("Nguyenbatu10111@gmail.com"));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(nhan_vien.getEmail()));
+                message.setSubject("Khách Sạn XYZ");
+                message.setText(nhan_vien.getRandom_code_pass());
+                Transport.send(message);
+                System.out.println(nhan_vien.getEmail());
+                ITN_check_code_Email itn_check_email = new ITN_check_code_Email(this);
+                showInternalFrame(itn_check_email);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
     }//GEN-LAST:event_submitMouseClicked
 
@@ -435,4 +538,16 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txt_password_new;
     private javax.swing.JLabel txt_xn_passordnew;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void doSend(String code_send) {
+        final boolean cehck_code_sendMail;
+        cehck_code_sendMail = check_code_email(nhan_vien.getRandom_code_pass(), code_send);
+        if (cehck_code_sendMail == true) {
+            nhan_vienService.edit(nhan_vien);
+            JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Cập Nhật Thất Bại!");
+        }
+    }
 }

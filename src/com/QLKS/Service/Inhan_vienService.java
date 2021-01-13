@@ -20,4 +20,7 @@ public interface Inhan_vienService {
     void edit(nhan_vienModel model);
     void delete(Long[] ids);
     nhan_vienModel findByUserNameAndPassword(IAuthorization authorization);
+    nhan_vienModel findByUserName(String userName);
+    nhan_vienModel findByEmail(String email);
+    nhan_vienModel findByCmnd(String cmnd);
 }

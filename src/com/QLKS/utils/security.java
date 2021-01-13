@@ -28,7 +28,6 @@ public class security {
         }
 
         password_verified = BCrypt.checkpw(passWord_plaintext, stored_hash);
-
         return (password_verified);
     }
 

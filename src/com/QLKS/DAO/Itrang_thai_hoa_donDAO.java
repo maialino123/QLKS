@@ -1,0 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.QLKS.DAO;
+
+import com.QLKS.model.trang_thai_hoa_donModel;
+import java.util.List;
+
+/**
+ *
+ * @author Admin
+ */
+public interface Itrang_thai_hoa_donDAO extends GenericDAO<trang_thai_hoa_donModel> {
+    List<trang_thai_hoa_donModel> findAll();
+    trang_thai_hoa_donModel findOne(Long id);
+    void add_TTHD(trang_thai_hoa_donModel model);
+    void edit(trang_thai_hoa_donModel model);
+    void delete(Long id);
+}

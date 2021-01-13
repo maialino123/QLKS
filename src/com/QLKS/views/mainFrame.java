@@ -29,8 +29,6 @@ public class mainFrame extends javax.swing.JFrame {
     public mainFrame(nhan_vienModel nhanModel) {
         initComponents();
         this.setExtendedState(mainFrame.MAXIMIZED_BOTH);
-
-
     }
 
     /**
@@ -1226,6 +1224,17 @@ public class mainFrame extends javax.swing.JFrame {
 
         button_logout.setBackground(new java.awt.Color(29, 29, 29));
         button_logout.setPreferredSize(new java.awt.Dimension(200, 40));
+        button_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button_logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button_logoutMouseExited(evt);
+            }
+        });
         button_logout.setLayout(new java.awt.BorderLayout());
 
         jLabel35.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1693,7 +1702,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void button_doi_mkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseExited
          changeColor(button_doi_mk, new Color(29,29,29));
-        changeColor(line_avatar, new Color(0, 0, 0));
+         changeColor(line_avatar, new Color(0, 0, 0));
     }//GEN-LAST:event_button_doi_mkMouseExited
 
     private void button_doi_mkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseEntered
@@ -1704,7 +1713,7 @@ public class mainFrame extends javax.swing.JFrame {
     private void button_doi_mkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_doi_mkMouseClicked
         changeColor(line_avatar, new Color(6, 255, 0));
 //        changeimage(changeImageButtonIconSmall11, "/com/QLKS/icon/icon_button/iconclick_btn.png");
-        ITN_doi_mat_khau doi_mk = new ITN_doi_mat_khau();
+        ITN_doi_mat_khau doi_mk = new ITN_doi_mat_khau(nhan_vienModel.getInstance());
         Dimension desktopSize = desktop_content.getSize();
         Dimension jInternalFrameSize = doi_mk.getSize();
         int width = (desktopSize.width - jInternalFrameSize.width) / 2;
@@ -1713,6 +1722,19 @@ public class mainFrame extends javax.swing.JFrame {
         desktop_content.add(doi_mk);
         doi_mk.setVisible(true);       
     }//GEN-LAST:event_button_doi_mkMouseClicked
+
+    private void button_logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_logoutMouseExited
+       
+    }//GEN-LAST:event_button_logoutMouseExited
+
+    private void button_logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_logoutMouseEntered
+       
+    }//GEN-LAST:event_button_logoutMouseEntered
+
+    private void button_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_logoutMouseClicked
+       SigninForm sign = new SigninForm();
+       sign.setVisible(true);
+    }//GEN-LAST:event_button_logoutMouseClicked
 
     /**
      * @param args the command line arguments

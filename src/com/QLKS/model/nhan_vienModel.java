@@ -36,6 +36,15 @@ public class nhan_vienModel extends abstractModel {
     private String degree;
     private long id_NQ;
     private nhom_quyenModel nhom_quyen = nhom_quyenModel.getInstance();
+    private String random_code_pass;
+
+    public String getRandom_code_pass() {
+        return random_code_pass;
+    }
+
+    public void setRandom_code_pass(String random_code_pass) {
+        this.random_code_pass = random_code_pass;
+    }
 
     public Long getId() {
         return id;

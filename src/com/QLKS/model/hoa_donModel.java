@@ -5,6 +5,8 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Admin
@@ -27,10 +29,39 @@ public class hoa_donModel extends abstractModel {
     private String hinh_thucTT;
     private float phu_phi;
     private float tien_phong;
+    private float tien_dich_vu;
     private float giam_giaKH;
     private float so_ngay;
     private float thanh_tien;
+    private Date so_ngay_thuc_te;
+    private Date so_ngay_du_kien;
 
+    public Date getSo_ngay_thuc_te() {
+        return so_ngay_thuc_te;
+    }
+
+    public void setSo_ngay_thuc_te(Date so_ngay_thuc_te) {
+        this.so_ngay_thuc_te = so_ngay_thuc_te;
+    }
+
+    public Date getSo_ngay_du_kien() {
+        return so_ngay_du_kien;
+    }
+
+    public void setSo_ngay_du_kien(Date so_ngay_du_kien) {
+        this.so_ngay_du_kien = so_ngay_du_kien;
+    }
+    
+    
+
+    public float getTien_dich_vu() {
+        return tien_dich_vu;
+    }
+
+    public void setTien_dich_vu(float tien_dich_vu) {
+        this.tien_dich_vu = tien_dich_vu;
+    }
+    
     public Long getId() {
         return id;
     }

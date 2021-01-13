@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.QLKS.Service.impl;
+
+import com.QLKS.DAO.impl.khach_hangDAO;
+import com.QLKS.Service.Ikhach_hangService;
+import com.QLKS.model.khach_hang_model;
+import java.sql.Timestamp;
+import java.util.List;
+
+/**
+ *
+ * @author Admin
+ */
+public class khach_hangService implements Ikhach_hangService{
+    
+    khach_hangDAO khach_hangDAO = new khach_hangDAO();
+   
+
+    @Override
+    public List<khach_hang_model> findAll() {
+        return khach_hangDAO.findAll();
+    }
+
+    @Override
+    public khach_hang_model findOne(Long id) {
+        return khach_hangDAO.findOne(id);
+    }
+
+    @Override
+    public khach_hang_model add_khachHang(khach_hang_model model) {
+        model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        model.setCreatedBy("");
+        Long id = khach_hangDAO.add_khachHang(model);
+        return khach_hangDAO.findOne(id);
+    }
+
+    @Override
+    public void edit_khachHang(khach_hang_model model) {
+        khach_hang_model oldKhach_hang = khach_hangDAO.findOne(model.getId());
+        model.setCreatedDate(oldKhach_hang.getCreatedDate());
+        model.setCreatedBy(oldKhach_hang.getCreatedBy());
+        model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        model.setModifiedBy("");
+        khach_hangDAO.edit_khachHang(model);
+    }
+
+    @Override
+    public void delete_khachHang(Long[] ids) {
+        for (Long id : ids) {
+            khach_hangDAO.delete_khachHang(id);
+        }
+    }
+    
+}

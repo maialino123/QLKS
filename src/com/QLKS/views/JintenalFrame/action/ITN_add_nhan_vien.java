@@ -37,6 +37,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     boolean check = true;
 
     public interface CallBackAdd {
+
         void doAdd();
     }
 
@@ -165,9 +166,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel27 = new javax.swing.JLabel();
 
         setClosable(true);
-        setIconifiable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_hotel_star_20px.png"))); // NOI18N
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        setMaximumSize(new java.awt.Dimension(1173, 800));
+        setMinimumSize(new java.awt.Dimension(1173, 800));
+        setPreferredSize(new java.awt.Dimension(1173, 800));
 
         header.setBackground(new java.awt.Color(8, 13, 23));
         header.setPreferredSize(new java.awt.Dimension(1007, 50));
@@ -187,8 +189,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Thêm Mới Nhân Viên");
         header.add(jLabel3, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(header, java.awt.BorderLayout.PAGE_START);
 
         content1.setBackground(new java.awt.Color(48, 48, 48));
         content1.setPreferredSize(new java.awt.Dimension(550, 500));
@@ -421,8 +421,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         pnl_image.add(pnl_button_click, java.awt.BorderLayout.CENTER);
 
         content1.add(pnl_image);
-
-        getContentPane().add(content1, java.awt.BorderLayout.LINE_START);
 
         content2.setBackground(new java.awt.Color(48, 48, 48));
         content2.setPreferredSize(new java.awt.Dimension(550, 500));
@@ -819,7 +817,24 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         content2.add(button_add);
 
-        getContentPane().add(content2, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 1122, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(content1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(content1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -868,6 +883,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
     }//GEN-LAST:event_pnl_addMouseExited
 
+
     private void pnl_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseClicked
         List<nhan_vienModel> Listnhan_vien = nhan_vienService.findAll();
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
@@ -892,6 +908,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     mess_error.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
@@ -904,10 +921,16 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
-                if (email.length() == 0) {
+                nhan_vien = nhan_vienService.findByEmail(email);
+                if (nhan_vien.getEmail().equals(email) == true) {
+                    mess_err_email.setText("Email đã tồn tại!");
+                    check = false;
+                }
+                else if (email.length() == 0) {
                     mess_err_email.setText("Email Không được để trống!");
                     check = false;
                 } else if (email.length() > 150) {
@@ -917,11 +940,16 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     mess_err_email.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
 //                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> userName.equals(nhan_vien.getUserName())).findAny().orElse(nhan_vien);
-                if (userName.length() == 0) {
+                nhan_vien = nhan_vienService.findByUserName(userName);
+                if (nhan_vien.getUserName().equals(userName) == true) {
+                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
+                    check = false;
+                } else if (userName.length() == 0) {
                     mess_err_userName.setText("Tên đăng nhập không được để trống!");
                     check = false;
                 } else if (userName.length() > 50) {
@@ -935,6 +963,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     mess_err_email.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
@@ -948,6 +977,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     mess_err_password.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
@@ -965,11 +995,16 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     mess_err_password_check.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
             try {
 //                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> cmnd.equals(nhan_vien.getCmnd())).findAny().orElse(nhan_vien);
-                if (cmnd.length() == 0) {
+                nhan_vien = nhan_vienService.findByCmnd(cmnd);
+                if (nhan_vien.getCmnd().equals(cmnd) == true) {
+                    messa_err_cmnd.setText("CMND đã tồn tại trong hệ thống!");
+                    check = false;
+                } else if (cmnd.length() == 0) {
                     messa_err_cmnd.setText("CMND không Được để Trống!");
                     check = false;
                 } else if (cmnd.length() > 12 || cmnd.length() < 12) {
@@ -983,6 +1018,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                     messa_err_cmnd.setText("");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
 //            nhan_vien = Listnhan_vien.stream().filter(nhan_vienModel -> email.equals(nhan_vienModel.getEmail())).findAny().orElse(nhan_vien);
@@ -1001,7 +1037,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                 mess_err_email.setText("");
             }
 
-            while (check = true) {
+            if (check = true) {
                 nhan_vien.setName(name);
                 if (utilStartDate != null) {
                     java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
@@ -1020,6 +1056,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                         nhan_vien.setGender(gioiTinh);
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 nhan_vien.setEmail(email);
                 nhan_vien.setCmnd(cmnd);
@@ -1108,6 +1145,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         resetText();
         dispose();
     }//GEN-LAST:event_pnl_outMouseClicked
+
 
     private void txt_inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inputEmailActionPerformed
         // TODO add your handling code here:

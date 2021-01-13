@@ -11,11 +11,9 @@ import com.QLKS.Service.impl.nhan_vienService;
 import com.QLKS.model.nhan_vienModel;
 import com.QLKS.utils.security;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.plaf.basic.BasicButtonUI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,33 +30,30 @@ public class SigninForm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         nhanService = new nhan_vienService();
-        Component[] components = this.getContentPane().getComponents();
-
-        for (Component component : components) {
-            if (component instanceof JButton) {
-                ((JButton) component).setUI(new BasicButtonUI());
-            }
-        }
     }
 
     public nhan_vienModel getSignIn() {
         String message_empty = " Không được để trống!";
         String message_error = " Tài khoản hoặc mật khẩu không chính sác!";
-        boolean check = true;
+        boolean check_err = true;
 
         String userName = userName_txt.getText();
-        char[] password = password_txt.getPassword();
-
-        String passwordStr = new String(password);
+        String passwordStr = new String(password_txt.getPassword());
         String ms = "";
         jPanel2.removeAll();
-
-        if (userName.isEmpty() || passwordStr.isEmpty()) {
-            jPanel2.add(makeLoginMs(userName + message_empty));
-            check = false;
+       
+        
+        if (userName.length() == 0) {
+            jPanel2.add(makeLoginMs(message_empty));
+            check_err = false;
+        }
+        
+        if (passwordStr.length() == 0) {
+            jPanel2.add(makeLoginMs(message_empty));
+             check_err = false;
         }
 
-        if (check == true) {
+        if (check_err == true) {
             nhan_vienModel model = nhan_vienModel.getInstance();
             IAuthorization authorization = new Authorization(userName, passwordStr);
             model = nhanService.findByUserNameAndPassword(authorization);
@@ -68,7 +63,7 @@ public class SigninForm extends javax.swing.JFrame {
                     return model;
                 }
                 else {
-                    jPanel2.add(makeLoginMs(passwordStr + message_error));
+                    JOptionPane.showMessageDialog(this, "Tài Khoản Hoặc Mật Khẩu không chính sác");
                 }
             } else {
                 jPanel2.removeAll();
@@ -120,7 +115,7 @@ public class SigninForm extends javax.swing.JFrame {
         userName_txt.setBackground(new java.awt.Color(31, 36, 42));
         userName_txt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userName_txt.setForeground(new java.awt.Color(169, 224, 49));
-        userName_txt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(169, 224, 49)));
+        userName_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         userName_txt.setCaretColor(new java.awt.Color(169, 224, 49));
         userName_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +126,7 @@ public class SigninForm extends javax.swing.JFrame {
 
         password_txt.setBackground(new java.awt.Color(31, 36, 42));
         password_txt.setForeground(new java.awt.Color(169, 224, 49));
-        password_txt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(169, 224, 49)));
+        password_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         password_txt.setCaretColor(new java.awt.Color(169, 224, 49));
         jPanel1.add(password_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 280, 40));
 

@@ -33,7 +33,7 @@ public class nhan_vienService implements Inhan_vienService{
     @Override
     public nhan_vienModel add(nhan_vienModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
+        model.setCreatedBy(model.getName());
         model.setId_NQ(1);
         Long id = nhan_vienDAO.add(model);
         return nhan_vienDAO.findOne(id);
@@ -45,7 +45,7 @@ public class nhan_vienService implements Inhan_vienService{
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        model.setModifiedBy("");
+        model.setModifiedBy(model.getName());
         nhan_vienDAO.edit(model);
     }
 
@@ -59,6 +59,21 @@ public class nhan_vienService implements Inhan_vienService{
     @Override
     public nhan_vienModel findByUserNameAndPassword(IAuthorization authorization) {
         return nhan_vienDAO.findByUserNameAndPassword(authorization);
+    }
+
+    @Override
+    public nhan_vienModel findByUserName(String userName) {
+        return nhan_vienDAO.findByUserName(userName);
+    }
+
+    @Override
+    public nhan_vienModel findByEmail(String email) {
+        return nhan_vienDAO.findByEmail(email);
+    }
+
+    @Override
+    public nhan_vienModel findByCmnd(String cmnd) {
+        return nhan_vienDAO.findByCmnd(cmnd);
     }
     
     

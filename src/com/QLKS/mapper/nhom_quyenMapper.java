@@ -18,9 +18,9 @@ public class nhom_quyenMapper implements rowMapper<nhom_quyenModel>{
     @Override
     public nhom_quyenModel maprow(ResultSet rs) {
         try {
-            nhom_quyenModel model = nhom_quyenModel.getInstance();
+            nhom_quyenModel model = new nhom_quyenModel();
             model.setId(rs.getLong("id"));
-            model.setName(rs.getString("name"));
+            model.setName(rs.getString("name_NQ"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));
             model.setCreatedBy(rs.getString("createdBy"));
             if (rs.getTimestamp("modifiedDate") != null) {

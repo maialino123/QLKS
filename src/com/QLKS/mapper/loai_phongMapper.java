@@ -18,9 +18,9 @@ public class loai_phongMapper implements rowMapper<loai_phongModel> {
     @Override
     public loai_phongModel maprow(ResultSet rs) {
         try {
-            loai_phongModel model = loai_phongModel.getInstance();
+            loai_phongModel model = new loai_phongModel();
             model.setId(rs.getLong("id"));
-            model.setName(rs.getString("name"));
+            model.setName_LP(rs.getString("name_LP"));
             model.setPrice(rs.getFloat("price"));
             model.setMaxPeople(rs.getInt("maxPeople"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));

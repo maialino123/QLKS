@@ -30,21 +30,35 @@ public class khuyen_maiDAO extends abstractDAO<khuyen_maiModel> implements Ikhuy
     }
 
     @Override
-    public void add(khuyen_maiModel model) {
+    public Long add(khuyen_maiModel model) {
         String sql = resourceBundleSQL.getString("add_khuyen_mai");
-        update(sql, model.getCode(),model.getValue(),model.getContent(),model.isType(),model.getCreatedDate(),model.getCreatedBy());
+        return insert(sql, model.getCode(), model.getValue(), model.getContent(), model.isType(), model.getCreatedDate(), model.getCreatedBy(), model.getThoi_gian_bat_dau(),model.getThoi_gian_ket_thuc());
     }
 
     @Override
-    public void edit(khuyen_maiModel model) {
-        String sql = resourceBundleSQL.getString("update_nhan_vien");
-        update(sql, model.getCode(),model.getValue(),model.getContent(),model.isType(),model.getCreatedDate(),model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(),model.getId());
+    public int edit(khuyen_maiModel model) {
+        String sql = resourceBundleSQL.getString("update_khuyen_mai");
+        return update(sql, model.getCode(), model.getValue(), model.getContent(), model.isType(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(),model.getThoi_gian_bat_dau(),model.getThoi_gian_ket_thuc(), model.getId());
     }
 
     @Override
-    public void delete(Long id) {
-        String sql = resourceBundleSQL.getString("delete_nhan_vien");
-        update(sql, id);
+    public int delete(Long id) {
+        String sql = resourceBundleSQL.getString("delete_khuyen_mai");
+        return update(sql, id);
+    }
+
+    @Override
+    public khuyen_maiModel findByCode(String code) {
+        String sql = resourceBundleSQL.getString("get_code_khuyen_mai");
+        List<khuyen_maiModel> list = query(sql, new khuyen_maiMapper(), code);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public khuyen_maiModel findByType(boolean type) {
+        String sql = resourceBundleSQL.getString("get_type_khuyen_mai");
+        List<khuyen_maiModel> list = query(sql, new khuyen_maiMapper(), type);
+        return list.isEmpty() ? null : list.get(0);
     }
 
 }

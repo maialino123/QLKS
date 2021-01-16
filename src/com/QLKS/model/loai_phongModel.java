@@ -10,18 +10,10 @@ package com.QLKS.model;
  * @author Admin
  */
 public class loai_phongModel extends abstractModel {
-    //singleTon pattern
-    private static loai_phongModel instance = null;
-    public static loai_phongModel getInstance(){
-        if (instance == null) {
-            instance = new loai_phongModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private Long id;
-    private String name;
+    private String name_LP;
     private float price;
     private int maxPeople;
 
@@ -33,13 +25,15 @@ public class loai_phongModel extends abstractModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName_LP() {
+        return name_LP;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName_LP(String name_LP) {
+        this.name_LP = name_LP;
     }
+
+    
 
     public float getPrice() {
         return price;
@@ -56,6 +50,12 @@ public class loai_phongModel extends abstractModel {
     public void setMaxPeople(int maxPeople) {
         this.maxPeople = maxPeople;
     }
+
+    @Override
+    public String toString() {
+        return this.name_LP;
+    }
+    
     
     
 }

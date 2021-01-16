@@ -15,7 +15,8 @@ import java.util.List;
 public interface Iloai_phongDAO extends GenericDAO<loai_phongModel> {
     List<loai_phongModel> findAll();
     loai_phongModel findOne(Long id);
-    void add(loai_phongModel model);
-    void edit(loai_phongModel model);
-    void delete(Long id);
+    Long add(loai_phongModel model);
+    int edit(loai_phongModel model);
+    int delete(Long id);
+    loai_phongModel findByName(String name);
 }

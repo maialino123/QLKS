@@ -30,21 +30,28 @@ public class loai_dich_vuDAO extends abstractDAO<loai_dich_vuModel> implements I
     }
 
     @Override
-    public void add(loai_dich_vuModel model) {
+    public Long add(loai_dich_vuModel model) {
         String sql = resourceBundleSQL.getString("add_loai_dich_vu");
-        update(sql, model.getName(),model.getCreatedDate(), model.getCreatedBy());
+        return insert(sql, model.getName(), model.getCreatedDate(), model.getCreatedBy());
     }
 
     @Override
-    public void edit(loai_dich_vuModel model) {
+    public int edit(loai_dich_vuModel model) {
         String sql = resourceBundleSQL.getString("update_loai_dich_vu");
-        update(sql, model.getName(),model.getCreatedDate(), model.getCreatedBy(),model.getModifiedDate(),model.getModifiedBy(),model.getId());
+        return update(sql, model.getName(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_loai_dich_vu");
-        update(sql, id);
+        return update(sql, id);
+    }
+
+    @Override
+    public loai_dich_vuModel findByName(String name) {
+        String sql = resourceBundleSQL.getString("get_name_loai_dich_vu");
+        List<loai_dich_vuModel> list = query(sql, new loai_dich_vuMapper(), name);
+        return list.isEmpty() ? null : list.get(0);
     }
 
 }

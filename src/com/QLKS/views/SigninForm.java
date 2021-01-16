@@ -54,7 +54,7 @@ public class SigninForm extends javax.swing.JFrame {
         }
 
         if (check_err == true) {
-            nhan_vienModel model = nhan_vienModel.getInstance();
+            nhan_vienModel model = new nhan_vienModel();
             IAuthorization authorization = new Authorization(userName, passwordStr);
             model = nhanService.findByUserNameAndPassword(authorization);
             if (model != null) {

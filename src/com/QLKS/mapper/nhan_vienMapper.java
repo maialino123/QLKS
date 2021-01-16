@@ -21,7 +21,7 @@ public class nhan_vienMapper implements rowMapper<nhan_vienModel> {
     public nhan_vienModel maprow(ResultSet rs) {
         try {
             Blob blob = rs.getBlob("image");
-            nhan_vienModel model = nhan_vienModel.getInstance();
+            nhan_vienModel model = new nhan_vienModel();
             model.setId(rs.getLong("id"));
             model.setName(rs.getString("name"));
             model.setBirthDay(rs.getDate("birthDay"));
@@ -44,9 +44,9 @@ public class nhan_vienMapper implements rowMapper<nhan_vienModel> {
                 model.setModifiedBy(rs.getString("modifiedBy"));
             }
             try {
-                nhom_quyenModel nhom_quyen = nhom_quyenModel.getInstance();
+                nhom_quyenModel nhom_quyen = new nhom_quyenModel();
                 nhom_quyen.setId(rs.getLong("id"));
-                nhom_quyen.setName(rs.getString("name"));
+                nhom_quyen.setName(rs.getString("name_NQ"));
                 model.setNhom_quyen(nhom_quyen);
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -15,8 +15,8 @@ import java.util.List;
  *
  * @author Admin
  */
-public class loai_phongService implements Iloai_phongService{
-    
+public class loai_phongService implements Iloai_phongService {
+
     loai_phongDAO loai_phongDAO = new loai_phongDAO();
 
     @Override
@@ -26,31 +26,34 @@ public class loai_phongService implements Iloai_phongService{
 
     @Override
     public loai_phongModel findOne(Long id) {
-       return loai_phongDAO.findOne(id);
+        return loai_phongDAO.findOne(id);
     }
 
     @Override
-    public void add(loai_phongModel model) {
-       model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-       model.setCreatedBy("");
-       loai_phongDAO.add(model);
+    public Long add(loai_phongModel model) {
+        model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        model.setCreatedBy("");
+        return loai_phongDAO.add(model);
     }
 
     @Override
-    public void edit(loai_phongModel model) {
+    public int edit(loai_phongModel model) {
         loai_phongModel oldModel = loai_phongDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        loai_phongDAO.edit(model);
+        return loai_phongDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            loai_phongDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return loai_phongDAO.delete(ids);
     }
-    
+
+    @Override
+    public loai_phongModel findByName(String name) {
+        return loai_phongDAO.findByName(name);
+    }
+
 }

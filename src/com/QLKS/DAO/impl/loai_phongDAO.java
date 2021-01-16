@@ -31,21 +31,28 @@ public class loai_phongDAO extends abstractDAO<loai_phongModel> implements Iloai
     }
 
     @Override
-    public void add(loai_phongModel model) {
+    public Long add(loai_phongModel model) {
         String sql = resourceBundleSQL.getString("add_loai_phong");
-        update(sql, model.getName(), model.getPrice(), model.getMaxPeople(), model.getCreatedDate(), model.getCreatedBy());
+        return insert(sql, model.getName_LP(), model.getPrice(), model.getMaxPeople(), model.getCreatedDate(), model.getCreatedBy());
     }
 
     @Override
-    public void edit(loai_phongModel model) {
+    public int edit(loai_phongModel model) {
         String sql = resourceBundleSQL.getString("update_loai_phong");
-        update(sql, model.getName(), model.getPrice(), model.getMaxPeople(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
+        return update(sql, model.getName_LP(), model.getPrice(), model.getMaxPeople(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("get_one_loai_phong");
-        update(sql, id);
+        return update(sql, id);
+    }
+
+    @Override
+    public loai_phongModel findByName(String name) {
+        String sql = resourceBundleSQL.getString("get_name_loai_phong");
+        List<loai_phongModel> list = query(sql, new loai_phongMapper(), name);
+        return list.isEmpty() ? null : list.get(0);
     }
 
 }

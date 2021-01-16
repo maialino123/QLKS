@@ -30,27 +30,31 @@ public class thiet_biService implements Ithiet_biService{
     }
 
     @Override
-    public void add(thiet_biModel model) {
+    public Long add(thiet_biModel model) {
        model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
        model.setCreatedBy("");
-       thiet_biDAO.add(model);
+       Long id = thiet_biDAO.add(model);
+       return id;
     }
 
     @Override
-    public void edit(thiet_biModel model) {
+    public int edit(thiet_biModel model) {
        thiet_biModel oldModel = thiet_biDAO.findOne(model.getId());
        model.setCreatedDate(oldModel.getCreatedDate());
        model.setCreatedBy(oldModel.getCreatedBy());
        model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
        model.setModifiedBy("");
-       thiet_biDAO.edit(model);
+       return thiet_biDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            thiet_biDAO.delete(id);
-        }
+    public int delete(long ids) {
+            return thiet_biDAO.delete(ids);
+    }
+
+    @Override
+    public thiet_biModel findByName(String name) {
+        return thiet_biDAO.findByName(name);
     }
     
 }

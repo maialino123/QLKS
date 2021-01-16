@@ -15,7 +15,8 @@ import java.util.List;
 public interface Iloai_dich_vuDAO extends GenericDAO<loai_dich_vuModel> {
     List<loai_dich_vuModel> findAll();
     loai_dich_vuModel findOne(Long id);
-    void add(loai_dich_vuModel model);
-    void edit(loai_dich_vuModel model);
-    void delete(Long id);
+    Long add(loai_dich_vuModel model);
+    int edit(loai_dich_vuModel model);
+    int delete(Long id);
+    loai_dich_vuModel findByName(String name);
 }

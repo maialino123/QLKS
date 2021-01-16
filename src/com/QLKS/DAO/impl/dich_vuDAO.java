@@ -31,21 +31,21 @@ public class dich_vuDAO extends abstractDAO<dich_vuModel> implements Idich_vuDAO
     }
 
     @Override
-    public void add(dich_vuModel model) {
+    public Long add(dich_vuModel model) {
         String sql = resourceBundleSQL.getString("add_dich_vu");
-        update(sql, model.getId_LDV(), model.getPrice(), model.getCreatedDate(), model.getCreatedBy());
+        return insert(sql, model.getId_LDV(), model.getPrice(), model.getCreatedDate(), model.getCreatedBy(), model.getId_DV());
     }
 
     @Override
-    public void edit(dich_vuModel model) {
+    public int edit(dich_vuModel model) {
         String sql = resourceBundleSQL.getString("update_dich_vu");
-        update(sql, model.getId_LDV(), model.getPrice(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(),model.getId());
+        return update(sql, model.getId_LDV(), model.getPrice(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(),model.getId_DV(),model.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_dich_vu");
-        update(sql, id);
+        return update(sql, id);
     }
 
 

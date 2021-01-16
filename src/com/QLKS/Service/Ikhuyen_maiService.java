@@ -15,7 +15,9 @@ import java.util.List;
 public interface Ikhuyen_maiService {
     List<khuyen_maiModel> findAll();
     khuyen_maiModel findOne(Long id);
-    void add(khuyen_maiModel model);
-    void edit(khuyen_maiModel model);
-    void delete(Long[] ids);
+    Long add(khuyen_maiModel model);
+    int edit(khuyen_maiModel model);
+    int delete(Long ids);
+    khuyen_maiModel findByCode(String code);
+    khuyen_maiModel findByType(boolean type);
 }

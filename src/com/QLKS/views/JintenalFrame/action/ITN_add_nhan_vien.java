@@ -15,7 +15,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -32,18 +31,20 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
      * Creates new form ITN_add_nhan_Viet
      */
     nhan_vienService nhan_vienService = new nhan_vienService();
-    nhan_vienModel nhan_vien = nhan_vienModel.getInstance();
+    nhan_vienModel nhan_vien = new nhan_vienModel();
+    private byte[] nhanVienImage;
     CallBackAdd cb;
-    boolean check = true;
-
+    
     public interface CallBackAdd {
-
+        
         void doAdd();
     }
-
+    
     public ITN_add_nhan_vien(CallBackAdd cb) {
         initComponents();
         this.cb = cb;
+        resetText();
+        
     }
 
     /**
@@ -613,20 +614,35 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space8.setBackground(new java.awt.Color(48, 48, 48));
         line_space8.setPreferredSize(new java.awt.Dimension(550, 40));
-        line_space8.setLayout(new java.awt.BorderLayout());
 
         jPanel10.setBackground(new java.awt.Color(48, 48, 48));
         jPanel10.setPreferredSize(new java.awt.Dimension(80, 40));
-        line_space8.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
         jPanel11.setBackground(new java.awt.Color(48, 48, 48));
         jPanel11.setPreferredSize(new java.awt.Dimension(80, 40));
-        line_space8.add(jPanel11, java.awt.BorderLayout.LINE_END);
 
         mess_err_password_check.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         mess_err_password_check.setForeground(new java.awt.Color(255, 0, 0));
         mess_err_password_check.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
-        line_space8.add(mess_err_password_check, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout line_space8Layout = new javax.swing.GroupLayout(line_space8);
+        line_space8.setLayout(line_space8Layout);
+        line_space8Layout.setHorizontalGroup(
+            line_space8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(line_space8Layout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mess_err_password_check, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        line_space8Layout.setVerticalGroup(
+            line_space8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mess_err_password_check, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         content2.add(line_space8);
 
@@ -821,11 +837,11 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 1122, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(content1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(content1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 613, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -843,7 +859,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
         btn.setIcon(a);
     }
-
+    
     public void hideShowMenu(JPanel menuClick, boolean check1, JLabel button) {
         if (check1 == true) {
             menuClick.setPreferredSize(new Dimension(150, this.getHeight()));
@@ -853,7 +869,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             changeimage(button, "/com/QLKS/icon/icon_button/custom-iconMenu.png");
         }
     }
-
+    
     public void resetText() {
         txt_inputName.setText("");
         txt_inputEmail.setText("");
@@ -882,10 +898,9 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         changeColor(pnl_add, new Color(11, 11, 11));
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
     }//GEN-LAST:event_pnl_addMouseExited
-
+    
 
     private void pnl_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseClicked
-        List<nhan_vienModel> Listnhan_vien = nhan_vienService.findAll();
         changeimage(line_icon_button, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
         String name = txt_inputName.getText();
         String email = txt_inputEmail.getText();
@@ -895,187 +910,171 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         String cmnd = txt_inputCMND.getText();
         String gioiTinh = "nam";
         java.util.Date utilStartDate = jDateChooser1.getDate();
-
-        if (!Listnhan_vien.isEmpty()) {
-            try {
-                if (name.length() == 0) {
-                    mess_error.setText("Tên không được để trống!");
-                    check = false;
-                } else if (name.length() > 100) {
-                    mess_error.setText("Tên phải lớn hơn 100 ký tự!");
-                    check = false;
-                } else {
-                    mess_error.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+        boolean check_add = true;
+        try {
+            if (name.length() == 0) {
+                mess_error.setText("Tên không được để trống!");
+                check_add = false;
+            } else if (name.length() > 100) {
+                mess_error.setText("Tên phải lớn hơn 100 ký tự!");
+                check_add = false;
+            } else {
+                mess_error.setText("");
             }
-
-            try {
-                if (utilStartDate == null) {
-                    txt_err_date.setText("Không được để trống!");
-                    check = false;
-
-                } else {
-                    txt_err_date.setText("");
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            if (utilStartDate == null) {
+                txt_err_date.setText("Không được để trống!");
+                check_add = false;
+                
+            } else {
+                txt_err_date.setText("");
+                
             }
-
-            try {
-                nhan_vien = nhan_vienService.findByEmail(email);
-                if (nhan_vien.getEmail().equals(email) == true) {
-                    mess_err_email.setText("Email đã tồn tại!");
-                    check = false;
-                }
-                else if (email.length() == 0) {
-                    mess_err_email.setText("Email Không được để trống!");
-                    check = false;
-                } else if (email.length() > 150) {
-                    mess_err_email.setText("Email phải lớn hơn 150 ký tự!");
-                    check = false;
-                } else {
-                    mess_err_email.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
-//                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> userName.equals(nhan_vien.getUserName())).findAny().orElse(nhan_vien);
-                nhan_vien = nhan_vienService.findByUserName(userName);
-                if (nhan_vien.getUserName().equals(userName) == true) {
-                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
-                    check = false;
-                } else if (userName.length() == 0) {
-                    mess_err_userName.setText("Tên đăng nhập không được để trống!");
-                    check = false;
-                } else if (userName.length() > 50) {
-                    mess_err_userName.setText("Tên đăng nhập phải nhỏ hơn 50 ký tự!");
-                    check = false;
-                } //                else if (nhan_vien != null) {
-                //                    mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
-                //                    check = false;
-                //                } 
-                else {
-                    mess_err_email.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
-                if (passwordStr.length() == 0) {
-                    mess_err_password.setText("Mật khẩu không được để trống!");
-                    check = false;
-                } else if (passwordStr.length() < 8 || passwordStr.length() > 50) {
-                    mess_err_password.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
-                    check = false;
-                } else {
-                    mess_err_password.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
-                if (passwordStr_check.length() == 0) {
-                    mess_err_password_check.setText("Không được để trống!");
-                    check = false;
-                } else if (passwordStr_check.length() < 3 || passwordStr_check.length() > 50) {
-                    mess_err_password_check.setText("Mật khẩu phải từ 3 -> 50 ký tự!");
-                    check = false;
-                }
-                if (passwordStr_check.equals(passwordStr) == false) {
-                    mess_err_password_check.setText("Mật khẩu nhập lại không đúng!");
-                    check = false;
-                } else {
-                    mess_err_password_check.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
-//                nhan_vien = Listnhan_vien.stream().filter(nhan_vien -> cmnd.equals(nhan_vien.getCmnd())).findAny().orElse(nhan_vien);
-                nhan_vien = nhan_vienService.findByCmnd(cmnd);
-                if (nhan_vien.getCmnd().equals(cmnd) == true) {
-                    messa_err_cmnd.setText("CMND đã tồn tại trong hệ thống!");
-                    check = false;
-                } else if (cmnd.length() == 0) {
-                    messa_err_cmnd.setText("CMND không Được để Trống!");
-                    check = false;
-                } else if (cmnd.length() > 12 || cmnd.length() < 12) {
-                    messa_err_cmnd.setText("CMND phải bằng 12 ký tự");
-                    check = false;
-                } //                else if (nhan_vien != null) {
-                //                    messa_err_cmnd.setText("CMND đã tồn tại");
-                //                    check = false;
-                //                } 
-                else {
-                    messa_err_cmnd.setText("");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-//            nhan_vien = Listnhan_vien.stream().filter(nhan_vienModel -> email.equals(nhan_vienModel.getEmail())).findAny().orElse(nhan_vien);
-            if (email.length() == 0) {
-                mess_err_email.setText("Email không được để trống!");
-                check = false;
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            nhan_vienModel getEmailNV = nhan_vienService.findByEmail(email);
+            if (getEmailNV != null) {
+                mess_err_email.setText("Email đã tồn tại!");
+                check_add = false;
+            } else if (email.length() == 0) {
+                mess_err_email.setText("Email Không được để trống!");
+                check_add = false;
             } else if (email.length() > 150) {
-                mess_err_email.setText("Email phải nhở hơn 150 ký tự!");
-                check = false;
-            } //            } else if (nhan_vien != null) {
-            //                mess_err_email.setText("Email đã tồn tại!");
-            //                check = false;
-            //            }
-            else {
+                mess_err_email.setText("Email phải lớn hơn 150 ký tự!");
+                check_add = false;
+            } else {
                 mess_err_email.setText("");
             }
-
-            if (check = true) {
-                nhan_vien.setName(name);
-                if (utilStartDate != null) {
-                    java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-                    nhan_vien.setBirthDay(sqlStartDate);
-                } else {
-                    nhan_vien.setBirthDay(null);
-                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            nhan_vienModel getUserNameNV = nhan_vienService.findByUserName(userName);
+            if (getUserNameNV != null) {
+                mess_err_userName.setText("Tên đăng nhập đã tồn tại!");
+                check_add = false;
+            } else if (userName.length() == 0) {
+                mess_err_userName.setText("Tên đăng nhập không được để trống!");
+                check_add = false;
+            } else if (userName.length() > 50) {
+                mess_err_userName.setText("Tên đăng nhập phải nhỏ hơn 50 ký tự!");
+                check_add = false;
+            } else {
+                mess_err_email.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            if (passwordStr.length() == 0) {
+                mess_err_password.setText("Mật khẩu không được để trống!");
+                check_add = false;
+            } else if (passwordStr.length() < 8 || passwordStr.length() > 50) {
+                mess_err_password.setText("Mật khẩu phải từ 8 -> 50 ký tự!");
+                check_add = false;
+            } else {
+                mess_err_password.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            if (passwordStr_check.length() == 0) {
+                mess_err_password_check.setText("Không được để trống!");
+                check_add = false;
+            } else if (passwordStr_check.length() < 3 || passwordStr_check.length() > 50) {
+                mess_err_password_check.setText("Mật khẩu phải từ 3 -> 50 ký tự!");
+                check_add = false;
+            }
+            if (passwordStr_check.equals(passwordStr) == false) {
+                mess_err_password_check.setText("Mật khẩu nhập lại không đúng!");
+                check_add = false;
+            } else {
+                mess_err_password_check.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            
+            nhan_vienModel getCMnd_nhanVien = nhan_vienService.findByCmnd(cmnd);
+            if (getCMnd_nhanVien != null) {
+                messa_err_cmnd.setText("CMND đã tồn tại trong hệ thống!");
+                check_add = false;
+            } else if (cmnd.length() == 0) {
+                messa_err_cmnd.setText("CMND không Được để Trống!");
+                check_add = false;
+            } else if (cmnd.length() > 12 || cmnd.length() < 12) {
+                messa_err_cmnd.setText("CMND phải bằng 12 ký tự");
+                check_add = false;
+            } else {
+                messa_err_cmnd.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        if (check_add == true) {
+            nhan_vien.setName(name);
+            if (utilStartDate != null) {
+                java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+                nhan_vien.setBirthDay(sqlStartDate);
+            } else {
+                nhan_vien.setBirthDay(null);
+            }
+            
+            if (nhanVienImage == null) {
+                File fileDest = new File(("/com/QLKS/icon/icon_button/line_button_add_NV.png"));
                 try {
-                    if (radio_nam.isSelected()) {
-                        nhan_vien.setGender(gioiTinh);
-                    } else if (radio_nu.isSelected()) {
-                        gioiTinh = "nữ";
-                        nhan_vien.setGender(gioiTinh);
-                    } else if (radio_khac.isSelected()) {
-                        gioiTinh = "Khác";
-                        nhan_vien.setGender(gioiTinh);
-                    }
+                    ImageIcon icon = new ImageIcon(fileDest.getPath());
+                    Image img = imageHelper.resize(icon.getImage(), 180, 180);
+                    ImageIcon resizedIcon = new ImageIcon(img);
+                    lbl_showImage.setIcon(resizedIcon);
+                    nhanVienImage = imageHelper.toByteArray(img, "jpg");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                nhan_vien.setEmail(email);
-                nhan_vien.setCmnd(cmnd);
-                nhan_vien.setUserName(userName);
-                nhan_vien.setPassword(passwordStr);
-                System.out.println(nhan_vien.getName().toString());
-
-                nhan_vien = nhan_vienService.add(nhan_vien);
-                if (nhan_vien != null) {
-                    JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thành Công!");
-                    cb.doAdd();
-                    resetText();
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thất Bại!");
+            }
+            try {
+                if (radio_nam.isSelected()) {
+                    nhan_vien.setGender(gioiTinh);
+                } else if (radio_nu.isSelected()) {
+                    gioiTinh = "nữ";
+                    nhan_vien.setGender(gioiTinh);
+                } else if (radio_khac.isSelected()) {
+                    gioiTinh = "Khác";
+                    nhan_vien.setGender(gioiTinh);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            nhan_vien.setEmail(email);
+            nhan_vien.setCmnd(cmnd);
+            nhan_vien.setUserName(userName);
+            nhan_vien.setPassword(passwordStr);
+            nhan_vien.setImage(nhanVienImage);
+            Long id = nhan_vienService.add(nhan_vien);
+            if (id > 0) {
+                JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thành Công!");
+                cb.doAdd();
+                resetText();
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thất Bại!");
             }
         }
-
+        
 
     }//GEN-LAST:event_pnl_addMouseClicked
 
@@ -1106,7 +1105,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
                 Image img = imageHelper.resize(icon.getImage(), 180, 180);
                 ImageIcon resizedIcon = new ImageIcon(img);
                 lbl_showImage.setIcon(resizedIcon);
-                nhan_vien.setImage(imageHelper.toByteArray(img, "jpg"));
+                nhanVienImage = imageHelper.toByteArray(img, "jpg");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1145,7 +1144,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         resetText();
         dispose();
     }//GEN-LAST:event_pnl_outMouseClicked
-
+    
 
     private void txt_inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inputEmailActionPerformed
         // TODO add your handling code here:

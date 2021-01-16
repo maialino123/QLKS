@@ -15,7 +15,7 @@ import java.util.List;
 public interface Idich_vuService {
      List<dich_vuModel> findAll();
     dich_vuModel findOne(Long id);
-    void add(dich_vuModel model);
-    void edit(dich_vuModel model);
-    void delete(Long[] ids);
+    Long add(dich_vuModel model);
+    int edit(dich_vuModel model);
+    int delete(Long ids);
 }

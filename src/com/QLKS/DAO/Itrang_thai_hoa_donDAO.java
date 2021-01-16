@@ -15,7 +15,8 @@ import java.util.List;
 public interface Itrang_thai_hoa_donDAO extends GenericDAO<trang_thai_hoa_donModel> {
     List<trang_thai_hoa_donModel> findAll();
     trang_thai_hoa_donModel findOne(Long id);
-    void add_TTHD(trang_thai_hoa_donModel model);
-    void edit(trang_thai_hoa_donModel model);
-    void delete(Long id);
+    Long add_TTHD(trang_thai_hoa_donModel model);
+    int edit(trang_thai_hoa_donModel model);
+    int delete(Long id);
+    trang_thai_hoa_donModel findByName(String name);
 }

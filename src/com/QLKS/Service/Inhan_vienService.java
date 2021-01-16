@@ -16,7 +16,7 @@ import java.util.List;
 public interface Inhan_vienService {
     List<nhan_vienModel> findAll();
     nhan_vienModel findOne(Long id);
-    nhan_vienModel add(nhan_vienModel model);
+    Long add(nhan_vienModel model);
     void edit(nhan_vienModel model);
     void delete(Long[] ids);
     nhan_vienModel findByUserNameAndPassword(IAuthorization authorization);

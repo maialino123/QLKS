@@ -13,15 +13,7 @@ import java.sql.Date;
  */
 public class nhan_vienModel extends abstractModel {
     
-     //singleTon pattern
-    private static nhan_vienModel instance = null;
-    public static nhan_vienModel getInstance(){
-        if (instance == null) {
-            instance = new nhan_vienModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+    
     
     
     private Long id;
@@ -35,7 +27,7 @@ public class nhan_vienModel extends abstractModel {
     private String cmnd;
     private String degree;
     private long id_NQ;
-    private nhom_quyenModel nhom_quyen = nhom_quyenModel.getInstance();
+    private nhom_quyenModel nhom_quyen = new nhom_quyenModel();
     private String random_code_pass;
 
     public String getRandom_code_pass() {

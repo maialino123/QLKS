@@ -30,25 +30,26 @@ public class phongService implements IphongService {
     }
 
     @Override
-    public void add(phongModel model) {
+    public Long add(phongModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
-        phongDAO.add(model);
+        model.setStatus(false);
+        return phongDAO.add(model);
     }
 
     @Override
-    public void edit(phongModel model) {
+    public int edit(phongModel model) {
         phongModel oldModel = phongDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        phongDAO.edit(model);
+        return phongDAO.edit(model);
     }
 
     @Override
-    public void delete(String id) {
-        phongDAO.delete(id);
+    public int delete(String id) {
+        return phongDAO.delete(id);
     }
 
     @Override

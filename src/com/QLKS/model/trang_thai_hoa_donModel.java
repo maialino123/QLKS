@@ -10,15 +10,7 @@ package com.QLKS.model;
  * @author Admin
  */
 public class trang_thai_hoa_donModel extends abstractModel {
-    //singleTon pattern
-    private static trang_thai_hoa_donModel instance = null;
-    public static trang_thai_hoa_donModel getInstance(){
-        if (instance == null) {
-            instance = new trang_thai_hoa_donModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+    
     private Long id;
     private String name;
 

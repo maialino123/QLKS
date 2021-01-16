@@ -12,15 +12,7 @@ import java.sql.Date;
  * @author Admin
  */
 public class hoa_donModel extends abstractModel {
-    //singleTon pattern
-    private static hoa_donModel instance = null;
-    public static hoa_donModel getInstance(){
-        if (instance == null) {
-            instance = new hoa_donModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     private Long id;
     private Long id_KH;
     private String id_P;

@@ -18,7 +18,7 @@ public class quyenMapper implements rowMapper<quyenModel> {
     @Override
     public quyenModel maprow(ResultSet rs) {
         try {
-            quyenModel model = quyenModel.getInstance();
+            quyenModel model = new quyenModel();
             model.setId(rs.getLong("id"));
             model.setName(rs.getString("name"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));

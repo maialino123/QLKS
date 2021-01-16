@@ -18,7 +18,7 @@ public class su_dung_dich_vuMapper implements rowMapper<su_dung_dich_vuModel>{
     @Override
     public su_dung_dich_vuModel maprow(ResultSet rs) {
         try {
-            su_dung_dich_vuModel model = su_dung_dich_vuModel.getInstance();
+            su_dung_dich_vuModel model = new su_dung_dich_vuModel();
             model.setId(rs.getLong("id"));
             model.setId_DV(rs.getLong("id_LDV"));
             model.setAmount(rs.getInt("amount"));

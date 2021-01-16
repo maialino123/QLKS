@@ -15,7 +15,8 @@ import java.util.List;
 public interface Itrang_thai_hoa_donService  {
     List<trang_thai_hoa_donModel> findAll();
     trang_thai_hoa_donModel findOne(Long id);
-    void add_TTHD(trang_thai_hoa_donModel model);
-    void edit(trang_thai_hoa_donModel model);
-    void delete(Long[] ids);
+    Long add_TTHD(trang_thai_hoa_donModel model);
+    int edit(trang_thai_hoa_donModel model);
+    int delete(Long ids);
+    trang_thai_hoa_donModel findByName(String name);
 }

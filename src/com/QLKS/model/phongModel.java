@@ -10,20 +10,21 @@ package com.QLKS.model;
  * @author Admin
  */
 public class phongModel extends abstractModel {
-    //singleTon pattern
-    private static phongModel instance = null;
-    public static phongModel getInstance(){
-        if (instance == null) {
-            instance = new phongModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private String id;
     private Long id_LP;
     private boolean status;
+    private loai_phongModel loai_phong = new loai_phongModel();
 
+    public loai_phongModel getLoai_phong() {
+        return loai_phong;
+    }
+
+    public void setLoai_phong(loai_phongModel loai_phong) {
+        this.loai_phong = loai_phong;
+    }
+    
     public boolean isStatus() {
         return status;
     }

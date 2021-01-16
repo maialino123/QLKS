@@ -11,15 +11,7 @@ package com.QLKS.model;
  */
 public class su_dung_dich_vuModel {
     
-     //singleTon pattern
-    private static su_dung_dich_vuModel instance = null;
-    public static su_dung_dich_vuModel getInstance(){
-        if (instance == null) {
-            instance = new su_dung_dich_vuModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private Long id;
     private Long id_DV;

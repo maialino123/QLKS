@@ -10,15 +10,7 @@ package com.QLKS.model;
  * @author Admin
  */
 public class loai_dich_vuModel extends abstractModel {
-    //singleTon pattern
-    private static loai_dich_vuModel instance = null;
-    public static loai_dich_vuModel getInstance(){
-        if (instance == null) {
-            instance = new loai_dich_vuModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private Long  id;
     private String name;
@@ -37,6 +29,11 @@ public class loai_dich_vuModel extends abstractModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
     
     

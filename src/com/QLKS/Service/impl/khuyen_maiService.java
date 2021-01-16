@@ -15,8 +15,8 @@ import java.util.List;
  *
  * @author Admin
  */
-public class khuyen_maiService implements Ikhuyen_maiService{
-    
+public class khuyen_maiService implements Ikhuyen_maiService {
+
     khuyen_maiDAO khuyen_maiDAO = new khuyen_maiDAO();
 
     @Override
@@ -30,27 +30,35 @@ public class khuyen_maiService implements Ikhuyen_maiService{
     }
 
     @Override
-    public void add(khuyen_maiModel model) {
+    public Long add(khuyen_maiModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
-        khuyen_maiDAO.add(model);
+        return khuyen_maiDAO.add(model);
     }
 
     @Override
-    public void edit(khuyen_maiModel model) {
+    public int edit(khuyen_maiModel model) {
         khuyen_maiModel oldModel = khuyen_maiDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        khuyen_maiDAO.edit(model);
+        return khuyen_maiDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            khuyen_maiDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return khuyen_maiDAO.delete(ids);
     }
-    
+
+    @Override
+    public khuyen_maiModel findByCode(String code) {
+        return khuyen_maiDAO.findByCode(code);
+    }
+
+    @Override
+    public khuyen_maiModel findByType(boolean type) {
+        return khuyen_maiDAO.findByType(type);
+    }
+
 }

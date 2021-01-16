@@ -15,7 +15,8 @@ import java.util.List;
 public interface Ithiet_biService {
     List<thiet_biModel> findAll();
     thiet_biModel findOne(Long id);
-    void add(thiet_biModel model);
-    void edit(thiet_biModel model);
-    void delete(Long[] ids);
+    Long add(thiet_biModel model);
+    int edit(thiet_biModel model);
+    int delete(long ids);
+    thiet_biModel findByName(String name);
 }

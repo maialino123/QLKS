@@ -31,12 +31,12 @@ public class nhan_vienService implements Inhan_vienService{
     }
 
     @Override
-    public nhan_vienModel add(nhan_vienModel model) {
+    public Long add(nhan_vienModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy(model.getName());
         model.setId_NQ(1);
         Long id = nhan_vienDAO.add(model);
-        return nhan_vienDAO.findOne(id);
+        return id;
     }
 
     @Override

@@ -134,7 +134,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
     }
 
     @Override
-    public void update(String sql, Object... parameters) {
+    public int update(String sql, Object... parameters) {
         Connection conn = null;
         CallableStatement stm = null;
         try {
@@ -142,8 +142,9 @@ public class abstractDAO<T> implements GenericDAO<T> {
             conn.setAutoCommit(false);
             stm = conn.prepareCall(sql);
             setParameter(stm, parameters);
-            stm.executeUpdate();
+            int key = stm.executeUpdate();
             conn.commit();
+            return key;
         } catch (SQLException e) {
             try {
                 System.err.println(e.getMessage());
@@ -163,7 +164,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
                 System.out.println(e2.getMessage());
             }
         }
-
+        return 0;
     }
 
     private void setParameter(PreparedStatement stm, Object[] parameters) {

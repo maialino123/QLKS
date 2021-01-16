@@ -30,21 +30,28 @@ public class trang_thai_hoa_donDAO extends abstractDAO<trang_thai_hoa_donModel> 
     }
 
     @Override
-    public void add_TTHD(trang_thai_hoa_donModel model) {
+    public Long add_TTHD(trang_thai_hoa_donModel model) {
         String sql = resourceBundleSQL.getString("add_trang_thai_hoa_don");
-        update(sql, model.getName(),model.getCreatedDate(), model.getCreatedBy());
+        return insert(sql, model.getName(), model.getCreatedDate(), model.getCreatedBy());
     }
 
     @Override
-    public void edit(trang_thai_hoa_donModel model) {
+    public int edit(trang_thai_hoa_donModel model) {
         String sql = resourceBundleSQL.getString("update_trang_thai_hoa_don");
-        update(sql, model.getName(),model.getCreatedDate(), model.getCreatedBy(),model.getModifiedDate(),model.getModifiedBy(),model.getId());
+        return update(sql, model.getName(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_trang_thai_hoa_don");
-        update(sql, id);
+        return update(sql, id);
+    }
+
+    @Override
+    public trang_thai_hoa_donModel findByName(String name) {
+        String sql = resourceBundleSQL.getString("get_name_trang_thai_hoa_don");
+        List<trang_thai_hoa_donModel> list = query(sql, new trang_thai_hoa_donMapper(), name);
+        return list.isEmpty() ? null : list.get(0);
     }
 
 }

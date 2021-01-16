@@ -18,9 +18,9 @@ public class trang_thai_hoa_donMapper implements rowMapper<trang_thai_hoa_donMod
     @Override
     public trang_thai_hoa_donModel maprow(ResultSet rs) {
         try {
-            trang_thai_hoa_donModel model = trang_thai_hoa_donModel.getInstance();
+            trang_thai_hoa_donModel model = new trang_thai_hoa_donModel();
            model.setId(rs.getLong("id"));
-           model.setName(rs.getString("name"));
+           model.setName(rs.getString("name_TTHD"));
            model.setCreatedDate(rs.getTimestamp("createdDate"));
            model.setCreatedBy(rs.getString("createdBy"));
             if (rs.getTimestamp("modifiedDate") != null) {

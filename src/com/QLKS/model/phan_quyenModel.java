@@ -10,16 +10,7 @@ package com.QLKS.model;
  * @author Admin
  */
 public class phan_quyenModel {
-    
-     //singleTon pattern
-    private static phan_quyenModel instance = null;
-    public static phan_quyenModel getInstance(){
-        if (instance == null) {
-            instance = new phan_quyenModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     
     private Long id_Q;

@@ -5,25 +5,38 @@
  */
 package com.QLKS.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Admin
  */
 public class khuyen_maiModel extends abstractModel {
-    //singleTon pattern
-    private static khuyen_maiModel instance = null;
-    public static khuyen_maiModel getInstance(){
-        if (instance == null) {
-            instance = new khuyen_maiModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     private Long id;
     private String code;
     private float value;
     private String content;
     private boolean type;
+    private Date thoi_gian_bat_dau;
+    private Date thoi_gian_ket_thuc;
+
+    public Date getThoi_gian_bat_dau() {
+        return thoi_gian_bat_dau;
+    }
+
+    public void setThoi_gian_bat_dau(Date thoi_gian_bat_dau) {
+        this.thoi_gian_bat_dau = thoi_gian_bat_dau;
+    }
+
+    public Date getThoi_gian_ket_thuc() {
+        return thoi_gian_ket_thuc;
+    }
+
+    public void setThoi_gian_ket_thuc(Date thoi_gian_ket_thuc) {
+        this.thoi_gian_ket_thuc = thoi_gian_ket_thuc;
+    }
+    
 
     public Long getId() {
         return id;

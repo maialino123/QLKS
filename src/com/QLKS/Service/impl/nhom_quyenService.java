@@ -6,11 +6,12 @@
 package com.QLKS.Service.impl;
 
 import com.QLKS.DAO.INhom_quyenDAO;
+import com.QLKS.DAO.impl.nhom_quyenDAO;
 import com.QLKS.Service.Inhom_quyenService;
 import com.QLKS.model.nhom_quyenModel;
 import java.sql.Timestamp;
 import java.util.List;
-import javax.inject.Inject;
+
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.inject.Inject;
  */
 public class nhom_quyenService implements Inhom_quyenService{
     
-    @Inject private INhom_quyenDAO nhom_quyenDAO;
+    nhom_quyenDAO nhom_quyenDAO = new nhom_quyenDAO();
 
     @Override
     public List<nhom_quyenModel> findAll() {

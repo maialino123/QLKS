@@ -15,7 +15,7 @@ import java.util.List;
 public interface Idich_vuDAO extends GenericDAO<dich_vuModel> {
     List<dich_vuModel> findAll();
     dich_vuModel findOne(Long id);
-    void add(dich_vuModel model);
-    void edit(dich_vuModel model);
-    void delete(Long id);
+    Long add(dich_vuModel model);
+    int edit(dich_vuModel model);
+    int delete(Long id);
 }

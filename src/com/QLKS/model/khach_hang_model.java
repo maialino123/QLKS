@@ -12,15 +12,7 @@ import java.sql.Date;
  * @author Admin
  */
 public class khach_hang_model extends abstractModel {
-    //singleTon pattern
-    private static khach_hang_model instance = null;
-    public static khach_hang_model getInstance(){
-        if (instance == null) {
-            instance = new khach_hang_model();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private Long id;
     private String name;

@@ -15,8 +15,8 @@ import java.util.List;
  *
  * @author Admin
  */
-public class trang_thai_hoa_donService implements Itrang_thai_hoa_donService{
-    
+public class trang_thai_hoa_donService implements Itrang_thai_hoa_donService {
+
     trang_thai_hoa_donDAO trang_thai_hoa_donDAO = new trang_thai_hoa_donDAO();
 
     @Override
@@ -30,27 +30,30 @@ public class trang_thai_hoa_donService implements Itrang_thai_hoa_donService{
     }
 
     @Override
-    public void add_TTHD(trang_thai_hoa_donModel model) {
+    public Long add_TTHD(trang_thai_hoa_donModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
-       trang_thai_hoa_donDAO.add_TTHD(model);
+        return trang_thai_hoa_donDAO.add_TTHD(model);
     }
 
     @Override
-    public void edit(trang_thai_hoa_donModel model) {
+    public int edit(trang_thai_hoa_donModel model) {
         trang_thai_hoa_donModel oldModel = trang_thai_hoa_donDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        trang_thai_hoa_donDAO.edit(model);
+        return trang_thai_hoa_donDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            trang_thai_hoa_donDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return trang_thai_hoa_donDAO.delete(ids);
     }
-    
+
+    @Override
+    public trang_thai_hoa_donModel findByName(String name) {
+        return trang_thai_hoa_donDAO.findByName(name);
+    }
+
 }

@@ -18,9 +18,9 @@ public class loai_dich_vuMapper implements rowMapper<loai_dich_vuModel> {
     @Override
     public loai_dich_vuModel maprow(ResultSet rs) {
         try {
-            loai_dich_vuModel model = loai_dich_vuModel.getInstance();
+            loai_dich_vuModel model = new loai_dich_vuModel();
             model.setId(rs.getLong("id"));
-            model.setName(rs.getString("name"));
+            model.setName(rs.getString("name_LDV"));
             model.setCreatedDate(rs.getTimestamp("createdDate"));
             model.setCreatedBy(rs.getString("createdBy"));
             if (rs.getTimestamp("modifiedDate") != null) {

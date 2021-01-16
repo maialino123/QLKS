@@ -18,7 +18,7 @@ public class hoa_donMapper implements rowMapper<hoa_donModel> {
     @Override
     public hoa_donModel maprow(ResultSet rs) {
         try {
-            hoa_donModel model = hoa_donModel.getInstance();
+            hoa_donModel model = new hoa_donModel();
             model.setId(rs.getLong("id"));
             model.setId_KH(rs.getLong("id_KH"));
             model.setId_P(rs.getString("id_P"));

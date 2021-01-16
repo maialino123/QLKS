@@ -467,7 +467,7 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame implements ITN_
              e.printStackTrace();
         }
 
-        if (check_pass = true) {
+        if (check_pass == true) {
             nhan_vien.setPassword(newPassword);
             nhan_vien.setRandom_code_pass(String.valueOf(randomCode.randomCodeCheck(1000, 9999)));
             final String userName_email = "Nguyenbatu10111@gmail.com";

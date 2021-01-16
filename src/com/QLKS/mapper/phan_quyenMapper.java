@@ -18,7 +18,7 @@ public class phan_quyenMapper implements rowMapper<phan_quyenModel> {
     @Override
     public phan_quyenModel maprow(ResultSet rs) {
         try {
-            phan_quyenModel model = phan_quyenModel.getInstance();
+            phan_quyenModel model = new phan_quyenModel();
             model.setId_Q(rs.getLong("id_Q"));
             model.setId_NQ(rs.getLong("id_NQ"));
             return model;

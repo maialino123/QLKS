@@ -15,9 +15,9 @@ import java.util.List;
 public interface Iphong_DAO extends GenericDAO<phongModel> {
     List<phongModel> findAll();
     phongModel findOne(String id);
-    void add(phongModel model);
-    void edit(phongModel model);
-    void delete(String id);
+    Long add(phongModel model);
+    int edit(phongModel model);
+    int delete(String id);
     List<phongModel> findByStatus(boolean status);
     
 }

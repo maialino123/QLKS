@@ -15,7 +15,8 @@ import java.util.List;
 public interface Iloai_phongService {
     List<loai_phongModel> findAll();
     loai_phongModel findOne(Long id);
-    void add(loai_phongModel model);
-    void edit(loai_phongModel model);
-    void delete(Long[] ids);
+    Long add(loai_phongModel model);
+    int edit(loai_phongModel model);
+    int delete(Long ids);
+    loai_phongModel findByName(String name);
 }

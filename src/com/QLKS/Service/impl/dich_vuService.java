@@ -16,41 +16,39 @@ import java.util.List;
  * @author Admin
  */
 public class dich_vuService implements Idich_vuService {
-    
+
     dich_vuDAO dich_vuDAO = new dich_vuDAO();
-    
+
     @Override
     public List<dich_vuModel> findAll() {
         return dich_vuDAO.findAll();
     }
-    
+
     @Override
     public dich_vuModel findOne(Long id) {
         return dich_vuDAO.findOne(id);
     }
-    
+
     @Override
-    public void add(dich_vuModel model) {
+    public Long add(dich_vuModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
-        dich_vuDAO.add(model);
+        return dich_vuDAO.add(model);
     }
-    
+
     @Override
-    public void edit(dich_vuModel model) {
+    public int edit(dich_vuModel model) {
         dich_vuModel oldModel = dich_vuDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        dich_vuDAO.edit(model);
+        return dich_vuDAO.edit(model);
     }
-    
+
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            dich_vuDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return dich_vuDAO.delete(ids);
     }
-    
+
 }

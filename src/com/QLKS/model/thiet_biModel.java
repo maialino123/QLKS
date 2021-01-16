@@ -10,19 +10,21 @@ package com.QLKS.model;
  * @author Admin
  */
 public class thiet_biModel extends abstractModel{
-     //singleTon pattern
-    private static thiet_biModel instance = null;
-    public static thiet_biModel getInstance(){
-        if (instance == null) {
-            instance = new thiet_biModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     private Long id;
     private Long id_LP;
     private String name;
     private int amount;
+    private loai_phongModel loaiModel = new loai_phongModel();
+
+    public loai_phongModel getLoaiModel() {
+        return loaiModel;
+    }
+
+    public void setLoaiModel(loai_phongModel loaiModel) {
+        this.loaiModel = loaiModel;
+    }
+
 
     public Long getId() {
         return id;

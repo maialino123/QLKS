@@ -10,15 +10,7 @@ package com.QLKS.model;
  * @author Admin
  */
 public class quyenModel extends abstractModel {
-     //singleTon pattern
-    private static quyenModel instance = null;
-    public static quyenModel getInstance(){
-        if (instance == null) {
-            instance = new quyenModel();
-        }
-        return instance;
-    }
-    //singleTon pattern
+   
     
     private Long id;
     private String name;

@@ -7,11 +7,11 @@ package com.QLKS.views.JintenalFrame;
 
 import com.QLKS.Service.impl.nhan_vienService;
 import com.QLKS.model.nhan_vienModel;
+import com.QLKS.utils.functionBase;
 import com.QLKS.views.JintenalFrame.action.ITN_add_nhan_vien;
 import static com.QLKS.views.mainFrame.changeColor;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -32,13 +32,18 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame implements
      */
     private JDesktopPane jdek;
     boolean a = true;
-    List<nhan_vienModel> data = new ArrayList<>();
+    List<nhan_vienModel> data;
     nhan_vienService nhan_vienService;
+    nhan_vienModel nhan_vienModel;
     private DefaultTableModel dtmThietBi;
+    functionBase funbBase;
 
     public ITN_quan_ly_nhan_vien() {
         initComponents();
         nhan_vienService = new nhan_vienService();
+        nhan_vienModel = new nhan_vienModel();
+        dtmThietBi = new DefaultTableModel();
+        funbBase = new functionBase();
         loadData();
     }
 
@@ -410,7 +415,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame implements
         dtmThietBi = new DefaultTableModel(new Object[0][0], columnName);
         int index = 1;
         for (nhan_vienModel model : data) {
-            Object[] ob = new Object[8];
+            Object[] ob = new Object[9];
             ob[0] = index;
             ob[1] = model.getName();
             ob[2] = model.getBirthDay();
@@ -423,6 +428,7 @@ public class ITN_quan_ly_nhan_vien extends javax.swing.JInternalFrame implements
             index++;
         }
         table_nhan_vien.setModel(dtmThietBi);
+        funbBase.addCheckBox(8, table_nhan_vien);
     }
 
     public void changeimage(JLabel btn, String resourceImage) {

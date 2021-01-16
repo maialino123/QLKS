@@ -15,7 +15,8 @@ import java.util.List;
 public interface Ithiet_biDAO extends GenericDAO<thiet_biModel> {
     List<thiet_biModel> findAll();
     thiet_biModel findOne(Long id);
-    void add(thiet_biModel model);
-    void edit(thiet_biModel model);
-    void delete(Long id);
+    Long add(thiet_biModel model);
+    int edit(thiet_biModel model);
+    int delete(Long id);
+    thiet_biModel findByName(String name);
 }

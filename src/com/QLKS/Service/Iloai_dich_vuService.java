@@ -15,7 +15,8 @@ import java.util.List;
 public interface Iloai_dich_vuService {
     List<loai_dich_vuModel> findAll();
     loai_dich_vuModel findOne(Long id);
-    void add(loai_dich_vuModel model);
-    void edit(loai_dich_vuModel model);
-    void delete(Long[] ids);
+    Long add(loai_dich_vuModel model);
+    int edit(loai_dich_vuModel model);
+    int delete(Long ids);
+    loai_dich_vuModel findByName(String name);
 }

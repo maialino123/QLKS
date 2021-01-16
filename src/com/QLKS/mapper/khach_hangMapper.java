@@ -17,7 +17,7 @@ public class khach_hangMapper implements rowMapper<khach_hang_model> {
     @Override
     public khach_hang_model maprow(ResultSet rs) {
         try {
-            khach_hang_model model = khach_hang_model.getInstance();
+            khach_hang_model model = new khach_hang_model();
             model.setId(rs.getLong("id"));
             model.setName(rs.getString("name"));
             model.setBirthDay(rs.getDate("birthDay"));

@@ -19,5 +19,6 @@ public interface Iphong_DAO extends GenericDAO<phongModel> {
     int edit(phongModel model);
     int delete(String id);
     List<phongModel> findByStatus(boolean status);
+    int countPhong();
     
 }

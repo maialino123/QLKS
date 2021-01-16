@@ -14,9 +14,7 @@ import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
@@ -44,7 +42,6 @@ public class functionBase {
         }
         return false;
     }
-
     public void copyFileUsingStream(File source, File dest) throws IOException {
         InputStream is = null;
         OutputStream os = null;
@@ -133,4 +130,6 @@ public class functionBase {
         String format = decimalFormat.format(number);
         return format;
     }
+    
+    
 }

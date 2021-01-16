@@ -57,4 +57,9 @@ public class phongService implements IphongService {
         return phongDAO.findByStatus(status);
     }
 
+    @Override
+    public int countPhong() {
+        return phongDAO.countPhong();
+    }
+
 }

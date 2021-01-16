@@ -16,4 +16,5 @@ public interface GenericDAO<T> {
     <T> List<T> query(String sql, rowMapper<T> rowMapper, Object... parameters);
     Long insert(String sql,  Object... parameters);
     int update(String sql, Object... parameters);
+    int queryCount(String sql, Object... parameters);
 }

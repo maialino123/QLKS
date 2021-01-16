@@ -6,8 +6,10 @@
 package com.QLKS.views;
 
 import com.QLKS.Service.impl.khuyen_maiService;
+import com.QLKS.Service.impl.phongService;
 import com.QLKS.model.khuyen_maiModel;
 import com.QLKS.model.nhan_vienModel;
+import com.QLKS.model.phongModel;
 import com.QLKS.views.JintenalFrame.ITN_doi_mat_khau;
 import com.QLKS.views.JintenalFrame.ITN_quan_ly_dichvu;
 import com.QLKS.views.JintenalFrame.ITN_quan_ly_donvi;
@@ -18,15 +20,25 @@ import com.QLKS.views.JintenalFrame.ITN_quan_ly_nhan_vien;
 import com.QLKS.views.JintenalFrame.ITN_quan_ly_phong;
 import com.QLKS.views.JintenalFrame.ITN_quan_ly_thietbi;
 import com.QLKS.views.JintenalFrame.ITN_trang_thai_hoa_don;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 /**
@@ -46,6 +58,9 @@ public class mainFrame extends javax.swing.JFrame {
     khuyen_maiModel khuyen_maiModel;
     SimpleDateFormat sf;
     khuyen_maiService khuyen_maiService;
+    List<phongModel> listPhong;
+    phongModel phongModel;
+    phongService phongService;
 
     public mainFrame(nhan_vienModel nhanModel) {
         initComponents();
@@ -54,8 +69,11 @@ public class mainFrame extends javax.swing.JFrame {
         this.nhanModel = nhanModel;
         loController = new loginController();
         khuyen_maiModel = new khuyen_maiModel();
+        phongModel = new phongModel();
+        phongService = new phongService();
         sf = new SimpleDateFormat("dd/MM/yyyy");
         khuyen_maiService = new khuyen_maiService();
+        desktop_content.add(addLayoutRoom());
         checkCodeKM();
     }
 
@@ -1388,8 +1406,7 @@ public class mainFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1232, 684));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    
+
     public void checkCodeKM() {
         list_khuyenMai = khuyen_maiService.findAll();
         Date dateNow = new Date();
@@ -1421,6 +1438,150 @@ public class mainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, mess, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    public JPanel addLayoutRoom() {
+        JPanel jpanelRoom = new JPanel();
+        jpanelRoom.setBackground(new Color(98, 98, 98));
+        listPhong = phongService.findAll();
+        int countPhong = phongService.countPhong();
+        for (phongModel phong : listPhong) {
+            jpanelRoom.setLayout(new GridLayout(5, 3, countPhong, 20));
+            JPanel rommSmall = new JPanel();
+            if (phong.isStatus() == true) {
+                rommSmall.setBackground(new Color(239, 71, 90));
+            } else {
+                rommSmall.setBackground(new Color(23, 201, 83));
+            }
+            rommSmall.setPreferredSize(new Dimension(300, 300));
+            rommSmall.setLayout(new BorderLayout());
+            rommSmall.add(addPanelGroup(phong), BorderLayout.EAST);
+            rommSmall.add(addPanelContent(phong), BorderLayout.CENTER);
+            jpanelRoom.add(rommSmall);
+        }
+        return jpanelRoom;
+
+    }
+
+    public void Reload() {
+        mainFrame main = new mainFrame(nhanModel);
+        main.setVisible(true);
+        this.dispose();
+//        SwingUtilities.updateComponentTreeUI(main);
+//        main.invalidate();
+//        main.validate();
+//        main.repaint();
+    }
+
+    public JPanel addPanelGroup(phongModel phongModel) {
+        JPanel groupLabelClick = new JPanel();
+        JPanel pnl_clickCheckOut = new JPanel();
+        pnl_clickCheckOut.setBackground(new Color(0, 0, 0));
+        pnl_clickCheckOut.setPreferredSize(new Dimension(150, 40));
+        JPanel pnl_clickUptatus = new JPanel();
+        pnl_clickUptatus.setBackground(new Color(0, 0, 0));
+        pnl_clickUptatus.setPreferredSize(new Dimension(150, 40));
+        groupLabelClick.setPreferredSize(new Dimension(150, 120));
+        groupLabelClick.setBackground(new Color(36, 36, 36));
+        groupLabelClick.setLayout(new FlowLayout());
+        JLabel clickUpdateStatus = new JLabel("Đổi Trạng Thái", SwingConstants.CENTER);
+        clickUpdateStatus.setBackground(new Color(0, 0, 0));
+        clickUpdateStatus.setPreferredSize(new Dimension(150, 40));
+        clickUpdateStatus.setForeground(new Color(154, 231, 246));
+        clickUpdateStatus.setHorizontalAlignment(JLabel.CENTER);
+        clickUpdateStatus.setVerticalAlignment(JLabel.CENTER);
+        Label lineSpace = new Label();
+        lineSpace.setPreferredSize(new Dimension(150, 10));
+        JLabel clickCheckOut = new JLabel("Thanh Toán", SwingConstants.CENTER);
+        clickCheckOut.setBackground(new Color(0, 0, 0));
+        clickCheckOut.setPreferredSize(new Dimension(150, 40));
+        clickCheckOut.setForeground(new Color(154, 231, 246));
+        clickCheckOut.setHorizontalAlignment(JLabel.CENTER);
+        clickCheckOut.setVerticalAlignment(JLabel.CENTER);
+        pnl_clickCheckOut.add(clickCheckOut);
+        pnl_clickUptatus.add(clickUpdateStatus);
+        pnl_clickUptatus.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                int thongBao = JOptionPane.showConfirmDialog(addLayoutRoom(), "Đổi Trạng Thái?", "Thông báo!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (thongBao == JOptionPane.YES_OPTION) {
+                    phongModel changeSttP = new phongModel();
+                    changeSttP.setId(phongModel.getId());
+                    changeSttP.setId_LP(phongModel.getId_LP());
+                    if (phongModel.isStatus() == true) {
+                        changeSttP.setStatus(false);
+                    } else {
+                        changeSttP.setStatus(true);
+                    }
+                    int key = phongService.edit(changeSttP);
+                    if (key > 0) {
+                        try {
+                            JOptionPane.showMessageDialog(addLayoutRoom(), "Đổi Trạng Thái Thành Công!");
+                            Thread.sleep(500);
+                            Reload();
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                } else if (thongBao == JOptionPane.NO_OPTION) {
+                    try {
+                        Thread.sleep(500);
+                        Reload();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                changeColor(pnl_clickUptatus, new Color(23, 23, 23));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                changeColor(pnl_clickUptatus, new Color(0, 0, 0));
+            }
+        });
+        groupLabelClick.add(pnl_clickUptatus);
+        groupLabelClick.add(lineSpace);
+        groupLabelClick.add(pnl_clickCheckOut);
+        return groupLabelClick;
+
+    }
+
+    public JPanel addPanelContent(phongModel phongModel) {
+        JPanel groupContent = new JPanel();
+        if (phongModel.isStatus() == true) {
+            groupContent.setBackground(new Color(239, 71, 90));
+        } else {
+            groupContent.setBackground(new Color(23, 201, 83));
+        }
+        groupContent.setLayout(new FlowLayout());
+        JPanel txt_phongIDPnl = new JPanel();
+        txt_phongIDPnl.setBackground(new Color(0, 0, 0));
+        txt_phongIDPnl.setPreferredSize(new Dimension(200, 100));
+        JLabel txt_PhongID = new JLabel(phongModel.getId(), SwingConstants.CENTER);
+        txt_PhongID.setPreferredSize(new Dimension(200, 100));
+        txt_PhongID.setBackground(new Color(0, 0, 0));
+        txt_PhongID.setForeground(new Color(154, 231, 246));
+        txt_PhongID.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+        txt_PhongID.setHorizontalAlignment(JLabel.CENTER);
+        txt_PhongID.setVerticalAlignment(JLabel.CENTER);
+        txt_phongIDPnl.add(txt_PhongID);
+        groupContent.add(txt_phongIDPnl);
+        return groupContent;
+    }
+
     public JLabel getLbl_logout() {
         return lbl_logout;
     }
@@ -1953,7 +2114,7 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_Quan_ly_TTHDMouseExited
 
     private void button_don_viMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_don_viMouseClicked
-       changeColor(line_small14, new Color(6, 255, 0));
+        changeColor(line_small14, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall14, "/com/QLKS/icon/icon_button/iconclick_btn.png");
         ITN_quan_ly_donvi ITN_QLdon_vi = new ITN_quan_ly_donvi();
         desktop_content.add(ITN_QLdon_vi);
@@ -1961,12 +2122,12 @@ public class mainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button_don_viMouseClicked
 
     private void button_don_viMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_don_viMouseEntered
-         changeColor(button_don_vi, new Color(23, 23, 23));
+        changeColor(button_don_vi, new Color(23, 23, 23));
         changeColor(line_small14, new Color(16, 0, 255));
     }//GEN-LAST:event_button_don_viMouseEntered
 
     private void button_don_viMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_don_viMouseExited
-       changeColor(button_don_vi, new Color(48, 48, 48));
+        changeColor(button_don_vi, new Color(48, 48, 48));
         changeColor(line_small14, new Color(0, 0, 0));
         changeimage(changeImageButtonIconSmall14, "/com/QLKS/icon/icon_button/defaultIcon_menuSmall.png");
     }//GEN-LAST:event_button_don_viMouseExited

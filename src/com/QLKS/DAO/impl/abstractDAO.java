@@ -28,7 +28,7 @@ import javax.sql.rowset.serial.SerialBlob;
  * @author Admin
  */
 public class abstractDAO<T> implements GenericDAO<T> {
-   
+
     ResourceBundle resourceBundleSQL = ResourceBundle.getBundle("com.QLKS.resource.query_sql");
     ResourceBundle resourceBundle = ResourceBundle.getBundle("com.QLKS.resource.db");
 
@@ -97,7 +97,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
             int iUpdCount = stm.getUpdateCount();
             boolean bMoreResults = true;
             long myIdentVal = -1;
-            while (bMoreResults || iUpdCount!= -1) {
+            while (bMoreResults || iUpdCount != -1) {
                 rs = stm.getResultSet();
                 if (rs != null) {
                     rs.next();
@@ -194,7 +194,7 @@ public class abstractDAO<T> implements GenericDAO<T> {
                     Blob image;
                     if ((byte[]) param != null) {
                         image = new SerialBlob((byte[]) param);
-                       stm.setBlob(index, image);
+                        stm.setBlob(index, image);
                     } else {
                         image = null;
                         stm.setBlob(index, image);
@@ -204,6 +204,41 @@ public class abstractDAO<T> implements GenericDAO<T> {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    @Override
+    public int queryCount(String sql, Object... parameters) {
+        Connection conn = null;
+        CallableStatement stm = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            conn = getConnection();
+            stm = conn.prepareCall(sql);
+            setParameter(stm, parameters);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
     }
 
 }

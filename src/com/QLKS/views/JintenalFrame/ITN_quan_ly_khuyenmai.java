@@ -521,8 +521,8 @@ public class ITN_quan_ly_khuyenmai extends javax.swing.JInternalFrame implements
                     if (typeCheckStr.equals("Hết Hạn") == true) {
                         convertType = false;
                     }
+                    check_del = true;
                     if (convertType == false) {
-                        check_del = true;
                         int rowSuccess = khuyen_maiService.delete(Long.parseLong(tbl_khuyenMai.getValueAt(i, 1).toString()));
                         tbl_khuyenMai.clearSelection();
                         if (rowSuccess > 0) {

@@ -30,8 +30,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     /**
      * Creates new form ITN_add_nhan_Viet
      */
-    nhan_vienService nhan_vienService = new nhan_vienService();
-    nhan_vienModel nhan_vien = new nhan_vienModel();
+    nhan_vienService nhan_vienService;
+    nhan_vienModel nhan_vienModel;
     private byte[] nhanVienImage;
     CallBackAdd cb;
     
@@ -44,6 +44,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         initComponents();
         this.cb = cb;
         resetText();
+        nhan_vienModel = new nhan_vienModel();
+        nhan_vienService = new nhan_vienService();
         
     }
 
@@ -1026,12 +1028,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         }
         
         if (check_add == true) {
-            nhan_vien.setName(name);
+            nhan_vienModel.setName(name);
             if (utilStartDate != null) {
                 java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
-                nhan_vien.setBirthDay(sqlStartDate);
+                nhan_vienModel.setBirthDay(sqlStartDate);
             } else {
-                nhan_vien.setBirthDay(null);
+                nhan_vienModel.setBirthDay(null);
             }
             
             if (nhanVienImage == null) {
@@ -1048,23 +1050,23 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             }
             try {
                 if (radio_nam.isSelected()) {
-                    nhan_vien.setGender(gioiTinh);
+                    nhan_vienModel.setGender(gioiTinh);
                 } else if (radio_nu.isSelected()) {
                     gioiTinh = "nữ";
-                    nhan_vien.setGender(gioiTinh);
+                    nhan_vienModel.setGender(gioiTinh);
                 } else if (radio_khac.isSelected()) {
                     gioiTinh = "Khác";
-                    nhan_vien.setGender(gioiTinh);
+                    nhan_vienModel.setGender(gioiTinh);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            nhan_vien.setEmail(email);
-            nhan_vien.setCmnd(cmnd);
-            nhan_vien.setUserName(userName);
-            nhan_vien.setPassword(passwordStr);
-            nhan_vien.setImage(nhanVienImage);
-            Long id = nhan_vienService.add(nhan_vien);
+            nhan_vienModel.setEmail(email);
+            nhan_vienModel.setCmnd(cmnd);
+            nhan_vienModel.setUserName(userName);
+            nhan_vienModel.setPassword(passwordStr);
+            nhan_vienModel.setImage(nhanVienImage);
+            Long id = nhan_vienService.add(nhan_vienModel);
             if (id > 0) {
                 JOptionPane.showMessageDialog(rootPane, "Thêm Mới Thành Công!");
                 cb.doAdd();

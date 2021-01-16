@@ -19,4 +19,5 @@ public interface IphongService {
     int edit(phongModel model);
     int delete(String id);
     List<phongModel> findByStatus(boolean status);
+    int countPhong();
 }

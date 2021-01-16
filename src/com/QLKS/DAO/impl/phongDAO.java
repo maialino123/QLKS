@@ -38,7 +38,7 @@ public class phongDAO extends abstractDAO<phongModel> implements Iphong_DAO {
     @Override
     public int edit(phongModel model) {
         String sql = resourceBundleSQL.getString("update_phong");
-        return update(sql, model.getId(), model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.isStatus(), model.getModifiedDate(),model.getModifiedBy());
+        return update(sql, model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(), model.isStatus(), model.getId());
     }
 
     @Override
@@ -51,6 +51,12 @@ public class phongDAO extends abstractDAO<phongModel> implements Iphong_DAO {
     public List<phongModel> findByStatus(boolean status) {
         String sql = resourceBundleSQL.getString("get_by_status_phong");
         return query(sql, new phongMapper(), status);
+    }
+
+    @Override
+    public int countPhong() {
+        String sql = resourceBundleSQL.getString("get_count_phong");
+        return queryCount(sql);
     }
 
 }

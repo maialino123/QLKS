@@ -21,7 +21,7 @@ public class khach_hangMapper implements rowMapper<khach_hang_model> {
             model.setId(rs.getLong("id"));
             model.setName(rs.getString("name"));
             model.setBirthDay(rs.getDate("birthDay"));
-            model.setGender(rs.getString("gender"));
+            model.setGender(rs.getString("gennder"));
             model.setPhone(rs.getString("phone"));
             model.setAddress(rs.getString("address"));
             model.setIdentityCard(rs.getString("identityCard"));

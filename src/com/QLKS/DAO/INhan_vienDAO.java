@@ -17,8 +17,8 @@ public interface INhan_vienDAO extends GenericDAO<nhan_vienModel> {
     List<nhan_vienModel> findAll();
     nhan_vienModel findOne(Long id);
     Long add(nhan_vienModel model);
-    void edit(nhan_vienModel model);
-    void delete(Long id);
+    int edit(nhan_vienModel model);
+    int delete(Long id);
     nhan_vienModel findByUserNameAndPassword(IAuthorization authorization);
     nhan_vienModel findByUserName(String userName);
     nhan_vienModel findByEmail(String email);

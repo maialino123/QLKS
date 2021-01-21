@@ -556,7 +556,6 @@ public class ITN_quan_ly_thietbi extends javax.swing.JInternalFrame {
                 if (id > 0) {
                     JOptionPane.showMessageDialog(this, "Thêm Mới Thành Công!");
                     resetText();
-                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Thêm Mới Thất Bại!");
                 }

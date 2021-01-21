@@ -14,7 +14,7 @@ public class phongModel extends abstractModel {
     
     private String id;
     private Long id_LP;
-    private boolean status;
+    private String status;
     private loai_phongModel loai_phong = new loai_phongModel();
 
     public loai_phongModel getLoai_phong() {
@@ -24,14 +24,15 @@ public class phongModel extends abstractModel {
     public void setLoai_phong(loai_phongModel loai_phong) {
         this.loai_phong = loai_phong;
     }
-    
-    public boolean isStatus() {
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
+    
     
     public String getId() {
         return id;
@@ -48,6 +49,8 @@ public class phongModel extends abstractModel {
     public void setId_LP(Long id_LP) {
         this.id_LP = id_LP;
     }
+    
+    
     
     
 }

@@ -8,12 +8,16 @@ package com.QLKS.views.JintenalFrame;
 import com.QLKS.Service.impl.loai_phongService;
 import com.QLKS.Service.impl.phongService;
 import com.QLKS.model.loai_phongModel;
+import com.QLKS.model.nhan_vienModel;
 import com.QLKS.model.phongModel;
 import com.QLKS.utils.functionBase;
+import com.QLKS.views.mainFrame;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +40,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
     List<loai_phongModel> list_loai_phong;
     DefaultComboBoxModel<loai_phongModel> loai_phongModelC;
     functionBase funBase;
+    nhan_vienModel nhanModel;
 
     public ITN_quan_ly_phong() {
         initComponents();
@@ -49,7 +54,6 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
         phongModel = new phongModel();
         initLoaiPhong();
         loadData();
-
     }
 
     /**
@@ -61,6 +65,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         menu_icon = new javax.swing.JLabel();
@@ -79,6 +84,11 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         button_delete_P = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jlbName2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        radio_Trong = new javax.swing.JRadioButton();
+        radio_daNhan = new javax.swing.JRadioButton();
+        radio_dangSua = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPhong = new javax.swing.JTable();
@@ -214,6 +224,59 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
         jLabel7.setText("Xoá");
         button_delete_P.add(jLabel7, java.awt.BorderLayout.CENTER);
 
+        jlbName2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jlbName2.setForeground(new java.awt.Color(154, 231, 246));
+        jlbName2.setText("Loại Phòng:");
+
+        jPanel4.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+        });
+
+        radio_Trong.setBackground(new java.awt.Color(48, 48, 48));
+        buttonGroup1.add(radio_Trong);
+        radio_Trong.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radio_Trong.setForeground(new java.awt.Color(154, 231, 246));
+        radio_Trong.setSelected(true);
+        radio_Trong.setText("Đang Trống");
+
+        radio_daNhan.setBackground(new java.awt.Color(48, 48, 48));
+        buttonGroup1.add(radio_daNhan);
+        radio_daNhan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radio_daNhan.setForeground(new java.awt.Color(154, 231, 246));
+        radio_daNhan.setText("Đã Đặt");
+
+        radio_dangSua.setBackground(new java.awt.Color(48, 48, 48));
+        buttonGroup1.add(radio_dangSua);
+        radio_dangSua.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        radio_dangSua.setForeground(new java.awt.Color(154, 231, 246));
+        radio_dangSua.setText("Đang Sửa");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(radio_Trong)
+                .addGap(43, 43, 43)
+                .addComponent(radio_daNhan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(radio_dangSua)
+                .addGap(23, 23, 23))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radio_Trong)
+                    .addComponent(radio_daNhan)
+                    .addComponent(radio_dangSua))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jpnLoaiTinhTrangLayout = new javax.swing.GroupLayout(jpnLoaiTinhTrang);
         jpnLoaiTinhTrang.setLayout(jpnLoaiTinhTrangLayout);
         jpnLoaiTinhTrangLayout.setHorizontalGroup(
@@ -223,25 +286,27 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
                 .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
                         .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoaiTinhTrangLayout.createSequentialGroup()
-                                .addComponent(jlbName1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlbName1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbName2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_IDP, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
+                                .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_IDP, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
                         .addComponent(button_clickReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(button_clickAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(button_updatePhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(button_delete_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(30, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(button_delete_P, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22))
         );
         jpnLoaiTinhTrangLayout.setVerticalGroup(
             jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +322,14 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
                     .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jlbName1)))
-                .addGap(95, 95, 95)
+                .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jlbName2))
+                    .addGroup(jpnLoaiTinhTrangLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
                 .addGroup(jpnLoaiTinhTrangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button_clickReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_clickAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,13 +404,17 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jpnLoaiTinhTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnLoaiTinhTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnLoaiTinhTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpnLoaiTinhTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -372,6 +448,16 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
         combo_loai_phong.setModel(loai_phongModelC);
     }
 
+    public void Reload() {
+        mainFrame main = new mainFrame(nhanModel);
+        main.setVisible(true);
+        this.dispose();
+//        SwingUtilities.updateComponentTreeUI(main);
+//        main.invalidate();
+//        main.validate();
+//        main.repaint();
+    }
+
     public void loadData() {
         Object[] columnNames = {"STT", "Mã Phòng", "Tên loại phòng", "Trạng Thái", "Giá", ""};
 //        if (nameSeaechInput != null) {
@@ -388,7 +474,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
             o[0] = index;
             o[1] = adv.getId();
             o[2] = adv.getLoai_phong().getName_LP();
-            o[3] = adv.isStatus() ? "Đã Thuê" : "trống";
+            o[3] = adv.getStatus();
             o[4] = adv.getLoai_phong().getPrice();
             dfmPhongmodel.addRow(o);
             index++;
@@ -411,6 +497,15 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
                     if (currentRow >= 0) {
                         txt_IDP.setText(tblPhong.getValueAt(currentRow, 1).toString());
                         txt_IDP.setEditable(false);
+                        if (tblPhong.getValueAt(currentRow, 3).toString().equals("Đã Đặt")) {
+                            radio_daNhan.setSelected(true);
+                        } else if (tblPhong.getValueAt(currentRow, 3).toString().equals("Đang Trống")) {
+                            radio_Trong.setSelected(true);
+                        } else if (tblPhong.getValueAt(currentRow, 3).toString().equals("Đang Sửa")) {
+                            radio_dangSua.setSelected(true);
+                        } else {
+                            radio_Trong.setSelected(true);
+                        }
                     }
                 }
             });
@@ -443,6 +538,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_button_clickResetMouseClicked
 
     private void button_clickAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_clickAddMouseClicked
+
         String maPhong = txt_IDP.getText();
         loai_phongModel loai_phong = (loai_phongModel) loai_phongModelC.getSelectedItem();
         Long loai_id = loai_phong.getId();
@@ -455,6 +551,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Thêm Mới Thành Công!");
                 ressetText();
                 loadData();
+                Reload();
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm Mới Thất Bại!");
             }
@@ -470,11 +567,19 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
         Long loai_id = loai_phong.getId();
         phongModel.setId(maPhongUD);
         phongModel.setId_LP(loai_id);
+        String statusP = "Đang Trống";
+        if (radio_daNhan.isSelected()) {
+            statusP = "Đã Đặt";
+        } else if (radio_dangSua.isSelected()) {
+            statusP = "Đang Sửa";
+        }
+        phongModel.setStatus(statusP);
         int key = phongService.edit(phongModel);
         if (key > 0) {
             JOptionPane.showMessageDialog(this, "Cập Nhật Thành CÔng!");
             loadData();
             ressetText();
+            Reload();
         } else {
             JOptionPane.showMessageDialog(this, "Cập Nhật Thất Bại!");
             loadData();
@@ -505,6 +610,7 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
             }
             ressetText();
             loadData();
+            Reload();
             if (check_del == true) {
                 String mess = "";
                 if (succesDeltete.length() > 0) {
@@ -522,9 +628,14 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_button_delete_PMouseClicked
 
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+
+    }//GEN-LAST:event_jPanel4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_add_phong;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel button_clickAdd;
     private javax.swing.JPanel button_clickReset;
     private javax.swing.JPanel button_delete_P;
@@ -540,12 +651,17 @@ public class ITN_quan_ly_phong extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlbName1;
+    private javax.swing.JLabel jlbName2;
     private javax.swing.JLabel jlbSearch;
     private javax.swing.JPanel jpnLoaiTinhTrang;
     private javax.swing.JLabel menu_icon;
+    private javax.swing.JRadioButton radio_Trong;
+    private javax.swing.JRadioButton radio_daNhan;
+    private javax.swing.JRadioButton radio_dangSua;
     private javax.swing.JTable tblPhong;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txt_IDP;

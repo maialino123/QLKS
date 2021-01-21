@@ -15,7 +15,11 @@ import java.util.List;
 public interface Ihoa_donDAO extends GenericDAO<hoa_donModel> {
     List<hoa_donModel> findAll();
     hoa_donModel findONe(Long id);
-    void add(hoa_donModel model);
-    void edit(hoa_donModel model);
-    void delete(Long id);
+    Long add(hoa_donModel model);
+    int edit(hoa_donModel model);
+    int delete(Long id);
+    hoa_donModel findByPhong(String idP);
+    hoa_donModel findByJoinHD(Long id);
+   
+    
 }

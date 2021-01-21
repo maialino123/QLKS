@@ -27,7 +27,61 @@ public class hoa_donModel extends abstractModel {
     private float thanh_tien;
     private Date so_ngay_thuc_te;
     private Date so_ngay_du_kien;
+    private Date ngay_den_thuc_te;
+    private Date ngay_den_du_kien;
+    private khach_hang_model khach_hang = new khach_hang_model();
+    private phongModel phong = new phongModel();
+    private trang_thai_hoa_donModel trang_thaiHD = new trang_thai_hoa_donModel();
+    private su_dung_dich_vuModel su_dungDV = new su_dung_dich_vuModel();
 
+    public khach_hang_model getKhach_hang() {
+        return khach_hang;
+    }
+
+    public void setKhach_hang(khach_hang_model khach_hang) {
+        this.khach_hang = khach_hang;
+    }
+
+    public phongModel getPhong() {
+        return phong;
+    }
+
+    public void setPhong(phongModel phong) {
+        this.phong = phong;
+    }
+
+    public trang_thai_hoa_donModel getTrang_thaiHD() {
+        return trang_thaiHD;
+    }
+
+    public void setTrang_thaiHD(trang_thai_hoa_donModel trang_thaiHD) {
+        this.trang_thaiHD = trang_thaiHD;
+    }
+
+    public su_dung_dich_vuModel getSu_dungDV() {
+        return su_dungDV;
+    }
+
+    public void setSu_dungDV(su_dung_dich_vuModel su_dungDV) {
+        this.su_dungDV = su_dungDV;
+    }
+
+    public Date getNgay_den_thuc_te() {
+        return ngay_den_thuc_te;
+    }
+
+    public void setNgay_den_thuc_te(Date ngay_den_thuc_te) {
+        this.ngay_den_thuc_te = ngay_den_thuc_te;
+    }
+
+    public Date getNgay_den_du_kien() {
+        return ngay_den_du_kien;
+    }
+
+    public void setNgay_den_du_kien(Date ngay_den_du_kien) {
+        this.ngay_den_du_kien = ngay_den_du_kien;
+    }
+    
     public Date getSo_ngay_thuc_te() {
         return so_ngay_thuc_te;
     }
@@ -44,8 +98,6 @@ public class hoa_donModel extends abstractModel {
         this.so_ngay_du_kien = so_ngay_du_kien;
     }
     
-    
-
     public float getTien_dich_vu() {
         return tien_dich_vu;
     }

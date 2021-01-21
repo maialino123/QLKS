@@ -458,6 +458,11 @@ public class ITN_quan_ly_khuyenmai extends javax.swing.JInternalFrame implements
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_khuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_khuyenMaiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbl_khuyenMai);
 
         add_dsktop_pnl.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -589,6 +594,10 @@ public class ITN_quan_ly_khuyenmai extends javax.swing.JInternalFrame implements
         changeColor(button_refesh_KH, new Color(8, 13, 21));
         changeimage(custom_line4, "/com/QLKS/icon/icon_button/custom-lineJinternal.png");
     }//GEN-LAST:event_button_refesh_KHMouseExited
+
+    private void tbl_khuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_khuyenMaiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_khuyenMaiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

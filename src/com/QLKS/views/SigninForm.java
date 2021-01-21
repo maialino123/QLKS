@@ -115,6 +115,7 @@ public class SigninForm extends javax.swing.JFrame {
         userName_txt.setBackground(new java.awt.Color(31, 36, 42));
         userName_txt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userName_txt.setForeground(new java.awt.Color(169, 224, 49));
+        userName_txt.setText("admin");
         userName_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         userName_txt.setCaretColor(new java.awt.Color(169, 224, 49));
         userName_txt.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +127,7 @@ public class SigninForm extends javax.swing.JFrame {
 
         password_txt.setBackground(new java.awt.Color(31, 36, 42));
         password_txt.setForeground(new java.awt.Color(169, 224, 49));
+        password_txt.setText("12345678");
         password_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         password_txt.setCaretColor(new java.awt.Color(169, 224, 49));
         jPanel1.add(password_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 280, 40));

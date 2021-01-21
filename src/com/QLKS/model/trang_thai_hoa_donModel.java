@@ -29,6 +29,13 @@ public class trang_thai_hoa_donModel extends abstractModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    
+    
     
     
 }

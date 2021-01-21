@@ -16,6 +16,7 @@ public interface Ikhach_hangDAO extends GenericDAO<khach_hang_model> {
     List<khach_hang_model> findAll();
     khach_hang_model findOne(Long id);
     Long add_khachHang(khach_hang_model model);
-    void edit_khachHang(khach_hang_model model);
-    void delete_khachHang(Long id);
+    int edit_khachHang(khach_hang_model model);
+    int delete_khachHang(Long id);
+    khach_hang_model findCmnd(String cmnd);
 }

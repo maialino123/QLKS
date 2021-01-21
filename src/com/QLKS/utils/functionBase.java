@@ -5,6 +5,8 @@
  */
 package com.QLKS.utils;
 
+import com.QLKS.Service.impl.hoa_donService;
+import com.QLKS.model.hoa_donModel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,7 +16,9 @@ import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
@@ -98,21 +102,22 @@ public class functionBase {
 //    }
 //
 //    public float funcGetGiaTriPhuThu() {
+//        hoa_donService hoadon = new hoa_donService();
 //        String format = new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
 //        int gio = Integer.parseInt(format);
-//        List<ChinhSachTraPhong> lstCSTraPhong = chinhsachtpDAO.getAll();
+//        List<hoa_donModel> lstHoaDon = hoadon.findAll();
 //
 //        float phuThu = 0;
 //        if (gio >= 13 && gio < 15) {
-//            phuThu = lstCSTraPhong.get(1).getPhuThu();
+//            phuThu = lstHoaDon.get(1).getPhuThu();
 //        } else if (gio >= 15 && gio < 17) {
-//            phuThu = lstCSTraPhong.get(2).getPhuThu();
+//            phuThu = lstHoaDon.get(2).getPhuThu();
 //        } else if (gio >= 17 && gio < 19) {
-//            phuThu = lstCSTraPhong.get(3).getPhuThu();
+//            phuThu = lstHoaDon.get(3).getPhuThu();
 //        } else if (gio >= 19) {
-//            phuThu = lstCSTraPhong.get(4).getPhuThu();
+//            phuThu = lstHoaDon.get(4).getPhuThu();
 //        } else {
-//            phuThu = lstCSTraPhong.get(0).getPhuThu();
+//            phuThu = lstHoaDon.get(0).getPhuThu();
 //        }
 //        return phuThu;
 //    }

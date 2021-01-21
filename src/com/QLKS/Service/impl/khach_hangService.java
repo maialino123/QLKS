@@ -15,10 +15,9 @@ import java.util.List;
  *
  * @author Admin
  */
-public class khach_hangService implements Ikhach_hangService{
-    
+public class khach_hangService implements Ikhach_hangService {
+
     khach_hangDAO khach_hangDAO = new khach_hangDAO();
-   
 
     @Override
     public List<khach_hang_model> findAll() {
@@ -31,28 +30,36 @@ public class khach_hangService implements Ikhach_hangService{
     }
 
     @Override
-    public khach_hang_model add_khachHang(khach_hang_model model) {
+    public Long add_khachHang(khach_hang_model model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
         Long id = khach_hangDAO.add_khachHang(model);
-        return khach_hangDAO.findOne(id);
+        return id;
     }
 
     @Override
-    public void edit_khachHang(khach_hang_model model) {
+    public int edit_khachHang(khach_hang_model model) {
         khach_hang_model oldKhach_hang = khach_hangDAO.findOne(model.getId());
-        model.setCreatedDate(oldKhach_hang.getCreatedDate());
-        model.setCreatedBy(oldKhach_hang.getCreatedBy());
+        if (oldKhach_hang != null) {
+            model.setCreatedDate(oldKhach_hang.getCreatedDate());
+            model.setCreatedBy(oldKhach_hang.getCreatedBy());
+        } else {
+            model.setCreatedDate(null);
+            model.setCreatedBy(null);
+        }
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        khach_hangDAO.edit_khachHang(model);
+        return khach_hangDAO.edit_khachHang(model);
     }
 
     @Override
-    public void delete_khachHang(Long[] ids) {
-        for (Long id : ids) {
-            khach_hangDAO.delete_khachHang(id);
-        }
+    public int delete_khachHang(Long ids) {
+        return khach_hangDAO.delete_khachHang(ids);
     }
-    
+
+    @Override
+    public khach_hang_model findCmnd(String cmnd) {
+        return khach_hangDAO.findCmnd(cmnd);
+    }
+
 }

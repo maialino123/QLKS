@@ -5,6 +5,8 @@
  */
 package com.QLKS.mapper;
 
+import com.QLKS.model.dich_vuModel;
+import com.QLKS.model.phongModel;
 import com.QLKS.model.su_dung_dich_vuModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,8 +22,22 @@ public class su_dung_dich_vuMapper implements rowMapper<su_dung_dich_vuModel>{
         try {
             su_dung_dich_vuModel model = new su_dung_dich_vuModel();
             model.setId(rs.getLong("id"));
-            model.setId_DV(rs.getLong("id_LDV"));
+            model.setId_DV(rs.getLong("id_DV"));
             model.setAmount(rs.getInt("amount"));
+            model.setId_P(rs.getString("id_P"));
+            try {
+                dich_vuModel dich_vu = new dich_vuModel();
+                dich_vu.setId_LDV(rs.getLong("id_LDV"));
+                dich_vu.setPrice(rs.getFloat("price"));
+                model.setDich_vu(dich_vu);
+            } catch (Exception e) {
+            }
+            try {
+                phongModel phong = new phongModel();
+                phong.setStatus(rs.getString("status"));
+                model.setPhong(phong);
+            } catch (Exception e) {
+            }
             return model;
         } catch (SQLException e) {
             e.printStackTrace();

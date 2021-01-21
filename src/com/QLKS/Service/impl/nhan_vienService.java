@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.QLKS.Service.impl;
+
 import com.QLKS.DAO.authorization.IAuthorization;
 import com.QLKS.DAO.impl.nhan_vienDAO;
 import com.QLKS.Service.Inhan_vienService;
@@ -11,14 +12,13 @@ import com.QLKS.model.nhan_vienModel;
 import java.sql.Timestamp;
 import java.util.List;
 
-
 /**
  *
  * @author Admin
  */
-public class nhan_vienService implements Inhan_vienService{
-    
-     nhan_vienDAO nhan_vienDAO = new nhan_vienDAO();
+public class nhan_vienService implements Inhan_vienService {
+
+    nhan_vienDAO nhan_vienDAO = new nhan_vienDAO();
 
     @Override
     public List<nhan_vienModel> findAll() {
@@ -40,20 +40,18 @@ public class nhan_vienService implements Inhan_vienService{
     }
 
     @Override
-    public void edit(nhan_vienModel model) {
+    public int edit(nhan_vienModel model) {
         nhan_vienModel oldModel = nhan_vienDAO.findOne(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy(model.getName());
-        nhan_vienDAO.edit(model);
+        return nhan_vienDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            nhan_vienDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return nhan_vienDAO.delete(ids);
     }
 
     @Override
@@ -75,6 +73,5 @@ public class nhan_vienService implements Inhan_vienService{
     public nhan_vienModel findByCmnd(String cmnd) {
         return nhan_vienDAO.findByCmnd(cmnd);
     }
-    
-    
+
 }

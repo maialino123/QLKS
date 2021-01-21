@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author Admin
  */
-public class hoa_donService implements Ihoa_donService{
-    
+public class hoa_donService implements Ihoa_donService {
+
     hoa_donDAO hoa_donDAO = new hoa_donDAO();
 
     @Override
     public List<hoa_donModel> findAll() {
-       return hoa_donDAO.findAll();
+        return hoa_donDAO.findAll();
     }
 
     @Override
@@ -30,27 +30,36 @@ public class hoa_donService implements Ihoa_donService{
     }
 
     @Override
-    public void add(hoa_donModel model) {
-       model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-       model.setCreatedBy("");
-       hoa_donDAO.add(model);
+    public Long add(hoa_donModel model) {
+        model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        model.setCreatedBy("");
+        return hoa_donDAO.add(model);
     }
 
     @Override
-    public void edit(hoa_donModel model) {
+    public int edit(hoa_donModel model) {
         hoa_donModel oldModel = hoa_donDAO.findONe(model.getId());
         model.setCreatedDate(oldModel.getCreatedDate());
         model.setCreatedBy(oldModel.getCreatedBy());
+        model.setNgay_den_thuc_te(oldModel.getNgay_den_thuc_te());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         model.setModifiedBy("");
-        hoa_donDAO.edit(model);
+        return hoa_donDAO.edit(model);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        for (Long id : ids) {
-            hoa_donDAO.delete(id);
-        }
+    public int delete(Long ids) {
+        return hoa_donDAO.delete(ids);
     }
-    
+
+    @Override
+    public hoa_donModel findByPhong(String idP) {
+        return hoa_donDAO.findByPhong(idP);
+    }
+
+    @Override
+    public hoa_donModel findByJoinHD(Long id) {
+        return hoa_donDAO.findByJoinHD(id);
+    }
+
 }

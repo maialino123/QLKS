@@ -421,8 +421,7 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -556,13 +555,6 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
         don_viModel don_viCB = (don_viModel) modelDon_vi.getSelectedItem();
         Long id_DonVi = don_viCB.getId();
         boolean check_DV = true;
-        if (giadich_vu == 0) {
-            txtErrorTenLoaiDichVu1.setText("Giá Không được để trốnng!");
-            check_DV = false;
-        } else {
-            txtErrorTenLoaiDichVu1.setText("");
-        }
-        
         if (check_DV == true) {
             dichModel.setId_LDV(id_LDVM);
             dichModel.setId_DV(id_DonVi);
@@ -586,13 +578,6 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
         don_viModel don_viCB = (don_viModel) modelDon_vi.getSelectedItem();
         Long id_DonVi = don_viCB.getId();
         boolean check_DV = true;
-        if (giadich_vu == 0) {
-            txtErrorTenLoaiDichVu1.setText("Giá Không được để trốnng!");
-            check_DV = false;
-        } else {
-            txtErrorTenLoaiDichVu1.setText("");
-        }
-        
         if (check_DV == true) {
             dichModel.setId(id_dich_vu);
             dichModel.setId_LDV(id_LDVM);

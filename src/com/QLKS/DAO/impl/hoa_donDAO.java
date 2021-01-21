@@ -30,28 +30,40 @@ public class hoa_donDAO extends abstractDAO<hoa_donModel> implements Ihoa_donDAO
     }
 
     @Override
-    public void add(hoa_donModel model) {
+    public Long add(hoa_donModel model) {
         String sql = resourceBundleSQL.getString("add_hoa_don");
-        update(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(), model.getId_SDDV(),
-                model.getHinh_thucTT(), model.getPhu_phi(), model.getTien_phong(),
-                model.getTien_dich_vu(), model.getGiam_giaKH(), model.getSo_ngay(), model.getThanh_tien(),
-                model.getCreatedDate(), model.getCreatedBy(), model.getSo_ngay_du_kien());
+        return insert(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(),
+                model.getHinh_thucTT(), model.getTien_phong(), model.getGiam_giaKH(), model.getSo_ngay(), model.getThanh_tien(),
+                model.getCreatedDate(), model.getCreatedBy(), model.getSo_ngay_du_kien(), model.getNgay_den_thuc_te(), model.getNgay_den_du_kien());
     }
 
     @Override
-    public void edit(hoa_donModel model) {
+    public int edit(hoa_donModel model) {
         String sql = resourceBundleSQL.getString("update_hoa_don");
-        update(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(), model.getId_SDDV(),
+        return update(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(), model.getId_SDDV(),
                 model.getHinh_thucTT(), model.getPhu_phi(), model.getTien_phong(),
                 model.getTien_dich_vu(), model.getGiam_giaKH(), model.getSo_ngay(), model.getThanh_tien(),
                 model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(),
-                model.getSo_ngay_thuc_te(), model.getSo_ngay_du_kien(), model.getId());
+                model.getSo_ngay_thuc_te(), model.getSo_ngay_du_kien(), model.getNgay_den_thuc_te(), model.getNgay_den_du_kien(), model.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_hoa_don");
-        update(sql, id);
+        return update(sql, id);
     }
 
+    @Override
+    public hoa_donModel findByPhong(String idP) {
+        String sql = resourceBundleSQL.getString("get_phong_hoa_don");
+        List<hoa_donModel> list = query(sql, new hoa_donMapper(), idP);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public hoa_donModel findByJoinHD(Long id) {
+        String sql = resourceBundleSQL.getString("get_one_join_hoa_don");
+        List<hoa_donModel> list = query(sql, new hoa_donMapper(), id);
+        return list.isEmpty() ? null : list.get(0);
+    }
 }

@@ -14,25 +14,51 @@ import java.util.List;
  *
  * @author Admin
  */
-public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implements Isu_dung_dich_vuDAO{
+public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implements Isu_dung_dich_vuDAO {
 
     @Override
     public su_dung_dich_vuModel findOne(Long id) {
         String sql = resourceBundleSQL.getString("get_one_SDDV");
         List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), id);
-        return list.isEmpty()?null:list.get(0);
+        return list.isEmpty() ? null : list.get(0);
     }
 
     @Override
-    public void add(su_dung_dich_vuModel model) {
+    public Long add(su_dung_dich_vuModel model) {
         String sql = resourceBundleSQL.getString("add_SDDV");
-        update(sql, model.getId_DV(), model.getAmount());
+        return insert(sql, model.getId_DV(), model.getAmount(), model.getId_P());
     }
 
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_SDDV");
-        update(sql, id);
+        return update(sql, id);
     }
-    
+
+    @Override
+    public List<su_dung_dich_vuModel> findAll() {
+        String sql = resourceBundleSQL.getString("get_all_SDDV");
+        return query(sql, new su_dung_dich_vuMapper());
+    }
+
+    @Override
+    public int edit(su_dung_dich_vuModel model) {
+        String sql = resourceBundleSQL.getString("update_SDDV");
+        return update(sql, model.getId_DV(), model.getAmount(), model.getId_P(), model.getId());
+    }
+
+    @Override
+    public su_dung_dich_vuModel findByIdDV(Long idDV) {
+        String sql = resourceBundleSQL.getString("get_DV_SDDV");
+        List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), idDV);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public su_dung_dich_vuModel findByIdP(String idP) {
+        String sql = resourceBundleSQL.getString("get_P_SDDV");
+        List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), idP);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
 }

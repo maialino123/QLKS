@@ -15,7 +15,9 @@ import java.util.List;
 public interface Ihoa_donService {
     List<hoa_donModel> findAll();
     hoa_donModel findONe(Long id);
-    void add(hoa_donModel model);
-    void edit(hoa_donModel model);
-    void delete(Long[] ids);
+    Long add(hoa_donModel model);
+    int edit(hoa_donModel model);
+    int delete(Long ids);
+    hoa_donModel findByPhong(String idP);
+    hoa_donModel findByJoinHD(Long id);
 }

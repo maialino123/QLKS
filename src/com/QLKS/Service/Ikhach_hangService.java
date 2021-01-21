@@ -15,7 +15,8 @@ import java.util.List;
 public interface Ikhach_hangService {
     List<khach_hang_model> findAll();
     khach_hang_model findOne(Long id);
-    khach_hang_model add_khachHang(khach_hang_model model);
-    void edit_khachHang(khach_hang_model model);
-    void delete_khachHang(Long[] ids);
+    Long add_khachHang(khach_hang_model model);
+    int edit_khachHang(khach_hang_model model);
+    int delete_khachHang(Long ids);
+    khach_hang_model findCmnd(String cmnd);
 }

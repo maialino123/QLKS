@@ -33,7 +33,7 @@ public class phongService implements IphongService {
     public Long add(phongModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
-        model.setStatus(false);
+        model.setStatus("Đang Trống");
         return phongDAO.add(model);
     }
 

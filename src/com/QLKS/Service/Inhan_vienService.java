@@ -17,8 +17,8 @@ public interface Inhan_vienService {
     List<nhan_vienModel> findAll();
     nhan_vienModel findOne(Long id);
     Long add(nhan_vienModel model);
-    void edit(nhan_vienModel model);
-    void delete(Long[] ids);
+    int edit(nhan_vienModel model);
+    int delete(Long ids);
     nhan_vienModel findByUserNameAndPassword(IAuthorization authorization);
     nhan_vienModel findByUserName(String userName);
     nhan_vienModel findByEmail(String email);

@@ -32,13 +32,13 @@ public class phongDAO extends abstractDAO<phongModel> implements Iphong_DAO {
     @Override
     public Long add(phongModel model) {
         String sql = resourceBundleSQL.getString("add_phong");
-        return insert(sql, model.getId(), model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.isStatus());
+        return insert(sql, model.getId(), model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.getStatus());
     }
 
     @Override
     public int edit(phongModel model) {
         String sql = resourceBundleSQL.getString("update_phong");
-        return update(sql, model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(), model.isStatus(), model.getId());
+        return update(sql, model.getId_LP(), model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(),model.getModifiedBy(), model.getStatus(), model.getId());
     }
 
     @Override

@@ -42,17 +42,17 @@ public class nhan_vienDAO extends abstractDAO<nhan_vienModel> implements INhan_v
     }
     
     @Override
-    public void edit(nhan_vienModel model) {
+    public int edit(nhan_vienModel model) {
         String sql = resourceBundleSQL.getString("upate_nhan_vien");
-        update(sql, model.getName(), model.getBirthDay(), model.getGender(),
+        return update(sql, model.getName(), model.getBirthDay(), model.getGender(),
                 model.getImage(), model.getEmail(), model.getUserName(), security.hashPassword(model.getPassword()), model.getCmnd(), model.getId_NQ(),
                 model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
     
     @Override
-    public void delete(Long id) {
+    public int delete(Long id) {
         String sql = resourceBundleSQL.getString("delete_nhan_vien");
-        update(sql, id);
+        return update(sql, id);
     }
     
     @Override

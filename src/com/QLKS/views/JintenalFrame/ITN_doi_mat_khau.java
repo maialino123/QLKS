@@ -494,7 +494,6 @@ public class ITN_doi_mat_khau extends javax.swing.JInternalFrame implements ITN_
                 message.setSubject("Khách Sạn XYZ");
                 message.setText(nhan_vien.getRandom_code_pass());
                 Transport.send(message);
-                System.out.println(nhan_vien.getEmail());
                 ITN_check_code_Email itn_check_email = new ITN_check_code_Email(this);
                 showInternalFrame(itn_check_email);
             } catch (Exception e) {

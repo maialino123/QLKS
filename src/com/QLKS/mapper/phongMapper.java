@@ -30,7 +30,7 @@ public class phongMapper implements rowMapper<phongModel> {
             if (rs.getString("modifiedBy") != null) {
                 model.setModifiedBy(rs.getString("modifiedBy"));
             }
-            model.setStatus(rs.getBoolean("status"));
+            model.setStatus(rs.getString("status"));
             try {
                 loai_phongModel loaiModel = new loai_phongModel();
                 loaiModel.setName_LP(rs.getString("name_LP"));

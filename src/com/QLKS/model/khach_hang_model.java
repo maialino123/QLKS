@@ -95,6 +95,13 @@ public class khach_hang_model extends abstractModel {
     public void setNumberOfCheckIn(int numberOfCheckIn) {
         this.numberOfCheckIn = numberOfCheckIn;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    
+    
     
     
 }

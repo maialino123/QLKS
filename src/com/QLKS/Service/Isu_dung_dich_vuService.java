@@ -19,5 +19,7 @@ public interface Isu_dung_dich_vuService {
     int delete(Long ids);
     int edit(su_dung_dich_vuModel model);
     su_dung_dich_vuModel findByDVID(Long idDV);
-    su_dung_dich_vuModel findByIdP(String idP);
+    su_dung_dich_vuModel findByIdP(String idP, Long id_HD);
+    List<su_dung_dich_vuModel> get_allHD_SDDV(Long idHD, Long id_KH);
+    su_dung_dich_vuModel get_trungDV_SDDV(Long idDV, Long idHD);
 }

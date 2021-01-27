@@ -39,9 +39,11 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
     List<dich_vuModel> listDV;
     List<su_dung_dich_vuModel> listSDDV;
     functionBase funBase;
+    String idHDSTR;
 
-    public ITN_Sudungdichvu(String id_P, String ten_KH) {
+    public ITN_Sudungdichvu(String id_HD, String id_P, String ten_KH) {
         initComponents();
+        this.idHDSTR = id_HD;
         hoa_donService = new hoa_donService();
         hoa_donModel = new hoa_donModel();
         su_dungDVModel = new su_dung_dich_vuModel();
@@ -54,6 +56,7 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         funBase = new functionBase();
         lblMaPhong.setText(id_P);
         lblTenKhachHang.setText(ten_KH);
+        lblMaHD.setText(id_HD);
         listDV = dich_vuService.findAll();
 
         loadDataDV();
@@ -93,26 +96,22 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
 //        } else {
 //            dfmThietBi = cauhinhDAO.getAll();
 //        }
-        String idPhong = lblMaPhong.getText();
-        listSDDV = su_dungService.findAll();
-        su_dung_dich_vuModel getIdPDV = su_dungService.findByIdP(idPhong);
+        hoa_donModel getOneHD = hoa_donService.findONe(Long.parseLong(idHDSTR));
+        listSDDV = su_dungService.get_allHD_SDDV(Long.parseLong(idHDSTR), getOneHD.getId_KH());
         dfmSDDV = new DefaultTableModel(new Object[0][0], columnNames);
         int index = 1;
-        if (getIdPDV != null) {
-            for (su_dung_dich_vuModel adv : listSDDV) {
-
-                dich_vuModel = dich_vuService.findOne(adv.getId_DV());
-                Object[] o = new Object[7];
-                o[0] = index;
-                o[1] = adv.getId();
-                o[2] = adv.getId_DV();
-                o[3] = dich_vuModel.getLoai_dich_vuModel().getName();
-                o[4] = dich_vuModel.getDon_viModel().getName_DV();
-                o[5] = adv.getAmount();
-                o[6] = (adv.getAmount() * dich_vuModel.getPrice());
-                dfmSDDV.addRow(o);
-                index++;
-            }
+        for (su_dung_dich_vuModel adv : listSDDV) {
+            dich_vuModel = dich_vuService.findOne(adv.getId_DV());
+            Object[] o = new Object[7];
+            o[0] = index;
+            o[1] = adv.getId();
+            o[2] = adv.getId_DV();
+            o[3] = dich_vuModel.getLoai_dich_vuModel().getName();
+            o[4] = dich_vuModel.getDon_viModel().getName_DV();
+            o[5] = adv.getAmount();
+            o[6] = (adv.getAmount() * dich_vuModel.getPrice());
+            dfmSDDV.addRow(o);
+            index++;
         }
 
         tblDichVuDaSD.setModel(dfmSDDV);
@@ -153,10 +152,12 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDichVu = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblMaPhong = new javax.swing.JLabel();
+        ma_hdInput = new javax.swing.JLabel();
+        lblMaHD = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblTenKhachHang = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblMaPhong = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDichVuDaSD = new javax.swing.JTable();
@@ -167,6 +168,7 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1000, 812));
 
         jPanel1.setBackground(new java.awt.Color(48, 48, 48));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(new java.awt.Color(154, 231, 246));
 
         jLabel7.setBackground(new java.awt.Color(8, 18, 28));
@@ -364,27 +366,49 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(48, 48, 48));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin phòng-khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18), new java.awt.Color(154, 231, 246))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(154, 231, 246));
-        jLabel1.setText("Mã Phòng");
+        ma_hdInput.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        ma_hdInput.setForeground(new java.awt.Color(154, 231, 246));
+        ma_hdInput.setText("Mã Hóa Đơn");
+        ma_hdInput.setPreferredSize(new java.awt.Dimension(58, 25));
 
-        lblMaPhong.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblMaPhong.setForeground(new java.awt.Color(154, 231, 246));
-        lblMaPhong.setText("...");
+        lblMaHD.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblMaHD.setForeground(new java.awt.Color(154, 231, 246));
+        lblMaHD.setText("...");
+        lblMaHD.setMaximumSize(new java.awt.Dimension(12, 25));
+        lblMaHD.setMinimumSize(new java.awt.Dimension(12, 25));
+        lblMaHD.setPreferredSize(new java.awt.Dimension(12, 25));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(154, 231, 246));
         jLabel5.setText("Tên khách hàng:");
+        jLabel5.setMaximumSize(new java.awt.Dimension(94, 25));
+        jLabel5.setMinimumSize(new java.awt.Dimension(94, 25));
+        jLabel5.setPreferredSize(new java.awt.Dimension(94, 25));
 
         lblTenKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblTenKhachHang.setForeground(new java.awt.Color(154, 231, 246));
         lblTenKhachHang.setText("....");
+        lblTenKhachHang.setMaximumSize(new java.awt.Dimension(16, 25));
+        lblTenKhachHang.setMinimumSize(new java.awt.Dimension(16, 25));
+        lblTenKhachHang.setPreferredSize(new java.awt.Dimension(16, 25));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel2.setText("Mã Phòng");
+        jLabel2.setPreferredSize(new java.awt.Dimension(58, 25));
+
+        lblMaPhong.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblMaPhong.setForeground(new java.awt.Color(154, 231, 246));
+        lblMaPhong.setText("...");
+        lblMaPhong.setMaximumSize(new java.awt.Dimension(12, 25));
+        lblMaPhong.setMinimumSize(new java.awt.Dimension(12, 25));
+        lblMaPhong.setPreferredSize(new java.awt.Dimension(12, 25));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -392,25 +416,36 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(lblMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ma_hdInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ma_hdInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5)
-                    .addComponent(lblTenKhachHang)
-                    .addComponent(lblMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(48, 48, 48));
@@ -450,27 +485,27 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
         );
 
         pack();
@@ -512,7 +547,6 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         int soLuong = Integer.parseInt(dfmSDDV.getValueAt(pob, 5).toString());
         txtSoLuong.setValue(soLuong);
         cbxDichVu.setSelectedItem(ssdv);
-
     }//GEN-LAST:event_tblDichVuDaSDMouseClicked
 
     private void btnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLamMoiMouseClicked
@@ -522,61 +556,110 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
 
     private void btnThemMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMoiMouseClicked
         dich_vuModel dichVuId = (dich_vuModel) cbxDichVu.getSelectedItem();
+        Long id_HD = Long.parseLong(lblMaHD.getText());
         String idPhong = lblMaPhong.getText();
         String tenKH = lblTenKhachHang.getText();
         int soLuongSDDV = (int) txtSoLuong.getValue();
         Long idDV = dichVuId.getId();
         su_dungDVModel.setId_DV(idDV);
         su_dungDVModel.setAmount(soLuongSDDV);
-        su_dungDVModel.setId_P(idPhong);
-        su_dung_dich_vuModel getResultDV = su_dungService.add(su_dungDVModel);
-        Date soNgayTT = new Date();
-        java.sql.Date ngayTraTT = new java.sql.Date(soNgayTT.getTime());
-        if (getResultDV != null) {
-            loadDataDV();
-            loadDataSDDV();
-            ressetText();
-            tblDichVuDaSD.setRowSelectionInterval(tblDichVuDaSD.getRowCount() - 1, tblDichVuDaSD.getRowCount() - 1);
-            int pob = tblDichVuDaSD.getSelectedRow();
-            float tien_dich_vu = Float.parseFloat(dfmSDDV.getValueAt(pob, 6).toString());
-            hoa_donModel findHoaDonByPhong = hoa_donService.findByPhong(idPhong);
-            if (findHoaDonByPhong != null) {
-                Float tongTien = (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getSo_ngay()) + tien_dich_vu + (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getPhu_phi()) - findHoaDonByPhong.getGiam_giaKH();
-                hoa_donModel.setId(findHoaDonByPhong.getId());
-                hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
-                hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
-                hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
-                hoa_donModel.setId_SDDV(getResultDV.getId());
-                hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
-                hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
-                hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());
-                hoa_donModel.setTien_dich_vu(tien_dich_vu);
-                hoa_donModel.setGiam_giaKH(findHoaDonByPhong.getGiam_giaKH());
-                hoa_donModel.setSo_ngay(findHoaDonByPhong.getSo_ngay());
-                hoa_donModel.setThanh_tien(tongTien);
-                hoa_donModel.setSo_ngay_thuc_te(ngayTraTT);
-                hoa_donModel.setSo_ngay_du_kien(findHoaDonByPhong.getSo_ngay_du_kien());
-                hoa_donModel.setNgay_den_thuc_te(findHoaDonByPhong.getNgay_den_thuc_te());
-                hoa_donModel.setNgay_den_du_kien(findHoaDonByPhong.getNgay_den_du_kien());
+        su_dungDVModel.setId_HD(id_HD);
+        su_dung_dich_vuModel checkTrungDV = su_dungService.get_trungDV_SDDV(idDV, id_HD); //check 
+        if (checkTrungDV != null) {
+            su_dungDVModel.setAmount(checkTrungDV.getAmount() + soLuongSDDV);
+            su_dungDVModel.setId(checkTrungDV.getId());
+            int keys = su_dungService.edit(su_dungDVModel);
+            Date soNgayTT = new Date();
+            java.sql.Date ngayTraTT = new java.sql.Date(soNgayTT.getTime());
+            if (keys > 0) {
+                su_dung_dich_vuModel getBySDDV = su_dungService.findOne(checkTrungDV.getId());
+                loadDataDV();
+                loadDataSDDV();
+                ressetText();
+                float tien_dich_vu = getBySDDV.getAmount() * getBySDDV.getDich_vu().getPrice();
+                hoa_donModel findHoaDonByPhong = hoa_donService.findByPhong(idPhong);
+                if (findHoaDonByPhong != null) {
+                    Float tongTien = (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getSo_ngay()) + tien_dich_vu + (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getPhu_phi()) - findHoaDonByPhong.getGiam_giaKH();
+                    hoa_donModel.setId(findHoaDonByPhong.getId());
+                    hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
+                    hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
+                    hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
+                    hoa_donModel.setId_SDDV(getBySDDV.getId());
+                    hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
+                    hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
+                    hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());
+                    hoa_donModel.setTien_dich_vu(tien_dich_vu);
+                    hoa_donModel.setGiam_giaKH(findHoaDonByPhong.getGiam_giaKH());
+                    hoa_donModel.setSo_ngay(findHoaDonByPhong.getSo_ngay());
+                    hoa_donModel.setThanh_tien(tongTien);
+                    hoa_donModel.setSo_ngay_thuc_te(ngayTraTT);
+                    hoa_donModel.setSo_ngay_du_kien(findHoaDonByPhong.getSo_ngay_du_kien());
+                    hoa_donModel.setNgay_den_thuc_te(findHoaDonByPhong.getNgay_den_thuc_te());
+                    hoa_donModel.setNgay_den_du_kien(findHoaDonByPhong.getNgay_den_du_kien());
 
-                int key = hoa_donService.edit(hoa_donModel);
-                if (key > 0) {
-                    JOptionPane.showMessageDialog(this, "Thêm Thành Công!");
-                    loadDataDV();
-                    loadDataSDDV();
-                    ressetText();
+                    int keyss = hoa_donService.edit(hoa_donModel);
+                    if (keyss > 0) {
+                        JOptionPane.showMessageDialog(this, "Thành Công!");
+                        loadDataDV();
+                        loadDataSDDV();
+                        ressetText();
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thất Bại!");
                 }
-
             } else {
-                JOptionPane.showMessageDialog(this, "Thất Bại!");
+                JOptionPane.showMessageDialog(this, "Cập Nhật Thất Bại!");
+            }
+        } else {
+            su_dung_dich_vuModel getResultDV = su_dungService.add(su_dungDVModel);
+            Date soNgayTT = new Date();
+            java.sql.Date ngayTraTT = new java.sql.Date(soNgayTT.getTime());
+            if (getResultDV != null) {
+                loadDataDV();
+                loadDataSDDV();
+                ressetText();
+                tblDichVuDaSD.setRowSelectionInterval(tblDichVuDaSD.getRowCount() - 1, tblDichVuDaSD.getRowCount() - 1);
+                int pob = tblDichVuDaSD.getSelectedRow();
+                float tien_dich_vu = Float.parseFloat(dfmSDDV.getValueAt(pob, 6).toString());
+                hoa_donModel findHoaDonByPhong = hoa_donService.findByPhong(idPhong);
+                if (findHoaDonByPhong != null) {
+                    Float tongTien = (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getSo_ngay()) + tien_dich_vu + (findHoaDonByPhong.getTien_phong() * findHoaDonByPhong.getPhu_phi()) - findHoaDonByPhong.getGiam_giaKH();
+                    hoa_donModel.setId(findHoaDonByPhong.getId());
+                    hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
+                    hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
+                    hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
+                    hoa_donModel.setId_SDDV(getResultDV.getId());
+                    hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
+                    hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
+                    hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());
+                    hoa_donModel.setTien_dich_vu(tien_dich_vu);
+                    hoa_donModel.setGiam_giaKH(findHoaDonByPhong.getGiam_giaKH());
+                    hoa_donModel.setSo_ngay(findHoaDonByPhong.getSo_ngay());
+                    hoa_donModel.setThanh_tien(tongTien);
+                    hoa_donModel.setSo_ngay_thuc_te(ngayTraTT);
+                    hoa_donModel.setSo_ngay_du_kien(findHoaDonByPhong.getSo_ngay_du_kien());
+                    hoa_donModel.setNgay_den_thuc_te(findHoaDonByPhong.getNgay_den_thuc_te());
+                    hoa_donModel.setNgay_den_du_kien(findHoaDonByPhong.getNgay_den_du_kien());
+
+                    int key = hoa_donService.edit(hoa_donModel);
+                    if (key > 0) {
+                        JOptionPane.showMessageDialog(this, "Thêm Thành Công!");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thất Bại!");
+                }
             }
         }
+
     }//GEN-LAST:event_btnThemMoiMouseClicked
 
     private void btnCapNhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCapNhatMouseClicked
         Date soNgayTT = new Date();
         java.sql.Date ngayTraTT = new java.sql.Date(soNgayTT.getTime());
         String idPhong = lblMaPhong.getText();
+        Long id_HD = Long.parseLong(lblMaHD.getText());
         Long idMSD = Long.parseLong(txt_IDSDDV.getText().toString());
         dich_vuModel idDV = (dich_vuModel) cbxDichVu.getSelectedItem();
         int soLuong = (int) txtSoLuong.getValue();
@@ -586,10 +669,10 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
             su_dungDVModel.setId(idMSD);
             su_dungDVModel.setId_DV(getIDDV);
             su_dungDVModel.setAmount(sddvModelD.getAmount() + soLuong);
+            su_dungDVModel.setId_HD(id_HD);
             int key = su_dungService.edit(su_dungDVModel);
             if (key > 0) {
                 su_dung_dich_vuModel getBySDDV = su_dungService.findOne(idMSD);
-
                 loadDataDV();
                 loadDataSDDV();
                 ressetText();
@@ -645,12 +728,16 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
                 if (funBase.IsSelected(i, 7, tblDichVuDaSD)) {
                     check = true;
 
-                    int rowSucces = su_dungService.delete(Long.parseLong(tblDichVuDaSD.getValueAt(i, 1).toString()));
-                    if (rowSucces > 0) {
-                        succesDeltete += "\t" + tblDichVuDaSD.getValueAt(i, 1).toString() + "\n";
-                    } else {
-                        errDeltete += "\t" + tblDichVuDaSD.getValueAt(i, 1).toString() + "\n";
+                    try {
+                        int rowSucces = su_dungService.delete(Long.parseLong(tblDichVuDaSD.getValueAt(i, 1).toString()));
+                        if (rowSucces > 0) {
+                            succesDeltete += "\t" + tblDichVuDaSD.getValueAt(i, 1).toString() + "\n";
+                        } else {
+                            errDeltete += "\t" + tblDichVuDaSD.getValueAt(i, 1).toString() + "\n";
+                        }
+                    } catch (Exception e) {
                     }
+
                 }
             }
             tblDichVuDaSD.clearSelection();
@@ -678,8 +765,8 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnThemMoi;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<dich_vuModel> comboDichVu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -690,8 +777,10 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblMaHD;
     private javax.swing.JLabel lblMaPhong;
     private javax.swing.JLabel lblTenKhachHang;
+    private javax.swing.JLabel ma_hdInput;
     private javax.swing.JTable tblDichVu;
     private javax.swing.JTable tblDichVuDaSD;
     private javax.swing.JLabel txtErrorMaSDDichVu;

@@ -4,49 +4,192 @@
  * and open the template in the editor.
  */
 package com.QLKS.views.JintenalFrame;
+
+import com.QLKS.Service.impl.dich_vuService;
+import com.QLKS.Service.impl.hoa_donService;
+import com.QLKS.Service.impl.khach_hangService;
+import com.QLKS.Service.impl.khuyen_maiService;
+import com.QLKS.Service.impl.phongService;
+import com.QLKS.Service.impl.su_dung_dich_vuService;
+import com.QLKS.Service.impl.trang_thai_hoa_donService;
+import com.QLKS.model.dich_vuModel;
+import com.QLKS.model.hoa_donModel;
+import com.QLKS.model.khach_hang_model;
+import com.QLKS.model.khuyen_maiModel;
+import com.QLKS.model.phongModel;
+import com.QLKS.model.su_dung_dich_vuModel;
+import com.QLKS.model.trang_thai_hoa_donModel;
+import com.QLKS.utils.functionBase;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hello
  */
 public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
 
-   
-    public interface CallBackCheckOut {
+    /**
+     * Creates new form PhieuSDDichVu
+     */
+    CallbackCheckout cb;
+    private String cmndKH;
+    hoa_donModel hoa_donModel;
+    dich_vuModel dich_vuModel;
+    khach_hang_model khach_hangModel;
+    su_dung_dich_vuModel su_dung_dich_vuModel;
+    phongModel phongModel;
+    trang_thai_hoa_donModel trang_thaiHDModel;
+    List<su_dung_dich_vuModel> listSDDV;
+    hoa_donService hoa_donService;
+    khach_hangService khach_hangService;
+    su_dung_dich_vuService su_dung_dich_vuService;
+    phongService phongService;
+    trang_thai_hoa_donService trang_thai_hoa_donService;
+    List<hoa_donModel> listHoaDon;
+
+    private float tongTien = 0;
+    SimpleDateFormat sf;
+    functionBase funBase;
+    DefaultTableModel dfmSDDV;
+    dich_vuService dich_vuService;
+    khuyen_maiModel khuyen_maiModel;
+    khuyen_maiService khuyen_maiService;
+
+    public interface CallbackCheckout {
 
         void doCheckOut();
     }
 
-    /**
-     * Creates new form PhieuSDDichVu
-     */
-    public ITN_thanh_toan_hoa_don(CallBackCheckOut _cb, String _maNhanPhong, String _maPhong, String maKH) {
-        
+    public ITN_thanh_toan_hoa_don(CallbackCheckout _cb, String _cmndKH) {
+        initComponents();
+        this.cb = _cb;
+        cmndKH = _cmndKH;
+        sf = new SimpleDateFormat("dd/MM/yyyy");
+        hoa_donModel = new hoa_donModel();
+        khach_hangModel = new khach_hang_model();
+        su_dung_dich_vuModel = new su_dung_dich_vuModel();
+        phongModel = new phongModel();
+        trang_thaiHDModel = new trang_thai_hoa_donModel();
+        hoa_donService = new hoa_donService();
+        khach_hangService = new khach_hangService();
+        su_dung_dich_vuService = new su_dung_dich_vuService();
+        phongService = new phongService();
+        trang_thai_hoa_donService = new trang_thai_hoa_donService();
+        funBase = new functionBase();
+        dfmSDDV = new DefaultTableModel();
+        dich_vuModel = new dich_vuModel();
+        dich_vuService = new dich_vuService();
+        khuyen_maiModel = new khuyen_maiModel();
+        khuyen_maiService = new khuyen_maiService();
+        listHoaDon = hoa_donService.findAllHDByKH(_cmndKH);
+        hoa_donModel = listHoaDon.get(0);
+        lblMaNhanPhong.setText(hoa_donModel.getId().toString());
+        lblTenKhachHang.setText(hoa_donModel.getKhach_hang().getName());
+        lblGioiTinh.setText(hoa_donModel.getKhach_hang().getGender());
+        lblCMND.setText(hoa_donModel.getKhach_hang().getIdentityCard());
+        lblSDT.setText(hoa_donModel.getKhach_hang().getPhone());
+        lblNgayThue.setText(sf.format(hoa_donModel.getNgay_den_thuc_te()));
+        if (hoa_donModel.getSo_ngay_thuc_te() == null) {
+            Date nowDateNgayTT = new Date();
+            java.sql.Date sqlNowDateTT = new java.sql.Date(nowDateNgayTT.getTime());
+            lblNgayDi.setText(sf.format(nowDateNgayTT));
+        } else {
+            lblNgayDi.setText(sf.format(hoa_donModel.getSo_ngay_thuc_te()));
+        }
+        lblSoNgayO.setText(funBase.formatTien(hoa_donModel.getSo_ngay()));
+        setData();
+
     }
 
     public void setData() {
+        if (listHoaDon.size() > 0) {
+            float tinhTienPhuThu = 0;
+            float tienPhong = 0;
+            StringBuilder phongtxt = new StringBuilder();
+            for (hoa_donModel modelHD : listHoaDon) {
+                tienPhong += modelHD.getTien_phong();
+                tinhTienPhuThu += modelHD.getTien_phong() * modelHD.getPhu_phi() / 100;
+                phongtxt.append(modelHD.getId_P() + ",");
+                initDVDSD();
+            }
+            phongtxt.setLength(phongtxt.length() - 1);
+            lblMaPhong.setText(phongtxt.toString());
+            lblGiaPhong.setText(funBase.formatTien(tienPhong * hoa_donModel.getSo_ngay()));
+            float tongTienPhong = tienPhong * hoa_donModel.getSo_ngay();
+            float tienDichVu = SumTienDV();
+            float tienKM = hoa_donModel.getGiam_giaKH();
+            float TongTien = tongTienPhong + tienDichVu + tinhTienPhuThu - tienKM;
+            lblTongTien.setText(funBase.formatTien(TongTien));
+        }
+    }
 
-        
-        
+    public void ressetText() {
+        lblMaNhanPhong.setText("");
+        lblMaPhong.setText("");
+        lblNgayThue.setText("");
+        lblTenKhachHang.setText("");
+        lblCMND.setText("");
+        lblNgayDi.setText("");
+        lblGioiTinh.setText("");
+        lblSDT.setText("");
+        lblSoNgayO.setText("");
+        lblGiaPhong.setText("");
+        lblTienDichVu.setText("");
+        lblKhuyenMai.setText("");
+        lblPhuThu.setText("");
+        lblTongTien.setText("");
     }
 
     public void initDVDSD() {
-       
+        Object[] columnNames = {"STT", "Mã Sử Dụng DV", "Mã Dịch Vụ", "Tên Loại DV", "Đơn Vị", "Số Lượng", "Tổng Tiền", ""};
+//        if (nameSeaechInput != null) {
+//            dfmThietBi = thiet_biService.search(nameSeaechInput);
+//        } else {
+//            dfmThietBi = cauhinhDAO.getAll();
+//        }
+        listSDDV = su_dung_dich_vuService.findAll();
+        dfmSDDV = new DefaultTableModel(new Object[0][0], columnNames);
+        int index = 1;
+        for (su_dung_dich_vuModel adv : listSDDV) {
+            dich_vuModel = dich_vuService.findOne(adv.getId_DV());
+            Object[] o = new Object[7];
+            o[0] = index;
+            o[1] = adv.getId();
+            o[2] = adv.getId_DV();
+            o[3] = dich_vuModel.getLoai_dich_vuModel().getName();
+            o[4] = dich_vuModel.getDon_viModel().getName_DV();
+            o[5] = adv.getAmount();
+            o[6] = (adv.getAmount() * dich_vuModel.getPrice());
+            dfmSDDV.addRow(o);
+            index++;
+        }
+        tblDichVuDaSD.setModel(dfmSDDV);
+        lblTienDichVu.setText(funBase.formatTien(SumTienDV()));
+        lblPhuThu.setText(funBase.formatTien(hoa_donModel.getPhu_phi()));
 
     }
 
-    public int SumTienDV() {
+    public float sumPhuPhi() {
+
+        return 0;
+    }
+
+    public float SumTienDV() {
         int rowcount = tblDichVuDaSD.getRowCount();
-        int sum = 0;
+        float sum = 0;
         for (int i = 0; i < rowcount; i++) {
-            sum += Integer.parseInt(tblDichVuDaSD.getValueAt(i, 7).toString());
+            sum += Float.parseFloat(tblDichVuDaSD.getValueAt(i, 6).toString());
         }
         return sum;
     }
 
-   
-
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +247,6 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         btnKiemTraMaKM = new javax.swing.JButton();
-        jlbMaDaTonTai = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -112,7 +254,7 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         jpnTTKhachHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin phòng và khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         jlbMaNhanPhong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jlbMaNhanPhong.setText("Mã nhận phòng:");
+        jlbMaNhanPhong.setText("Mã Hóa Đơn");
 
         lblMaNhanPhong.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblMaNhanPhong.setText("...");
@@ -192,8 +334,8 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
                             .addComponent(jlbCMND))
                         .addGap(18, 18, 18)
                         .addGroup(jpnTTKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCMND, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
+                            .addComponent(lblTenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(lblCMND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpnTTKhachHangLayout.createSequentialGroup()
                         .addComponent(jlbNgayDi)
                         .addGap(18, 18, 18)
@@ -208,7 +350,7 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
                     .addComponent(lblGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSoNgayO, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jpnTTKhachHangLayout.setVerticalGroup(
             jpnTTKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +418,7 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         jblTitle.setText("THANH TOÁN");
 
         jlbTienPhong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jlbTienPhong.setText("Tiền phòng:");
+        jlbTienPhong.setText("Tổng Tiền phòng:");
 
         lblGiaPhong.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblGiaPhong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -297,7 +439,6 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         lblTongTien.setText("...");
 
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/icon_ckeckout.png"))); // NOI18N
         btnThanhToan.setText("Trả phòng và thanh toán");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,7 +447,6 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         });
 
         btnHuyBo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnHuyBo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/icon_close.png"))); // NOI18N
         btnHuyBo.setText("Hủy bỏ");
         btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,14 +498,16 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
 
         btnKiemTraMaKM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnKiemTraMaKM.setText("Kiểm tra");
+        btnKiemTraMaKM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKiemTraMaKMMouseClicked(evt);
+            }
+        });
         btnKiemTraMaKM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKiemTraMaKMActionPerformed(evt);
             }
         });
-
-        jlbMaDaTonTai.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jlbMaDaTonTai.setText("Mã đã tồn tại");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -389,9 +531,7 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jlbMaGiamGia)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlbMaDaTonTai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSearchMaKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
+                        .addComponent(txtSearchMaKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnKiemTraMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -444,14 +584,10 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
                         .addGap(129, 129, 129)
                         .addComponent(jLabel16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbTienPhong)
-                                .addComponent(lblGiaPhong))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jlbMaDaTonTai, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, 0)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbTienPhong)
+                            .addComponent(lblGiaPhong))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlbTienDichVu)
                             .addComponent(lblTienDichVu))
@@ -493,19 +629,18 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtbDanhSachSuDungDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(339, 339, 339)
-                        .addComponent(jblTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
-                .addComponent(jpnTTKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpnTTKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtbDanhSachSuDungDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(339, 339, 339)
+                            .addComponent(jblTitle))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,7 +660,7 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-      
+
 
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
@@ -534,8 +669,55 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnHuyBoActionPerformed
 
     private void btnKiemTraMaKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKiemTraMaKMActionPerformed
-       
+
     }//GEN-LAST:event_btnKiemTraMaKMActionPerformed
+
+    private void btnKiemTraMaKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKiemTraMaKMMouseClicked
+        String maCode = txtSearchMaKhuyenMai.getText();
+        khuyen_maiModel = khuyen_maiService.findByCode(maCode);
+        boolean checkKMM = false;
+        if (khuyen_maiModel != null) {
+            try {
+                Date date1 = null;
+                Date date2 = null;
+                Date nowDate = new Date();
+                java.util.Date tgKetThuc = khuyen_maiModel.getThoi_gian_ket_thuc();
+                String currentDateStr = sf.format(nowDate);
+                String tgKTStr = sf.format(tgKetThuc);
+                date1 = sf.parse(currentDateStr);
+                date2 = sf.parse(tgKTStr);
+                Long diff = date2.getTime() - date1.getTime();
+                Long diffNgayKM = diff / (24 * 60 * 60 * 1000);
+                if (diffNgayKM >= 0) {
+                    String checkKMma = lblKhuyenMai.getText();
+                    if (checkKMma.equals("...")) {
+                        checkKMM = true;
+                    } else {
+                        txtSearchMaKhuyenMai.setEnabled(false);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Mã Khuyến Mại Này Không Còn Hiệu Lực!");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(ITN_thanh_toan_hoa_don.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (checkKMM == true) {
+                hoa_donModel.setGiam_giaKH(khuyen_maiModel.getValue());
+                lblKhuyenMai.setText(funBase.formatTien(khuyen_maiModel.getValue()));
+                String checkKMma = lblKhuyenMai.getText();
+                if (checkKMma.equals("...") == false) {
+                    txtSearchMaKhuyenMai.setEnabled(false);
+                }
+                setData();
+
+            }
+
+        } else {
+
+        }
+
+    }//GEN-LAST:event_btnKiemTraMaKMMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -555,7 +737,6 @@ public class ITN_thanh_toan_hoa_don extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlbGioiTinh;
     private javax.swing.JLabel jlbHinhThucThanhToan;
     private javax.swing.JLabel jlbKhuyenMai;
-    private javax.swing.JLabel jlbMaDaTonTai;
     private javax.swing.JLabel jlbMaGiamGia;
     private javax.swing.JLabel jlbMaNhanPhong;
     private javax.swing.JLabel jlbMaPhong;

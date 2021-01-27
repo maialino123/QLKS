@@ -16,24 +16,17 @@ public class su_dung_dich_vuModel {
     private Long id;
     private Long id_DV;
     private int amount;
-    private String id_P;
+    private Long id_HD;
     private dich_vuModel dich_vu = new dich_vuModel();
-    private phongModel phong = new phongModel();
 
-    public String getId_P() {
-        return id_P;
-    }
-
-    public void setId_P(String id_P) {
-        this.id_P = id_P;
-    }
-    public phongModel getPhong() {
-        return phong;
+    public Long getId_HD() {
+        return id_HD;
     }
 
-    public void setPhong(phongModel phong) {
-        this.phong = phong;
+    public void setId_HD(Long id_HD) {
+        this.id_HD = id_HD;
     }
+
     public dich_vuModel getDich_vu() {
         return dich_vu;
     }

@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author steve
  */
-public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
+public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame implements ITN_thanh_toan_hoa_don.CallbackCheckout{
 
     private ITN_add_khachhang ITN_add_khachhang;
     private ITN_edit_khachhang ITN_edit_khachhang;
@@ -76,7 +76,7 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
             jdek = getDesktopPane();
             jdek.add(jif);
             centerJIF(jif);
-            jif.setVisible(true);
+            jif.setVisible(true);       
             jdek.show();
         }
     }
@@ -102,7 +102,7 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
             o[4] = adv.getId_P();
             o[5] = phongModel.getLoai_phong().getName_LP();
             o[6] = adv.getTrang_thaiHD().getName();
-            o[7] = adv.getThanh_tien();
+            o[7] = funBase.formatTien(adv.getThanh_tien());
             o[9] = "Thanh Toán";
             dfmHoaDon.addRow(o);
             index++;
@@ -477,8 +477,8 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
         if (currentRow >= 0 && currentColumns == 9) {
             String trang_thaiHD = dfmHoaDon.getValueAt(currentRow, 6).toString();
             if (trang_thaiHD.equals("Chưa Thanh Toán")) {
-                Long idHD = Long.parseLong(dfmHoaDon.getValueAt(currentRow, 1).toString());
-                showInternalFrame(new ITN_Chi_Tiet_Hoa_Don_View(idHD));
+                String cmndKH = dfmHoaDon.getValueAt(currentRow, 3).toString();
+                showInternalFrame(new ITN_thanh_toan_hoa_don(this,cmndKH));
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Khách hàng này đã thanh toán hoặc chưa nhận phòng. Không thể thêm dịch vụ cho khách hàng này !", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
@@ -487,7 +487,6 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
 
     private void button_refesh_KH3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_refesh_KH3MouseClicked
         int columnRow = tbl_HoaDon.getSelectedRow();
-
         if (columnRow >= 0) {
             Long idHoaDon = Long.parseLong(dfmHoaDon.getValueAt(columnRow, 1).toString());
             showInternalFrame(new ITN_Chi_Tiet_Hoa_Don_View(idHoaDon));
@@ -543,4 +542,9 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame {
     private javax.swing.JPanel menu;
     private javax.swing.JTable tbl_HoaDon;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void doCheckOut() {
+       loadData();
+    }
 }

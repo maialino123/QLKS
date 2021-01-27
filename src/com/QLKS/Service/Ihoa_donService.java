@@ -20,4 +20,6 @@ public interface Ihoa_donService {
     int delete(Long ids);
     hoa_donModel findByPhong(String idP);
     hoa_donModel findByJoinHD(Long id);
+    List<hoa_donModel> findAllHD();
+    List<hoa_donModel> findAllHDByKH(String cmndKH);
 }

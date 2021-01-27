@@ -156,17 +156,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         line_space10 = new javax.swing.JPanel();
-        button_add = new javax.swing.JPanel();
         pnl_add = new javax.swing.JPanel();
-        line_icon_button = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        pnl_out = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         pnl_reset = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        pnl_out = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
 
         setClosable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/icons8_hotel_star_20px.png"))); // NOI18N
@@ -430,7 +425,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
         line_space4.setBackground(new java.awt.Color(48, 48, 48));
         line_space4.setPreferredSize(new java.awt.Dimension(550, 40));
-        content2.add(line_space4);
 
         add_email.setBackground(new java.awt.Color(36, 36, 36));
         add_email.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -465,8 +459,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         });
         add_email.add(txt_inputEmail, java.awt.BorderLayout.CENTER);
 
-        content2.add(add_email);
-
         line_space5.setBackground(new java.awt.Color(48, 48, 48));
         line_space5.setPreferredSize(new java.awt.Dimension(550, 40));
         line_space5.setLayout(new java.awt.BorderLayout());
@@ -483,8 +475,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         mess_err_email.setForeground(new java.awt.Color(255, 0, 0));
         mess_err_email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         line_space5.add(mess_err_email, java.awt.BorderLayout.CENTER);
-
-        content2.add(line_space5);
 
         add_userName.setBackground(new java.awt.Color(36, 36, 36));
         add_userName.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -514,8 +504,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         txt_inputUsername1.setCaretColor(new java.awt.Color(154, 231, 246));
         add_userName.add(txt_inputUsername1, java.awt.BorderLayout.CENTER);
 
-        content2.add(add_userName);
-
         line_space6.setBackground(new java.awt.Color(48, 48, 48));
         line_space6.setPreferredSize(new java.awt.Dimension(550, 40));
         line_space6.setLayout(new java.awt.BorderLayout());
@@ -532,8 +520,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         mess_err_userName.setForeground(new java.awt.Color(255, 0, 0));
         mess_err_userName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         line_space6.add(mess_err_userName, java.awt.BorderLayout.CENTER);
-
-        content2.add(line_space6);
 
         add_passWord.setBackground(new java.awt.Color(36, 36, 36));
         add_passWord.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -563,8 +549,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jPasswordField1.setCaretColor(new java.awt.Color(154, 231, 246));
         add_passWord.add(jPasswordField1, java.awt.BorderLayout.CENTER);
 
-        content2.add(add_passWord);
-
         line_space7.setBackground(new java.awt.Color(48, 48, 48));
         line_space7.setPreferredSize(new java.awt.Dimension(550, 40));
         line_space7.setLayout(new java.awt.BorderLayout());
@@ -581,8 +565,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         mess_err_password.setForeground(new java.awt.Color(255, 0, 0));
         mess_err_password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         line_space7.add(mess_err_password, java.awt.BorderLayout.CENTER);
-
-        content2.add(line_space7);
 
         add_passWord1.setBackground(new java.awt.Color(36, 36, 36));
         add_passWord1.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -611,8 +593,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jPasswordField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         jPasswordField2.setCaretColor(new java.awt.Color(154, 231, 246));
         add_passWord1.add(jPasswordField2, java.awt.BorderLayout.CENTER);
-
-        content2.add(add_passWord1);
 
         line_space8.setBackground(new java.awt.Color(48, 48, 48));
         line_space8.setPreferredSize(new java.awt.Dimension(550, 40));
@@ -646,8 +626,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        content2.add(line_space8);
-
         add_CMND.setBackground(new java.awt.Color(36, 36, 36));
         add_CMND.setPreferredSize(new java.awt.Dimension(400, 40));
         add_CMND.setLayout(new java.awt.BorderLayout());
@@ -676,8 +654,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         txt_inputCMND.setCaretColor(new java.awt.Color(154, 231, 246));
         add_CMND.add(txt_inputCMND, java.awt.BorderLayout.CENTER);
 
-        content2.add(add_CMND);
-
         line_space9.setBackground(new java.awt.Color(48, 48, 48));
         line_space9.setPreferredSize(new java.awt.Dimension(550, 40));
         line_space9.setLayout(new java.awt.BorderLayout());
@@ -699,8 +675,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         jPanel14.add(messa_err_cmnd, java.awt.BorderLayout.CENTER);
 
         line_space9.add(jPanel14, java.awt.BorderLayout.CENTER);
-
-        content2.add(line_space9);
 
         add_nhom_quyen.setBackground(new java.awt.Color(36, 36, 36));
         add_nhom_quyen.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -734,15 +708,8 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         });
         add_nhom_quyen.add(jComboBox1, java.awt.BorderLayout.CENTER);
 
-        content2.add(add_nhom_quyen);
-
         line_space10.setBackground(new java.awt.Color(48, 48, 48));
         line_space10.setPreferredSize(new java.awt.Dimension(550, 40));
-        content2.add(line_space10);
-
-        button_add.setBackground(new java.awt.Color(36, 36, 36));
-        button_add.setPreferredSize(new java.awt.Dimension(300, 40));
-        button_add.setLayout(new java.awt.BorderLayout());
 
         pnl_add.setBackground(new java.awt.Color(11, 11, 11));
         pnl_add.setForeground(new java.awt.Color(154, 231, 246));
@@ -760,50 +727,11 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         });
         pnl_add.setLayout(new java.awt.BorderLayout());
 
-        line_icon_button.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        line_icon_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        pnl_add.add(line_icon_button, java.awt.BorderLayout.LINE_END);
-
         jLabel26.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(154, 231, 246));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Thêm");
         pnl_add.add(jLabel26, java.awt.BorderLayout.CENTER);
-
-        button_add.add(pnl_add, java.awt.BorderLayout.LINE_END);
-
-        pnl_out.setBackground(new java.awt.Color(11, 11, 11));
-        pnl_out.setForeground(new java.awt.Color(154, 231, 246));
-        pnl_out.setPreferredSize(new java.awt.Dimension(100, 40));
-        pnl_out.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnl_outMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnl_outMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnl_outMouseExited(evt);
-            }
-        });
-        pnl_out.setLayout(new java.awt.BorderLayout());
-
-        jLabel28.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        pnl_out.add(jLabel28, java.awt.BorderLayout.LINE_END);
-
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        pnl_out.add(jLabel30, java.awt.BorderLayout.LINE_START);
-
-        jLabel29.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(154, 231, 246));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("Thoát");
-        pnl_out.add(jLabel29, java.awt.BorderLayout.CENTER);
-
-        button_add.add(pnl_out, java.awt.BorderLayout.LINE_START);
 
         pnl_reset.setBackground(new java.awt.Color(11, 11, 11));
         pnl_reset.setForeground(new java.awt.Color(154, 231, 246));
@@ -821,19 +749,124 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
         });
         pnl_reset.setLayout(new java.awt.BorderLayout());
 
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QLKS/icon/icon_button/line_button_add_NV.png"))); // NOI18N
-        pnl_reset.add(jLabel25, java.awt.BorderLayout.LINE_END);
-
         jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(154, 231, 246));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Làm Mới");
         pnl_reset.add(jLabel27, java.awt.BorderLayout.CENTER);
 
-        button_add.add(pnl_reset, java.awt.BorderLayout.CENTER);
+        pnl_out.setBackground(new java.awt.Color(11, 11, 11));
+        pnl_out.setForeground(new java.awt.Color(154, 231, 246));
+        pnl_out.setPreferredSize(new java.awt.Dimension(100, 40));
+        pnl_out.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnl_outMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnl_outMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnl_outMouseExited(evt);
+            }
+        });
+        pnl_out.setLayout(new java.awt.BorderLayout());
 
-        content2.add(button_add);
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(154, 231, 246));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Thoát");
+        pnl_out.add(jLabel29, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout content2Layout = new javax.swing.GroupLayout(content2);
+        content2.setLayout(content2Layout);
+        content2Layout.setHorizontalGroup(
+            content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(pnl_reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(pnl_out, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
+            .addGroup(content2Layout.createSequentialGroup()
+                .addGroup(content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_passWord1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(line_space9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(add_nhom_quyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(content2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(line_space10, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        content2Layout.setVerticalGroup(
+            content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(line_space4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_passWord1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(add_nhom_quyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(line_space10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(content2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_out, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -842,7 +875,7 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(content1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 613, Short.MAX_VALUE))
+                .addComponent(content2, javax.swing.GroupLayout.PREFERRED_SIZE, 589, Short.MAX_VALUE))
             .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -898,12 +931,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
     private void pnl_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseExited
         changeColor(pnl_add, new Color(11, 11, 11));
-        changeimage(line_icon_button, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
+       
     }//GEN-LAST:event_pnl_addMouseExited
     
 
     private void pnl_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_addMouseClicked
-        changeimage(line_icon_button, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
+       
         String name = txt_inputName.getText();
         String email = txt_inputEmail.getText();
         String userName = txt_inputUsername1.getText();
@@ -1120,13 +1153,13 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
     private void pnl_resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_resetMouseExited
         changeColor(pnl_reset, new Color(27, 27, 27));
-        changeimage(jLabel25, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
+       
     }//GEN-LAST:event_pnl_resetMouseExited
 
     private void pnl_resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_resetMouseClicked
         resetText();
         changeimage(lbl_showImage, "/com/QLKS/icon/icon_button/avatar_default.png");
-        changeimage(jLabel25, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
+       
         jDateChooser1.setCalendar(null);
     }//GEN-LAST:event_pnl_resetMouseClicked
 
@@ -1136,13 +1169,12 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
 
     private void pnl_outMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_outMouseExited
         changeColor(pnl_out, new Color(27, 27, 27));
-        changeimage(jLabel28, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
-        changeimage(jLabel30, "/com/QLKS/icon/icon_button/line_button_add_NV.png");
+       
+        
     }//GEN-LAST:event_pnl_outMouseExited
 
     private void pnl_outMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_outMouseClicked
-        changeimage(jLabel28, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
-        changeimage(jLabel30, "/com/QLKS/icon/icon_button/button_add_NVCLICK.png");
+        
         resetText();
         dispose();
     }//GEN-LAST:event_pnl_outMouseClicked
@@ -1162,7 +1194,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel add_passWord1;
     private javax.swing.JPanel add_userName;
     private javax.swing.ButtonGroup buttonGroup_gender;
-    private javax.swing.JPanel button_add;
     private javax.swing.JPanel button_image_file;
     private javax.swing.JPanel content1;
     private javax.swing.JPanel content2;
@@ -1184,13 +1215,10 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1216,7 +1244,6 @@ public class ITN_add_nhan_vien extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel lbl_showImage;
-    private javax.swing.JLabel line_icon_button;
     private javax.swing.JPanel line_image;
     private javax.swing.JLabel line_image_label;
     private javax.swing.JPanel line_space;

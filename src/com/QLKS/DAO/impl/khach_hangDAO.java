@@ -34,7 +34,7 @@ public class khach_hangDAO extends abstractDAO<khach_hang_model> implements Ikha
         String sql = resourceBundleSQL.getString("add_khach_hang");
         return insert(sql, model.getName(), model.getBirthDay(), model.getGender(),
                 model.getPhone(), model.getAddress(), model.getIdentityCard(),
-                model.getNation(), model.getNumberOfCheckIn(), model.getCreatedDate(), model.getCreatedBy());
+                model.getNation(), model.getNumberOfCheckIn(), model.getCreatedDate(), model.getCreatedBy(), model.getMissedRoom());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class khach_hangDAO extends abstractDAO<khach_hang_model> implements Ikha
         return update(sql, model.getName(), model.getBirthDay(), model.getGender(),
                 model.getPhone(), model.getAddress(), model.getIdentityCard(),
                 model.getNation(), model.getNumberOfCheckIn(), model.getCreatedDate(),
-                model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
+                model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(), model.getMissedRoom() ,model.getId());
     }
 
     @Override

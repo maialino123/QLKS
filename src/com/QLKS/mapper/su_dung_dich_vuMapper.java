@@ -24,18 +24,12 @@ public class su_dung_dich_vuMapper implements rowMapper<su_dung_dich_vuModel>{
             model.setId(rs.getLong("id"));
             model.setId_DV(rs.getLong("id_DV"));
             model.setAmount(rs.getInt("amount"));
-            model.setId_P(rs.getString("id_P"));
+            model.setId_HD(rs.getLong("id_HD"));
             try {
                 dich_vuModel dich_vu = new dich_vuModel();
                 dich_vu.setId_LDV(rs.getLong("id_LDV"));
                 dich_vu.setPrice(rs.getFloat("price"));
                 model.setDich_vu(dich_vu);
-            } catch (Exception e) {
-            }
-            try {
-                phongModel phong = new phongModel();
-                phong.setStatus(rs.getString("status"));
-                model.setPhong(phong);
             } catch (Exception e) {
             }
             return model;

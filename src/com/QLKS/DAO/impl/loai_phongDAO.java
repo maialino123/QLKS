@@ -44,7 +44,7 @@ public class loai_phongDAO extends abstractDAO<loai_phongModel> implements Iloai
 
     @Override
     public int delete(Long id) {
-        String sql = resourceBundleSQL.getString("get_one_loai_phong");
+        String sql = resourceBundleSQL.getString("delete_loai_phong");
         return update(sql, id);
     }
 

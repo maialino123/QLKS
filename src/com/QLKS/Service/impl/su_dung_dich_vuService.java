@@ -50,8 +50,18 @@ public class su_dung_dich_vuService implements Isu_dung_dich_vuService {
     }
 
     @Override
-    public su_dung_dich_vuModel findByIdP(String idP) {
-        return su_dung_dich_vuDAO.findByIdP(idP);
+    public su_dung_dich_vuModel findByIdP(String idP, Long id_HD) {
+        return su_dung_dich_vuDAO.findByIdP(idP, id_HD);
+    }
+
+    @Override
+    public List<su_dung_dich_vuModel> get_allHD_SDDV(Long idHD, Long idKH) {
+        return su_dung_dich_vuDAO.get_allHD_SDDV(idHD, idKH);
+    }
+
+    @Override
+    public su_dung_dich_vuModel get_trungDV_SDDV(Long idDV, Long idHD) {
+        return su_dung_dich_vuDAO.get_trungDV_SDDV(idDV, idHD);
     }
 
 }

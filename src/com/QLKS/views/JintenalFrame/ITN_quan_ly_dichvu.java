@@ -152,20 +152,25 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
         jlbMaDv.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbMaDv.setForeground(new java.awt.Color(154, 231, 246));
         jlbMaDv.setText("Mã dịch vụ:");
+        jlbMaDv.setPreferredSize(new java.awt.Dimension(67, 30));
 
         jlbMaloaiDV.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbMaloaiDV.setForeground(new java.awt.Color(154, 231, 246));
         jlbMaloaiDV.setText("Mã loại dịch vụ:");
+        jlbMaloaiDV.setPreferredSize(new java.awt.Dimension(90, 30));
 
         jlbGiaDV.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbGiaDV.setForeground(new java.awt.Color(154, 231, 246));
         jlbGiaDV.setText("Giá dịch vụ:");
+        jlbGiaDV.setPreferredSize(new java.awt.Dimension(68, 30));
 
         txtErrorMaLoaiDichVu.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorMaLoaiDichVu.setText("...");
+        txtErrorMaLoaiDichVu.setPreferredSize(new java.awt.Dimension(12, 18));
 
         txtErrorTenLoaiDichVu.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorTenLoaiDichVu.setText("...");
+        txtErrorTenLoaiDichVu.setPreferredSize(new java.awt.Dimension(12, 18));
 
         txtGiaDichVu.setBackground(new java.awt.Color(32, 32, 32));
         txtGiaDichVu.setColumns(5);
@@ -176,6 +181,7 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
 
         txtErrorTenLoaiDichVu1.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorTenLoaiDichVu1.setText("...");
+        txtErrorTenLoaiDichVu1.setPreferredSize(new java.awt.Dimension(12, 18));
 
         button_resset.setBackground(new java.awt.Color(36, 36, 36));
         button_resset.setMaximumSize(new java.awt.Dimension(100, 35));
@@ -249,10 +255,12 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
 
         txtErrorTenLoaiDichVu2.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorTenLoaiDichVu2.setText("...");
+        txtErrorTenLoaiDichVu2.setPreferredSize(new java.awt.Dimension(12, 18));
 
         jlbMaloaiDV1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbMaloaiDV1.setForeground(new java.awt.Color(154, 231, 246));
         jlbMaloaiDV1.setText("Loại Đơn Vị");
+        jlbMaloaiDV1.setPreferredSize(new java.awt.Dimension(68, 30));
 
         javax.swing.GroupLayout jpnDichVuLayout = new javax.swing.GroupLayout(jpnDichVu);
         jpnDichVu.setLayout(jpnDichVuLayout);
@@ -262,73 +270,64 @@ public class ITN_quan_ly_dichvu extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnDichVuLayout.createSequentialGroup()
-                        .addComponent(jlbGiaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGiaDichVu)
-                            .addGroup(jpnDichVuLayout.createSequentialGroup()
-                                .addComponent(txtErrorTenLoaiDichVu1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jpnDichVuLayout.createSequentialGroup()
-                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlbMaDv)
-                            .addComponent(jlbMaloaiDV))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtErrorTenLoaiDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jpnDichVuLayout.createSequentialGroup()
-                                .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboLDV, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_idDV, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jpnDichVuLayout.createSequentialGroup()
                         .addComponent(button_resset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(button_addDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(button_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpnDichVuLayout.createSequentialGroup()
-                        .addComponent(jlbMaloaiDV1)
-                        .addGap(40, 40, 40)
-                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErrorTenLoaiDichVu2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboDon_vi, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlbMaloaiDV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbMaDv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtErrorTenLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_idDV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboLDV, 0, 200, Short.MAX_VALUE)))
+                    .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtErrorTenLoaiDichVu1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnDichVuLayout.createSequentialGroup()
+                            .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jlbMaloaiDV1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                .addComponent(jlbGiaDV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(19, 19, 19)
+                            .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtErrorTenLoaiDichVu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboDon_vi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtGiaDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnDichVuLayout.setVerticalGroup(
             jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnDichVuLayout.createSequentialGroup()
-                .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpnDichVuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlbMaDv))
-                    .addGroup(jpnDichVuLayout.createSequentialGroup()
-                        .addComponent(txt_idDV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(1, 1, 1)))
-                .addComponent(txtErrorMaLoaiDichVu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
+                .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlbMaDv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_idDV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbMaloaiDV)
-                    .addComponent(comboLDV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboLDV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbMaloaiDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtErrorTenLoaiDichVu)
+                .addComponent(txtErrorTenLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbMaloaiDV1)
-                    .addComponent(comboDon_vi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtErrorTenLoaiDichVu2)
-                .addGap(28, 28, 28)
+                    .addComponent(comboDon_vi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbMaloaiDV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtErrorTenLoaiDichVu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbGiaDV)
-                    .addComponent(txtGiaDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtErrorTenLoaiDichVu1)
-                .addGap(34, 34, 34)
+                    .addComponent(txtGiaDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbGiaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtErrorTenLoaiDichVu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addGroup(jpnDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button_resset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_addDV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

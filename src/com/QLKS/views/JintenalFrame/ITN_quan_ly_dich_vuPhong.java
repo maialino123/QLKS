@@ -201,9 +201,10 @@ public class ITN_quan_ly_dich_vuPhong extends javax.swing.JInternalFrame {
         if (currentRow >= 0 && currentColumns == 5) {
             String trang_thaiHD = dfmDSphong.getValueAt(currentRow, 4).toString();
             if (trang_thaiHD.equals("Chưa Thanh Toán")) {
+                String id_HD = dfmDSphong.getValueAt(currentRow, 1).toString();
                 String id_Phong = dfmDSphong.getValueAt(currentRow, 3).toString();
                 String tenKH = dfmDSphong.getValueAt(currentRow, 2).toString();
-                showInternalFrame(new ITN_Sudungdichvu(id_Phong, tenKH));
+                showInternalFrame(new ITN_Sudungdichvu(id_HD,id_Phong, tenKH));
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Khách hàng này đã thanh toán hoặc chưa nhận phòng. Không thể thêm dịch vụ cho khách hàng này !", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }

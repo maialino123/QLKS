@@ -344,7 +344,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlbMaDv5)
                             .addComponent(jlbMaDv6))
-                        .addGap(0, 38, Short.MAX_VALUE)))
+                        .addGap(0, 44, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,17 +352,17 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txt_HTTT, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(ngay_den_du_kien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboBoxTTHD, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboBoxTTHD, javax.swing.GroupLayout.Alignment.LEADING, 0, 190, Short.MAX_VALUE)
                                 .addComponent(comboBoxKhachHang, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ngay_den_thuc_te, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(ngay_tra_du_kien, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                                .addComponent(ngay_den_thuc_te, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ngay_tra_du_kien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                                 .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +374,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -444,11 +444,11 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(48, 48, 48));
@@ -480,7 +480,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -490,7 +490,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
             .addGroup(contentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -498,11 +498,10 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -544,7 +543,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                 lstMaPhong123.add(tbl_PhongTrong.getValueAt(i, 1).toString());
             }
         }
-        
+
         for (int i = 0; i < lstMaPhong123.size(); i++) {
             resultStr.append(lstMaPhong123.get(i) + " , ");
         }
@@ -556,6 +555,7 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
         khach_hang_model khachhang = (khach_hang_model) cbxKhachHang.getSelectedItem();
         trang_thai_hoa_donModel trangThai = (trang_thai_hoa_donModel) cbxTTHD.getSelectedItem();
         Long idTT = trangThai.getId();
+        String nameTTHD = trangThai.getName();
         Long IDKH = khachhang.getId();
         String HinhThucTT = txt_HTTT.getText();
         java.util.Date utilNgay_den_du_kien = ngay_den_du_kien.getDate();
@@ -628,7 +628,13 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                         Float tienPhong = checkTGP.getLoai_phong().getPrice();
                         newPhongModel.setId(idP);
                         newPhongModel.setId_LP(checkTGP.getId_LP());
-                        newPhongModel.setStatus("Đã Đặt");
+                        if (nameTTHD.equalsIgnoreCase("Đã Đặt Trước")) {
+                            newPhongModel.setStatus("Đặt Trước");
+                        } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
+                            newPhongModel.setStatus("Đã Đặt");
+                        } else {
+                            newPhongModel.setStatus("Đã Đặt");
+                        }
                         tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
                         hoa_donModel.setId_KH(IDKH);
                         hoa_donModel.setId_P(idP);
@@ -677,7 +683,13 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
                         Float tienPhong = phongModel.getLoai_phong().getPrice();
                         newPhongModel.setId(idP);
                         newPhongModel.setId_LP(phongModel.getId_LP());
-                        newPhongModel.setStatus("Đã Đặt");
+                        if (nameTTHD.equalsIgnoreCase("Đã đặt trước")) {
+                            newPhongModel.setStatus("Đặt Trước");
+                        } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
+                            newPhongModel.setStatus("Đã Đặt");
+                        } else {
+                            newPhongModel.setStatus("Đã Đặt");
+                        }
                         tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
                         hoa_donModel.setId_KH(IDKH);
                         hoa_donModel.setId_P(idP);

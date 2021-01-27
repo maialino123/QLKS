@@ -17,10 +17,13 @@ import com.QLKS.model.phongModel;
 import com.QLKS.model.su_dung_dich_vuModel;
 import com.QLKS.utils.MethodMain;
 import com.QLKS.utils.functionBase;
+import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,6 +56,7 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sf;
     SimpleDateFormat fomatGio;
     functionBase funBase;
+    private JDesktopPane jdek;
 
     public ITN_Chi_Tiet_Hoa_Don_View(Long _idHD) {
         initComponents();
@@ -78,6 +82,28 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
     public void setData() {
 
     }
+    
+    
+     public void centerJIF(JInternalFrame jif) {
+        Dimension desktopSize = jdek.getSize();
+        Dimension jInternalFrameSize = jif.getSize();
+        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
+        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
+        jif.setLocation(width, height);
+        jif.setVisible(true);
+    }
+
+    public void showInternalFrame(JInternalFrame jif) {
+        if (!jif.isVisible()) {
+            jdek = getDesktopPane();
+            jdek.add(jif);
+            centerJIF(jif);
+            jif.setVisible(true);       
+            jdek.show();
+        }
+    }
+    
+    
 
     public void initDVDSD() {
         Object[] columnNames = {"STT", "Mã Sử Dụng DV", "Mã Dịch Vụ", "Tên Loại DV", "Đơn Vị", "Số Lượng", "Tổng Tiền", ""};
@@ -124,15 +150,15 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
             lblNgayTra.setText(dateNgayTra);
             float phuThu = 0;
             if (gioTraPhong >= 13 && gioTraPhong < 15) {
-                phuThu = 20;
+                phuThu = hoa_donModel.getPhu_phi() + 20;
             } else if (gioTraPhong >= 15 && gioTraPhong < 17) {
-                phuThu = 40;
+                phuThu = hoa_donModel.getPhu_phi() + 40;
             } else if (gioTraPhong >= 17 && gioTraPhong < 19) {
-                phuThu = 50;
+                phuThu = hoa_donModel.getPhu_phi() + 60;
             } else if (gioTraPhong >= 19) {
-                phuThu = 100;
+                phuThu = hoa_donModel.getPhu_phi() + 100;
             } else {
-                phuThu = 0;
+                phuThu = hoa_donModel.getPhu_phi();
             }
             lblPhuThu.setText(String.valueOf(phuThu));
             hoa_donModel.setPhu_phi(phuThu);
@@ -161,7 +187,7 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
             updateHoaDon.setSo_ngay(hoa_donModel.getSo_ngay());
             updateHoaDon.setThanh_tien(tong_gia);
             updateHoaDon.setSo_ngay_du_kien(hoa_donModel.getSo_ngay_du_kien());
-            updateHoaDon.setSo_ngay_thuc_te(ngayTraTT);
+            updateHoaDon.setSo_ngay_thuc_te(hoa_donModel.getSo_ngay_thuc_te());
             updateHoaDon.setNgay_den_du_kien(hoa_donModel.getNgay_den_du_kien());
             updateHoaDon.setNgay_den_thuc_te(hoa_donModel.getNgay_den_thuc_te());
             hoa_donService.edit(updateHoaDon);
@@ -183,8 +209,7 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
     
     public void reloadITNHD(){
         ITN_quan_ly_hoadon ITNQLHD = new ITN_quan_ly_hoadon();
-        ITNQLHD.setVisible(true);
-        this.dispose();
+        ITNQLHD.repaint();
     }
 
     /**

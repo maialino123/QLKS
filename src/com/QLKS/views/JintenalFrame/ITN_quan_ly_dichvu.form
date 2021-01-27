@@ -153,93 +153,79 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlbGiaDV" min="-2" pref="99" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtGiaDichVu" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtErrorTenLoaiDichVu1" min="-2" pref="303" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlbMaDv" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlbMaloaiDV" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtErrorMaLoaiDichVu" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="txtErrorTenLoaiDichVu" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="comboLDV" min="-2" pref="184" max="-2" attributes="0"/>
-                                          <Component id="txt_idDV" min="-2" pref="106" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="button_resset" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="button_addDV" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="button_update" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="button_delete" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlbMaloaiDV1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtErrorTenLoaiDichVu2" min="-2" pref="302" max="-2" attributes="0"/>
-                                  <Component id="comboDon_vi" min="-2" pref="184" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jlbMaloaiDV" max="32767" attributes="0"/>
+                                  <Component id="jlbMaDv" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtErrorTenLoaiDichVu" max="32767" attributes="0"/>
+                                  <Component id="txtErrorMaLoaiDichVu" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_idDV" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboLDV" alignment="0" pref="200" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="txtErrorTenLoaiDichVu1" alignment="1" min="-2" pref="201" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlbMaloaiDV1" pref="90" max="32767" attributes="0"/>
+                                      <Component id="jlbGiaDV" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtErrorTenLoaiDichVu2" max="32767" attributes="0"/>
+                                      <Component id="comboDon_vi" max="32767" attributes="0"/>
+                                      <Component id="txtGiaDichVu" pref="199" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jlbMaDv" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="txt_idDV" max="32767" attributes="0"/>
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jlbMaDv" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_idDV" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtErrorMaLoaiDichVu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlbMaloaiDV" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="comboLDV" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jlbMaloaiDV" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtErrorTenLoaiDichVu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlbMaloaiDV1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="comboDon_vi" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jlbMaloaiDV1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtErrorTenLoaiDichVu2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlbGiaDV" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtGiaDichVu" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="jlbGiaDV" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtErrorTenLoaiDichVu1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="button_resset" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="button_addDV" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -261,6 +247,9 @@
                   <Color blue="f6" green="e7" red="9a" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#xe3; d&#x1ecb;ch v&#x1ee5;:"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[67, 30]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jlbMaloaiDV">
@@ -272,6 +261,9 @@
                   <Color blue="f6" green="e7" red="9a" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#xe3; lo&#x1ea1;i d&#x1ecb;ch v&#x1ee5;:"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[90, 30]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jlbGiaDV">
@@ -283,6 +275,9 @@
                   <Color blue="f6" green="e7" red="9a" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gi&#xe1; d&#x1ecb;ch v&#x1ee5;:"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[68, 30]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="txtErrorMaLoaiDichVu">
@@ -291,6 +286,9 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="..."/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 18]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboLDV">
@@ -309,6 +307,9 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="..."/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 18]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtGiaDichVu">
@@ -339,6 +340,9 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="..."/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 18]"/>
+                </Property>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="button_resset">
@@ -506,6 +510,9 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="..."/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 18]"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboDon_vi">
@@ -527,6 +534,9 @@
                   <Color blue="f6" green="e7" red="9a" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i &#x110;&#x1a1;n V&#x1ecb;"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[68, 30]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

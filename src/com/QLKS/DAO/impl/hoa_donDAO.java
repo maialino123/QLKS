@@ -25,7 +25,7 @@ public class hoa_donDAO extends abstractDAO<hoa_donModel> implements Ihoa_donDAO
     @Override
     public hoa_donModel findONe(Long id) {
         String sql = resourceBundleSQL.getString("get_one_hoa_don");
-        List<hoa_donModel> list = query(sql, new hoa_donMapper(), 1);
+        List<hoa_donModel> list = query(sql, new hoa_donMapper(), id);
         return list.isEmpty() ? null : list.get(0);
     }
 
@@ -65,5 +65,17 @@ public class hoa_donDAO extends abstractDAO<hoa_donModel> implements Ihoa_donDAO
         String sql = resourceBundleSQL.getString("get_one_join_hoa_don");
         List<hoa_donModel> list = query(sql, new hoa_donMapper(), id);
         return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public List<hoa_donModel> findAllHD() {
+       String sql = resourceBundleSQL.getString("get_all_find_hoa_don");
+       return query(sql, new hoa_donMapper());
+    }
+
+    @Override
+    public List<hoa_donModel> findAllHDByKH(String cmndKH) {
+        String sql = resourceBundleSQL.getString("get_all_hoa_don_byKH");
+        return query(sql, new hoa_donMapper(), cmndKH);
     }
 }

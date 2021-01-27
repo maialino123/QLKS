@@ -33,6 +33,7 @@ public class khach_hangService implements Ikhach_hangService {
     public Long add_khachHang(khach_hang_model model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
+        model.setMissedRoom(0);
         Long id = khach_hangDAO.add_khachHang(model);
         return id;
     }

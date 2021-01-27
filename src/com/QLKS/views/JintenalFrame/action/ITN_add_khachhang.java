@@ -23,19 +23,19 @@ public class ITN_add_khachhang extends javax.swing.JInternalFrame {
     khach_hangService khach_hangService;
     DefaultTableModel dfmKhachhang;
     private CallBackAdd cb;
-    
+
     public interface CallBackAdd {
-        
+
         void doAdd();
     }
-    
+
     public ITN_add_khachhang(CallBackAdd _cb) {
         initComponents();
         this.cb = _cb;
         khach_hangModel = new khach_hang_model();
         khach_hangService = new khach_hangService();
         dfmKhachhang = new DefaultTableModel();
-        
+
     }
 
     /**
@@ -523,22 +523,43 @@ public class ITN_add_khachhang extends javax.swing.JInternalFrame {
         khach_hangModel.setNation(quocGiaKH);
         khach_hangModel.setPhone(sdtlKH);
         khach_hangModel.setGender(gioiTinh);
-        
+
         khach_hang_model checkSoluot = khach_hangService.findCmnd(cmndKH);
+
         if (checkSoluot != null) {
-            String soLuot = String.valueOf(checkSoluot.getNumberOfCheckIn());
-            String mess = "";
-            mess += "Khách Hàng Đã Đến Khách Sạn " + soLuot + "Lần";
-            checkSoluot.setNumberOfCheckIn(checkSoluot.getNumberOfCheckIn() + 1);
-            
-            int keyu = khach_hangService.edit_khachHang(checkSoluot);
-            if (keyu > 0) {
-                JOptionPane.showMessageDialog(this, "Thành Công!");
-                ressetText();
-                cb.doAdd();
-                dispose();
+            if (checkSoluot.getMissedRoom() >= 3) {
+                int thongBao = JOptionPane.showConfirmDialog(this, "Khách Hàng Này Đã Bỏ Phòng " + checkSoluot.getMissedRoom() + " Lần! \n  Tiếp Tục?", "Thông báo!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (thongBao == JOptionPane.YES_OPTION) {
+                    String soLuot = String.valueOf(checkSoluot.getNumberOfCheckIn());
+                    String mess = "";
+                    mess += "Khách Hàng Đã Đến Khách Sạn " + soLuot + "Lần";
+                    checkSoluot.setNumberOfCheckIn(checkSoluot.getNumberOfCheckIn() + 1);
+
+                    int keyu = khach_hangService.edit_khachHang(checkSoluot);
+                    if (keyu > 0) {
+                        JOptionPane.showMessageDialog(this, "Thành Công!");
+                        ressetText();
+                        cb.doAdd();
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thất Bại!");
+                    }
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Thất Bại!");
+                String soLuot = String.valueOf(checkSoluot.getNumberOfCheckIn());
+                String mess = "";
+                mess += "Khách Hàng Đã Đến Khách Sạn " + soLuot + "Lần";
+                checkSoluot.setNumberOfCheckIn(checkSoluot.getNumberOfCheckIn() + 1);
+
+                int keyu = khach_hangService.edit_khachHang(checkSoluot);
+                if (keyu > 0) {
+                    JOptionPane.showMessageDialog(this, "Thành Công!");
+                    ressetText();
+                    cb.doAdd();
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thất Bại!");
+                }
             }
         } else {
             khach_hangModel.setNumberOfCheckIn(1);
@@ -552,7 +573,7 @@ public class ITN_add_khachhang extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Thêm Mới Thất Bại");
             }
         }
-        
+
     }//GEN-LAST:event_pnl_addMouseClicked
 
 

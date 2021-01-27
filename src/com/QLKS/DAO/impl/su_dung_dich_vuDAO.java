@@ -26,7 +26,7 @@ public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implem
     @Override
     public Long add(su_dung_dich_vuModel model) {
         String sql = resourceBundleSQL.getString("add_SDDV");
-        return insert(sql, model.getId_DV(), model.getAmount(), model.getId_P());
+        return insert(sql, model.getId_DV(), model.getAmount(), model.getId_HD());
     }
 
     @Override
@@ -44,7 +44,7 @@ public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implem
     @Override
     public int edit(su_dung_dich_vuModel model) {
         String sql = resourceBundleSQL.getString("update_SDDV");
-        return update(sql, model.getId_DV(), model.getAmount(), model.getId_P(), model.getId());
+        return update(sql, model.getId_DV(), model.getAmount(), model.getId_HD(), model.getId());
     }
 
     @Override
@@ -55,9 +55,22 @@ public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implem
     }
 
     @Override
-    public su_dung_dich_vuModel findByIdP(String idP) {
+    public su_dung_dich_vuModel findByIdP(String idP, Long id_HD) {
         String sql = resourceBundleSQL.getString("get_P_SDDV");
-        List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), idP);
+        List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), idP, id_HD);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    @Override
+    public List<su_dung_dich_vuModel> get_allHD_SDDV(Long idHD, Long idKH) {
+        String sql = resourceBundleSQL.getString("get_allHD_SDDV");
+        return query(sql, new su_dung_dich_vuMapper(), idHD, idKH);
+    }
+
+    @Override
+    public su_dung_dich_vuModel get_trungDV_SDDV(Long idDV, Long idHD) {
+        String sql = resourceBundleSQL.getString("get_trungDV_SDDV");
+        List<su_dung_dich_vuModel> list = query(sql, new su_dung_dich_vuMapper(), idDV, idHD);
         return list.isEmpty() ? null : list.get(0);
     }
 

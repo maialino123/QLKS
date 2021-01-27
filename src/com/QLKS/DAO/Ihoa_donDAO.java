@@ -20,6 +20,7 @@ public interface Ihoa_donDAO extends GenericDAO<hoa_donModel> {
     int delete(Long id);
     hoa_donModel findByPhong(String idP);
     hoa_donModel findByJoinHD(Long id);
-   
+    List<hoa_donModel> findAllHD();
+    List<hoa_donModel> findAllHDByKH(String cmndKH);
     
 }

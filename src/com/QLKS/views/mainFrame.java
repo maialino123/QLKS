@@ -6,9 +6,12 @@
 package com.QLKS.views;
 
 import com.QLKS.Service.impl.hoa_donService;
+import com.QLKS.Service.impl.khach_hangService;
 import com.QLKS.Service.impl.khuyen_maiService;
+import com.QLKS.Service.impl.nhan_vienService;
 import com.QLKS.Service.impl.phongService;
 import com.QLKS.model.hoa_donModel;
+import com.QLKS.model.khach_hang_model;
 import com.QLKS.model.khuyen_maiModel;
 import com.QLKS.model.nhan_vienModel;
 import com.QLKS.model.phongModel;
@@ -36,6 +39,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,7 +76,10 @@ public class mainFrame extends javax.swing.JFrame {
     phongService phongService;
     hoa_donService hoa_donService;
     hoa_donModel hoa_donModel;
-    
+    List<hoa_donModel> listHDCheck;
+    khach_hang_model khach_hangModel;
+    khach_hangService khach_hangService;
+
     public mainFrame(nhan_vienModel nhanModel) {
         initComponents();
         this.setExtendedState(mainFrame.MAXIMIZED_BOTH);
@@ -86,7 +94,11 @@ public class mainFrame extends javax.swing.JFrame {
         hoa_donService = new hoa_donService();
         hoa_donModel = new hoa_donModel();
         desktop_content.add(addLayoutRoom());
+        listHDCheck = new ArrayList<>();
+        khach_hangModel = new khach_hang_model();
+        khach_hangService = new khach_hangService();
         checkCodeKM();
+        checkDateTP();
         checkPhongDat();
     }
 
@@ -1451,7 +1463,80 @@ public class mainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, mess, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
+    public void checkDateTP() {
+        listHDCheck = hoa_donService.findAllHD();
+        Date currentDate = new Date();
+        String mess = "";
+        boolean checkNtra = false;
+        for (hoa_donModel modelHD : listHDCheck) {
+            Calendar c1 = Calendar.getInstance();
+            Date date1 = null;
+            Date date2 = null;
+            Date date3 = null;
+            Date date4 = null;
+            float phuPhiThem = 0;
+            java.util.Date utilDateNgayTra = modelHD.getSo_ngay_du_kien();
+            java.util.Date utilDateNgayTraTT = currentDate;
+            java.util.Date utilDateNgayDenTT = modelHD.getNgay_den_thuc_te();
+            String currentDateStr = sf.format(currentDate);
+            String utilDateNgayTraStr = sf.format(utilDateNgayTra);
+            try {
+                date1 = sf.parse(currentDateStr);
+                date2 = sf.parse(utilDateNgayTraStr);
+                Long diff = date1.getTime() - date2.getTime();
+                Long diffNgayQuaHanDuKien = diff / (24 * 60 * 60 * 1000);
+                if (diffNgayQuaHanDuKien >= 1) {
+                    hoa_donModel updatePhuPhiHD = new hoa_donModel();
+                    c1.setTime(utilDateNgayTraTT);
+                    mess += "Phòng " + modelHD.getId_P() + " của khách " + modelHD.getKhach_hang().getName() + " thuê đã quá hạn " + diffNgayQuaHanDuKien + " ngày!" + "\n";
+                    Date nowStamp = new java.util.Date(modelHD.getModifiedDate().getTime());
+                    String updateDateStr = sf.format(nowStamp);
+                    if (currentDateStr.equals(updateDateStr) == false) {
+                        checkNtra = true;
+                        c1.roll(Calendar.DATE, true);
+                        for (int i = 0; i < diffNgayQuaHanDuKien; i++) {
+                            phuPhiThem = modelHD.getPhu_phi() + (diffNgayQuaHanDuKien * 100);
+                            updatePhuPhiHD.setPhu_phi(phuPhiThem);
+                            updatePhuPhiHD.setId(modelHD.getId());
+                            updatePhuPhiHD.setId_KH(modelHD.getId_KH());
+                            updatePhuPhiHD.setId_P(modelHD.getId_P());
+                            updatePhuPhiHD.setId_SDDV(modelHD.getId_SDDV());
+                            updatePhuPhiHD.setId_TTHD(modelHD.getId_TTHD());
+                            updatePhuPhiHD.setHinh_thucTT(modelHD.getHinh_thucTT());
+                            updatePhuPhiHD.setTien_phong(modelHD.getTien_phong());
+                            updatePhuPhiHD.setTien_dich_vu(modelHD.getTien_dich_vu());
+                            updatePhuPhiHD.setGiam_giaKH(modelHD.getGiam_giaKH());
+                            String ngayTraTTStr = sf.format(c1.getTime());
+                            String utilNgayDenTTStr = sf.format(utilDateNgayDenTT);
+                            java.sql.Date ngayTraTT = new java.sql.Date(c1.getTimeInMillis());
+                            date3 = sf.parse(ngayTraTTStr);
+                            date4 = sf.parse(utilNgayDenTTStr);
+                            Long diffSoNgay = date3.getTime() - date4.getTime();
+                            Long diffSoNgayTong = diffSoNgay / (24 * 60 * 60 * 1000);
+                            updatePhuPhiHD.setSo_ngay(diffSoNgayTong);
+                            updatePhuPhiHD.setThanh_tien((modelHD.getTien_phong() * diffSoNgayTong) + modelHD.getTien_dich_vu() + (modelHD.getTien_phong() * phuPhiThem / 100) - modelHD.getGiam_giaKH());
+                            updatePhuPhiHD.setSo_ngay_thuc_te(ngayTraTT);
+                            updatePhuPhiHD.setSo_ngay_du_kien(modelHD.getSo_ngay_du_kien());
+                            updatePhuPhiHD.setNgay_den_thuc_te(modelHD.getNgay_den_thuc_te());
+                            updatePhuPhiHD.setNgay_den_du_kien(modelHD.getNgay_den_du_kien());
+                            hoa_donService.edit(updatePhuPhiHD);
+                        }
+                    } else {
+                        checkNtra = false;
+                    }
+
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (checkNtra == true) {
+            JOptionPane.showMessageDialog(this, mess);
+        }
+    }
+
     public JPanel addLayoutRoom() {
         JPanel jpanelRoom = new JPanel();
         jpanelRoom.setBackground(new Color(98, 98, 98));
@@ -1476,39 +1561,64 @@ public class mainFrame extends javax.swing.JFrame {
             jpanelRoom.add(rommSmall);
         }
         return jpanelRoom;
-        
+
     }
-    
+
     public void checkPhongDat() {
         List<hoa_donModel> checkHoaDonP = hoa_donService.findAll();
         Date nowDate = new Date();
         String mess = "";
         boolean checkNa = false;
         for (hoa_donModel model : checkHoaDonP) {
-            Date date1 = null;
-            Date date2 = null;
-            java.util.Date utilNgayTT = model.getNgay_den_thuc_te();
-            String nowDateStr = sf.format(nowDate);
-            String utilNgayTTStr = sf.format(utilNgayTT);
-            try {
-                date1 = sf.parse(nowDateStr);
-                date2 = sf.parse(utilNgayTTStr);
-                Long diff = date2.getTime() - date1.getTime();
-                Long getDiffNgayT = diff / (24 * 60 * 60 * 1000);
-                if (getDiffNgayT > 1) {
-                    checkNa = true;
-                    mess += "Phòng " + model.getId_P() + " của khách " + model.getKhach_hang().getName() + " đặt trước đã quá hạn " + getDiffNgayT + " ngày!" + "\n";
+            if (model.getTrang_thaiHD().getName().equals("Đã đặt trước")) {
+                Date date1 = null;
+                Date date2 = null;
+                java.util.Date utilNgayDK = model.getNgay_den_du_kien();
+                String nowDateStr = sf.format(nowDate);
+                String utilNgayTTStr = sf.format(utilNgayDK);
+                try {
+                    date1 = sf.parse(nowDateStr);
+                    date2 = sf.parse(utilNgayTTStr);
+                    Long diff = date1.getTime() - date2.getTime();
+                    Long getDiffNgayT = diff / (24 * 60 * 60 * 1000);
+                    if (getDiffNgayT == 1) {
+                        checkNa = true;
+                        mess += "Phòng " + model.getId_P() + " của khách " + model.getKhach_hang().getName() + " đặt trước đã gần đến " + " ngày dự kiến" + "\n";
+                    } else if (getDiffNgayT > 2 || getDiffNgayT == 2) {
+                        phongModel getOnePhongModel = phongService.findOne(model.getId_P());
+                        phongModel updateTrangThaiPhong = new phongModel();
+                        updateTrangThaiPhong.setId(getOnePhongModel.getId());
+                        updateTrangThaiPhong.setId_LP(getOnePhongModel.getId_LP());
+                        updateTrangThaiPhong.setStatus("Đang Trống");
+                        phongService.edit(updateTrangThaiPhong);
+                        hoa_donService.delete(model.getId());
+                        khach_hangModel = khach_hangService.findOne(model.getId_KH());
+                        if (khach_hangModel != null) {
+                            khach_hang_model updateMissedRoom = new khach_hang_model();
+                            updateMissedRoom.setId(khach_hangModel.getId());
+                            updateMissedRoom.setName(khach_hangModel.getName());
+                            updateMissedRoom.setBirthDay(khach_hangModel.getBirthDay());
+                            updateMissedRoom.setGender(khach_hangModel.getGender());
+                            updateMissedRoom.setPhone(khach_hangModel.getPhone());
+                            updateMissedRoom.setAddress(khach_hangModel.getAddress());
+                            updateMissedRoom.setIdentityCard(khach_hangModel.getIdentityCard());
+                            updateMissedRoom.setNation(khach_hangModel.getNation());
+                            updateMissedRoom.setNumberOfCheckIn(khach_hangModel.getNumberOfCheckIn());
+                            updateMissedRoom.setMissedRoom(khach_hangModel.getMissedRoom() + 1);
+                            khach_hangService.edit_khachHang(updateMissedRoom);
+                        }
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (ParseException ex) {
-                Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (checkNa == true) {
             JOptionPane.showMessageDialog(this, mess);
         }
-        
+
     }
-    
+
     public void Reload() {
         mainFrame main = new mainFrame(nhanModel);
         main.setVisible(true);
@@ -1518,7 +1628,7 @@ public class mainFrame extends javax.swing.JFrame {
 //        main.validate();
 //        main.repaint();
     }
-    
+
     public JPanel addPanelGroup(phongModel phongModel) {
         JPanel groupLabelClick = new JPanel();
         JPanel pnl_clickCheckOut = new JPanel();
@@ -1611,7 +1721,7 @@ public class mainFrame extends javax.swing.JFrame {
                             ITNQLHD.setVisible(true);
                         }
                     }
-                    
+
                 } else if (thongBao == JOptionPane.NO_OPTION) {
                     try {
                         Thread.sleep(500);
@@ -1621,22 +1731,22 @@ public class mainFrame extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             @Override
             public void mousePressed(MouseEvent me) {
-                
+
             }
-            
+
             @Override
             public void mouseReleased(MouseEvent me) {
-                
+
             }
-            
+
             @Override
             public void mouseEntered(MouseEvent me) {
                 changeColor(pnl_clickUptatus, new Color(23, 23, 23));
             }
-            
+
             @Override
             public void mouseExited(MouseEvent me) {
                 changeColor(pnl_clickUptatus, new Color(0, 0, 0));
@@ -1646,9 +1756,9 @@ public class mainFrame extends javax.swing.JFrame {
         groupLabelClick.add(lineSpace);
         groupLabelClick.add(pnl_clickCheckOut);
         return groupLabelClick;
-        
+
     }
-    
+
     public JPanel addPanelContent(phongModel phongModel) {
         JPanel groupContent = new JPanel();
         groupContent.setLayout(new FlowLayout());
@@ -1683,7 +1793,7 @@ public class mainFrame extends javax.swing.JFrame {
             groupContent.setBackground(new Color(255, 234, 0));
             changeimage(iconStatus, "/com/QLKS/icon/icon_button/icons8_filled_circle_20px_2.png");
             txtStatusCT.setText(phongModel.getStatus());
-        } else if(phongModel.getStatus().equals("Đặt Trước") == true) {
+        } else if (phongModel.getStatus().equals("Đặt Trước") == true) {
             groupContent.setBackground(new Color(254, 68, 0));
             changeimage(iconStatus, "/com/QLKS/icon/icon_button/icons8_new_moon_20px.png");
             txtStatusCT.setText(phongModel.getStatus());
@@ -1760,19 +1870,19 @@ public class mainFrame extends javax.swing.JFrame {
         container.add(radioDangSua);
         return container;
     }
-    
+
     public JLabel getLbl_logout() {
         return lbl_logout;
     }
-    
+
     public void setLbl_logout(JLabel lbl_logout) {
         this.lbl_logout = lbl_logout;
     }
-    
+
     public static void changeColor(JPanel hover, Color rand) {
         hover.setBackground(rand);
     }
-    
+
     public static void clickMenu(JPanel h1, JPanel h2, int numberBool) {
         if (numberBool == 1) {
             h1.setBackground(new Color(27, 27, 27));
@@ -1782,12 +1892,12 @@ public class mainFrame extends javax.swing.JFrame {
             h2.setBackground(new Color(27, 27, 27));
         }
     }
-    
+
     public void changeimage(JLabel btn, String resourceImage) {
         ImageIcon a = new ImageIcon(getClass().getResource(resourceImage));
         btn.setIcon(a);
     }
-    
+
     public void hideShowMenu(JPanel menuClick, boolean check, JLabel button) {
         if (check == true) {
             menuClick.setPreferredSize(new Dimension(310, this.getHeight()));
@@ -1797,7 +1907,7 @@ public class mainFrame extends javax.swing.JFrame {
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_menu_20px.png");
         }
     }
-    
+
     public void hideShowMenu2(JPanel menuClick, boolean check) {
         if (check == true) {
             menuClick.setPreferredSize(new Dimension(200, this.getHeight()));
@@ -1805,35 +1915,35 @@ public class mainFrame extends javax.swing.JFrame {
             menuClick.setPreferredSize(new Dimension(0, this.getHeight()));
         }
     }
-    
+
     public void hideShowMenuPhong(JPanel menuClicka, boolean check, JLabel button) {
         if (check == true) {
             menuClicka.setPreferredSize(new Dimension(260, 400));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
-            
+
         } else {
             menuClicka.setPreferredSize(new Dimension(260, 40));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
         }
     }
-    
+
     public void hideShowMenuDV(JPanel menuClickb, boolean check, JLabel button) {
         if (check == true) {
             menuClickb.setPreferredSize(new Dimension(260, 176));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_collapse_arrow_20px_1.png");
-            
+
         } else {
             menuClickb.setPreferredSize(new Dimension(260, 40));
             changeimage(button, "/com/QLKS/icon/icon_button/icons8_expand_arrow_20px_1.png");
         }
     }
-    
+
     public void getAvatar(nhan_vienModel nhan_vienModel, JLabel avatar) {
         if (nhan_vienModel.getImage() != null) {
 //            changeimage(lbl_avatar, nhan_vienModel.getImage());
         }
     }
-    
+
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         changeColor(button_close, new Color(62, 60, 63));
@@ -1988,7 +2098,7 @@ public class mainFrame extends javax.swing.JFrame {
     private void button_quan_ly_thiet_biMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_quan_ly_thiet_biMouseClicked
         changeColor(line_small3, new Color(6, 255, 0));
         changeimage(changeImageButtonIconSmall3, "/com/QLKS/icon/icon_button/iconclick_btn.png");
-        
+
         ITN_quan_ly_thietbi ITN_thiet_bi = new ITN_quan_ly_thietbi();
 //        Dimension desktopSize = desktop_content.getSize();
 //        Dimension jInternalFrameSize = ITN_thiet_bi.getSize();

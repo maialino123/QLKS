@@ -35,6 +35,7 @@ public class khach_hangMapper implements rowMapper<khach_hang_model> {
             if (rs.getString("modifiedBy") != null) {
                 model.setModifiedBy(rs.getString("modifiedBy"));
             }
+            model.setMissedRoom(rs.getInt("missedRoom"));
             return model;
         } catch (Exception e) {
             e.printStackTrace();

@@ -87,7 +87,7 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(876, 50));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(154, 231, 246));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản lý loại dịch vụ");
@@ -116,10 +116,16 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
         jlbMaLoaiDv1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbMaLoaiDv1.setForeground(new java.awt.Color(154, 231, 246));
         jlbMaLoaiDv1.setText("Mã loại dịch vụ:");
+        jlbMaLoaiDv1.setMaximumSize(new java.awt.Dimension(90, 30));
+        jlbMaLoaiDv1.setMinimumSize(new java.awt.Dimension(90, 30));
+        jlbMaLoaiDv1.setPreferredSize(new java.awt.Dimension(90, 30));
 
         jlbTenLoaiDv1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jlbTenLoaiDv1.setForeground(new java.awt.Color(154, 231, 246));
         jlbTenLoaiDv1.setText("Tên loại dịch vụ:");
+        jlbTenLoaiDv1.setMaximumSize(new java.awt.Dimension(90, 30));
+        jlbTenLoaiDv1.setMinimumSize(new java.awt.Dimension(90, 30));
+        jlbTenLoaiDv1.setPreferredSize(new java.awt.Dimension(90, 30));
 
         txtTenLoaiDichVu.setBackground(new java.awt.Color(32, 32, 32));
         txtTenLoaiDichVu.setColumns(5);
@@ -127,6 +133,7 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
         txtTenLoaiDichVu.setForeground(new java.awt.Color(154, 231, 246));
         txtTenLoaiDichVu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
         txtTenLoaiDichVu.setCaretColor(new java.awt.Color(154, 231, 246));
+        txtTenLoaiDichVu.setPreferredSize(new java.awt.Dimension(85, 30));
 
         lblResult.setForeground(new java.awt.Color(248, 13, 33));
 
@@ -134,12 +141,19 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
         txtMaLoaiDichVu.setBackground(new java.awt.Color(32, 32, 32));
         txtMaLoaiDichVu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtMaLoaiDichVu.setForeground(new java.awt.Color(154, 231, 246));
+        txtMaLoaiDichVu.setPreferredSize(new java.awt.Dimension(6, 30));
 
         txtErrorMaLoaiDichVu.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorMaLoaiDichVu.setText("...");
+        txtErrorMaLoaiDichVu.setMaximumSize(new java.awt.Dimension(12, 20));
+        txtErrorMaLoaiDichVu.setMinimumSize(new java.awt.Dimension(12, 20));
+        txtErrorMaLoaiDichVu.setPreferredSize(new java.awt.Dimension(12, 20));
 
         txtErrorTenLoaiDichVu.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorTenLoaiDichVu.setText("...");
+        txtErrorTenLoaiDichVu.setMaximumSize(new java.awt.Dimension(12, 20));
+        txtErrorTenLoaiDichVu.setMinimumSize(new java.awt.Dimension(12, 20));
+        txtErrorTenLoaiDichVu.setPreferredSize(new java.awt.Dimension(390, 20));
 
         button_reset.setBackground(new java.awt.Color(36, 36, 36));
         button_reset.setMaximumSize(new java.awt.Dimension(100, 35));
@@ -213,53 +227,56 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
-                        .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlbMaLoaiDv1)
-                            .addComponent(jlbTenLoaiDv1))
+                        .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlbMaLoaiDv1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jlbTenLoaiDv1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtErrorTenLoaiDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMaLoaiDichVu)
-                            .addComponent(txtTenLoaiDichVu))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoaiDichVuLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(button_reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(button_add_LDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button_updateLDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMaLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLoaiDichVuLayout.createSequentialGroup()
+                                .addGap(166, 166, 166)
+                                .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(146, 146, 146))
+                            .addComponent(txtTenLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
+                        .addComponent(button_reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_add_LDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_updateLDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jpnLoaiDichVuLayout.setVerticalGroup(
             jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbMaLoaiDv1)
+                    .addComponent(jlbMaLoaiDv1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMaLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(txtErrorMaLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbTenLoaiDv1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpnLoaiDichVuLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(txtErrorTenLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtErrorMaLoaiDichVu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlbTenLoaiDv1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtErrorTenLoaiDichVu)
-                .addGap(11, 11, 11)
                 .addComponent(lblResult)
-                .addGap(19, 19, 19)
+                .addGap(58, 58, 58)
                 .addGroup(jpnLoaiDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button_reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_add_LDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_updateLDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button_updateLDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -347,7 +364,7 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -358,7 +375,8 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jpnLoaiDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +392,7 @@ public class ITN_quan_ly_loaidichvu extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(

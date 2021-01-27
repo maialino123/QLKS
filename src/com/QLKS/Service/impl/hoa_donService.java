@@ -9,6 +9,7 @@ import com.QLKS.DAO.impl.hoa_donDAO;
 import com.QLKS.Service.Ihoa_donService;
 import com.QLKS.model.hoa_donModel;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,8 +32,10 @@ public class hoa_donService implements Ihoa_donService {
 
     @Override
     public Long add(hoa_donModel model) {
+        Date nowDate = new Date();
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         model.setCreatedBy("");
+        model.setSo_ngay_thuc_te(new java.sql.Date(nowDate.getTime()));
         return hoa_donDAO.add(model);
     }
 
@@ -60,6 +63,16 @@ public class hoa_donService implements Ihoa_donService {
     @Override
     public hoa_donModel findByJoinHD(Long id) {
         return hoa_donDAO.findByJoinHD(id);
+    }
+
+    @Override
+    public List<hoa_donModel> findAllHD() {
+        return hoa_donDAO.findAllHD();
+    }
+
+    @Override
+    public List<hoa_donModel> findAllHDByKH(String cmndKH) {
+        return hoa_donDAO.findAllHDByKH(cmndKH);
     }
 
 }

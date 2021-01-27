@@ -23,7 +23,16 @@ public class khach_hang_model extends abstractModel {
     private String identityCard;
     private String nation;
     private int numberOfCheckIn;
+    private int missedRoom;
 
+    public int getMissedRoom() {
+        return missedRoom;
+    }
+
+    public void setMissedRoom(int missedRoom) {
+        this.missedRoom = missedRoom;
+    }
+    
     public Long getId() {
         return id;
     }

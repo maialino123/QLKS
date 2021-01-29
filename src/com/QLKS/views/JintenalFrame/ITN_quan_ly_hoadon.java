@@ -16,6 +16,7 @@ import com.QLKS.views.JintenalFrame.action.ITN_edit_khachhang;
 import static com.QLKS.views.mainFrame.changeColor;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -44,6 +45,7 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame implements IT
     phongModel phongModel;
     phongService phongService;
     private JDesktopPane jdek;
+    
 
     public ITN_quan_ly_hoadon() {
         initComponents();
@@ -99,7 +101,7 @@ public class ITN_quan_ly_hoadon extends javax.swing.JInternalFrame implements IT
             o[1] = adv.getId();
             o[2] = adv.getKhach_hang().getName();
             o[3] = adv.getKhach_hang().getIdentityCard();
-            o[4] = adv.getId_P();
+            o[4] = phongModel.getId();
             o[5] = phongModel.getLoai_phong().getName_LP();
             o[6] = adv.getTrang_thaiHD().getName();
             o[7] = funBase.formatTien(adv.getThanh_tien());

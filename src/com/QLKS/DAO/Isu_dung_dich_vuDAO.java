@@ -22,4 +22,5 @@ public interface Isu_dung_dich_vuDAO extends GenericDAO<su_dung_dich_vuModel>{
     su_dung_dich_vuModel findByIdP(String idP, Long id_HD);
     List<su_dung_dich_vuModel> get_allHD_SDDV(Long idHD, Long idKH);
     su_dung_dich_vuModel get_trungDV_SDDV(Long idDV, Long idHD);
+    List<su_dung_dich_vuModel> get_DVByKH_SDDV(Long idKH);
 }

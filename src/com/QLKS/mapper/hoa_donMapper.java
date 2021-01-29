@@ -28,7 +28,6 @@ public class hoa_donMapper implements rowMapper<hoa_donModel> {
             model.setId_KH(rs.getLong("id_KH"));
             model.setId_P(rs.getString("id_P"));
             model.setId_TTHD(rs.getLong("id_TTHD"));
-            model.setId_SDDV(rs.getLong("id_SDDV"));
             model.setHinh_thucTT(rs.getString("hinh_thucTT"));
             model.setPhu_phi(rs.getFloat("phu_phi"));
             model.setTien_phong(rs.getFloat("tien_phong"));

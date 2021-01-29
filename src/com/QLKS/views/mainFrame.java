@@ -1501,7 +1501,6 @@ public class mainFrame extends javax.swing.JFrame {
                             updatePhuPhiHD.setId(modelHD.getId());
                             updatePhuPhiHD.setId_KH(modelHD.getId_KH());
                             updatePhuPhiHD.setId_P(modelHD.getId_P());
-                            updatePhuPhiHD.setId_SDDV(modelHD.getId_SDDV());
                             updatePhuPhiHD.setId_TTHD(modelHD.getId_TTHD());
                             updatePhuPhiHD.setHinh_thucTT(modelHD.getHinh_thucTT());
                             updatePhuPhiHD.setTien_phong(modelHD.getTien_phong());

@@ -74,4 +74,10 @@ public class su_dung_dich_vuDAO extends abstractDAO<su_dung_dich_vuModel> implem
         return list.isEmpty() ? null : list.get(0);
     }
 
+    @Override
+    public List<su_dung_dich_vuModel> get_DVByKH_SDDV(Long idKH) {
+        String sql = resourceBundleSQL.getString("get_DVByKH_SDDV");
+        return query(sql, new su_dung_dich_vuMapper(), idKH);
+    }
+
 }

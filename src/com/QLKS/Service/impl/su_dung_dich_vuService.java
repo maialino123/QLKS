@@ -64,4 +64,9 @@ public class su_dung_dich_vuService implements Isu_dung_dich_vuService {
         return su_dung_dich_vuDAO.get_trungDV_SDDV(idDV, idHD);
     }
 
+    @Override
+    public List<su_dung_dich_vuModel> get_DVByKH_SDDV(Long idKH) {
+        return su_dung_dich_vuDAO.get_DVByKH_SDDV(idKH);
+    }
+
 }

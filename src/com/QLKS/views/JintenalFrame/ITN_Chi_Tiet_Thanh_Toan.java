@@ -17,13 +17,8 @@ import com.QLKS.model.phongModel;
 import com.QLKS.model.su_dung_dich_vuModel;
 import com.QLKS.utils.MethodMain;
 import com.QLKS.utils.functionBase;
-import java.awt.Dimension;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,12 +26,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author hoangdung
  */
-public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
+public class ITN_Chi_Tiet_Thanh_Toan extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ChiTietHoaDon
      */
-    private Long idHD;
     hoa_donModel hoa_donModel;
     phongModel phongModel;
     dich_vuModel dich_vuModel;
@@ -56,11 +50,11 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
     SimpleDateFormat sf;
     SimpleDateFormat fomatGio;
     functionBase funBase;
-    private JDesktopPane jdek;
+    hoa_donModel getHoaDonModel;
 
-    public ITN_Chi_Tiet_Hoa_Don_View(Long _idHD) {
+    public ITN_Chi_Tiet_Thanh_Toan(hoa_donModel hoaDonThanhToan) {
         initComponents();
-        this.idHD = _idHD;
+        this.getHoaDonModel = hoaDonThanhToan;
         hoa_donModel = new hoa_donModel();
         phongModel = new phongModel();
         dich_vuModel = new dich_vuModel();
@@ -75,31 +69,29 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
         sf = new SimpleDateFormat("dd/MM/yyyy");
         fomatGio = new SimpleDateFormat("HH");
         funBase = new functionBase();
+        khach_hangModel = khach_hangService.findOne(hoaDonThanhToan.getId_KH());
+        lblMaHoaDon.setText(String.valueOf(hoaDonThanhToan.getId()));
+        lblTenKH.setText(String.valueOf(khach_hangModel.getName()));
+        lblDienThoai.setText(String.valueOf(khach_hangModel.getPhone()));
+        lblGioiTinh.setText(khach_hangModel.getGender());
+        lblQuocTich.setText(khach_hangModel.getNation());
+        lblDiaChi.setText(khach_hangModel.getAddress());
+        lblPhongThue.setText(hoaDonThanhToan.getId_P());
+        lblNgayThue.setText(sf.format(hoaDonThanhToan.getNgay_den_thuc_te()));
+        lblNgayTra.setText(sf.format(hoaDonThanhToan.getSo_ngay_thuc_te()));
+        lblSoNgayO.setText(String.valueOf(hoaDonThanhToan.getSo_ngay()));
+        lblHinhThucThanhToan.setText(hoaDonThanhToan.getHinh_thucTT());
+        lblTienPhong.setText(String.valueOf(hoaDonThanhToan.getTien_phong()));
+        lblTienDichVu.setText(String.valueOf(hoaDonThanhToan.getTien_dich_vu()));
+        lblTienKhuyenMai.setText(String.valueOf(hoaDonThanhToan.getGiam_giaKH()));
+        lblPhuThu.setText(String.valueOf(hoaDonThanhToan.getPhu_phi()));
+        lblTongTien.setText(String.valueOf(hoaDonThanhToan.getThanh_tien()));
         setData();
         initDVDSD();
     }
 
     public void setData() {
 
-    }
-
-    public void centerJIF(JInternalFrame jif) {
-        Dimension desktopSize = jdek.getSize();
-        Dimension jInternalFrameSize = jif.getSize();
-        int width = (desktopSize.width - jInternalFrameSize.width) / 2;
-        int height = (desktopSize.height - jInternalFrameSize.height) / 2;
-        jif.setLocation(width, height);
-        jif.setVisible(true);
-    }
-
-    public void showInternalFrame(JInternalFrame jif) {
-        if (!jif.isVisible()) {
-            jdek = getDesktopPane();
-            jdek.add(jif);
-            centerJIF(jif);
-            jif.setVisible(true);
-            jdek.show();
-        }
     }
 
     public void initDVDSD() {
@@ -109,9 +101,9 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
 //        } else {
 //            dfmThietBi = cauhinhDAO.getAll();
 //        }
-        hoa_donModel = hoa_donService.findByJoinHD(idHD);
-        if (hoa_donModel != null) {
-            listSDDV = su_dung_dich_vuService.get_DVByKH_SDDV(hoa_donModel.getId_KH());
+//        hoa_donModel = hoa_donService.findByJoinHD(getHoaDonModel.getId());
+        if (getHoaDonModel != null) {
+            listSDDV = su_dung_dich_vuService.get_DVByKH_SDDV(getHoaDonModel.getId_KH());
             if (listSDDV.isEmpty() == false) {
                 dfmSDDV = new DefaultTableModel(new Object[0][0], columnNames);
                 int index = 1;
@@ -129,69 +121,6 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
                     index++;
                 }
                 tblDichVuDaSD.setModel(dfmSDDV);
-                if (hoa_donModel != null) {
-                    if (listSDDV.size() > 1) {
-                        lblTienDichVu.setText(String.valueOf(SumTienDV()));
-                    } else {
-                        lblTienDichVu.setText(String.valueOf(0));
-                    }
-                    Date newDate = new Date();
-                    String gioTraPhongStr = fomatGio.format(Calendar.getInstance().getTime());
-                    int gioTraPhong = Integer.parseInt(gioTraPhongStr);
-                    java.sql.Date ngayTraTT = new java.sql.Date(newDate.getTime());
-                    lblMaHoaDon.setText(hoa_donModel.getId().toString());
-                    lblPhongThue.setText(hoa_donModel.getId_P());
-                    lblSoNgayO.setText(String.valueOf(hoa_donModel.getSo_ngay()));
-                    String dateNgayDen = sf.format(hoa_donModel.getNgay_den_thuc_te());
-                    String dateNgayTra = sf.format(ngayTraTT);
-                    lblNgayThue.setText(dateNgayDen);
-                    lblNgayTra.setText(dateNgayTra);
-                    float phuThu = 0;
-                    if (gioTraPhong >= 13 && gioTraPhong < 15) {
-                        phuThu = hoa_donModel.getPhu_phi() + 20;
-                    } else if (gioTraPhong >= 15 && gioTraPhong < 17) {
-                        phuThu = hoa_donModel.getPhu_phi() + 40;
-                    } else if (gioTraPhong >= 17 && gioTraPhong < 19) {
-                        phuThu = hoa_donModel.getPhu_phi() + 60;
-                    } else if (gioTraPhong >= 19) {
-                        phuThu = hoa_donModel.getPhu_phi() + 100;
-                    } else {
-                        phuThu = hoa_donModel.getPhu_phi();
-                    }
-                    lblPhuThu.setText(String.valueOf(phuThu));
-                    hoa_donModel.setPhu_phi(phuThu);
-                    lblHinhThucThanhToan.setText(hoa_donModel.getHinh_thucTT());
-                    lblTienPhong.setText(String.valueOf(hoa_donModel.getTien_phong() * hoa_donModel.getSo_ngay()));
-                    lblTienDichVu.setText(funBase.formatTien(SumTienDV()));
-                    lblTienKhuyenMai.setText(String.valueOf(funBase.formatTien(hoa_donModel.getGiam_giaKH())));
-                    lblTenKH.setText(String.valueOf(hoa_donModel.getKhach_hang().getName()));
-                    lblGioiTinh.setText(String.valueOf(hoa_donModel.getKhach_hang().getGender()));
-                    lblDienThoai.setText(String.valueOf(hoa_donModel.getKhach_hang().getPhone()));
-                    lblQuocTich.setText(String.valueOf(hoa_donModel.getKhach_hang().getNation()));
-                    lblDiaChi.setText(String.valueOf(hoa_donModel.getKhach_hang().getAddress()));
-                    float tong_gia = (hoa_donModel.getTien_phong() * hoa_donModel.getSo_ngay()) + SumTienDV() + (hoa_donModel.getTien_phong() * (phuThu / 100)) - hoa_donModel.getGiam_giaKH();
-                    lblTongTien.setText(funBase.formatTien(tong_gia));
-                    hoa_donModel updateHoaDon = new hoa_donModel();
-                    updateHoaDon.setId(hoa_donModel.getId());
-                    updateHoaDon.setId_KH(hoa_donModel.getId_KH());
-                    updateHoaDon.setId_P(hoa_donModel.getId_P());
-                    updateHoaDon.setId_TTHD(hoa_donModel.getId_TTHD());
-                    updateHoaDon.setHinh_thucTT(hoa_donModel.getHinh_thucTT());
-                    updateHoaDon.setPhu_phi(phuThu);
-                    updateHoaDon.setTien_phong(hoa_donModel.getTien_phong());
-                    updateHoaDon.setTien_dich_vu(SumTienDV());
-                    updateHoaDon.setGiam_giaKH(hoa_donModel.getGiam_giaKH());
-                    updateHoaDon.setSo_ngay(hoa_donModel.getSo_ngay());
-                    updateHoaDon.setThanh_tien(tong_gia);
-                    updateHoaDon.setSo_ngay_du_kien(hoa_donModel.getSo_ngay_du_kien());
-                    updateHoaDon.setSo_ngay_thuc_te(hoa_donModel.getSo_ngay_thuc_te());
-                    updateHoaDon.setNgay_den_du_kien(hoa_donModel.getNgay_den_du_kien());
-                    updateHoaDon.setNgay_den_thuc_te(hoa_donModel.getNgay_den_thuc_te());
-                    hoa_donService.edit(updateHoaDon);
-                    reloadITNHD();
-                } else {
-                    JOptionPane.showConfirmDialog(this, "Đã Có Lỗi!");
-                }
             }
         }
 
@@ -204,11 +133,6 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
             sum += Float.parseFloat(tblDichVuDaSD.getValueAt(i, 6).toString());
         }
         return sum;
-    }
-
-    public void reloadITNHD() {
-        ITN_quan_ly_hoadon ITNQLHD = new ITN_quan_ly_hoadon();
-        ITNQLHD.repaint();
     }
 
     /**
@@ -283,7 +207,7 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
 
         jlbHoaDonTitle.setFont(new java.awt.Font("DejaVu Serif", 1, 28)); // NOI18N
         jlbHoaDonTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbHoaDonTitle.setText("Chi Tiết Hóa Đơn");
+        jlbHoaDonTitle.setText("Hóa Đơn");
 
         jpnC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 1, 12))); // NOI18N
 
@@ -741,7 +665,6 @@ public class ITN_Chi_Tiet_Hoa_Don_View extends javax.swing.JInternalFrame {
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
         MethodMain.printComponenet(jpnHoaDon);
         JOptionPane.showMessageDialog(this, "Xuất File Thành Công!");
-
     }//GEN-LAST:event_btnXuatFileActionPerformed
 
 

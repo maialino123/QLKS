@@ -58,7 +58,6 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
         lblTenKhachHang.setText(ten_KH);
         lblMaHD.setText(id_HD);
         listDV = dich_vuService.findAll();
-
         loadDataDV();
         loadDataSDDV();
 
@@ -584,7 +583,6 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
                     hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
                     hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
                     hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
-                    hoa_donModel.setId_SDDV(getBySDDV.getId());
                     hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
                     hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
                     hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());
@@ -629,7 +627,6 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
                     hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
                     hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
                     hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
-                    hoa_donModel.setId_SDDV(getResultDV.getId());
                     hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
                     hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
                     hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());
@@ -684,7 +681,6 @@ public class ITN_Sudungdichvu extends javax.swing.JInternalFrame {
                     hoa_donModel.setId_KH(findHoaDonByPhong.getId_KH());
                     hoa_donModel.setId_P(findHoaDonByPhong.getId_P());
                     hoa_donModel.setId_TTHD(findHoaDonByPhong.getId_TTHD());
-                    hoa_donModel.setId_SDDV(getBySDDV.getId());
                     hoa_donModel.setHinh_thucTT(findHoaDonByPhong.getHinh_thucTT());
                     hoa_donModel.setPhu_phi(findHoaDonByPhong.getPhu_phi());
                     hoa_donModel.setTien_phong(findHoaDonByPhong.getTien_phong());

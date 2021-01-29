@@ -105,7 +105,7 @@
               <Font name="DejaVu Serif" size="28" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Chi Ti&#x1ebf;t H&#xf3;a &#x110;&#x1a1;n"/>
+            <Property name="text" type="java.lang.String" value="H&#xf3;a &#x110;&#x1a1;n"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jpnC">

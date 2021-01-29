@@ -17,7 +17,6 @@ public class hoa_donModel extends abstractModel {
     private Long id_KH;
     private String id_P;
     private Long id_TTHD;
-    private Long id_SDDV;
     private String hinh_thucTT;
     private float phu_phi;
     private float tien_phong;
@@ -137,15 +136,6 @@ public class hoa_donModel extends abstractModel {
     public void setId_TTHD(Long id_TTHD) {
         this.id_TTHD = id_TTHD;
     }
-
-    public Long getId_SDDV() {
-        return id_SDDV;
-    }
-
-    public void setId_SDDV(Long id_SDDV) {
-        this.id_SDDV = id_SDDV;
-    }
-
     public String getHinh_thucTT() {
         return hinh_thucTT;
     }

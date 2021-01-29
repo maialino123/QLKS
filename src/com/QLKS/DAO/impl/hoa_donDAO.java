@@ -40,7 +40,7 @@ public class hoa_donDAO extends abstractDAO<hoa_donModel> implements Ihoa_donDAO
     @Override
     public int edit(hoa_donModel model) {
         String sql = resourceBundleSQL.getString("update_hoa_don");
-        return update(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(), model.getId_SDDV(),
+        return update(sql, model.getId_KH(), model.getId_P(), model.getId_TTHD(),
                 model.getHinh_thucTT(), model.getPhu_phi(), model.getTien_phong(),
                 model.getTien_dich_vu(), model.getGiam_giaKH(), model.getSo_ngay(), model.getThanh_tien(),
                 model.getCreatedDate(), model.getCreatedBy(), model.getModifiedDate(), model.getModifiedBy(),

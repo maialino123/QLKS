@@ -552,175 +552,183 @@ public class ITN_datphong extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbl_PhongTrongMouseClicked
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        khach_hang_model khachhang = (khach_hang_model) cbxKhachHang.getSelectedItem();
-        trang_thai_hoa_donModel trangThai = (trang_thai_hoa_donModel) cbxTTHD.getSelectedItem();
-        Long idTT = trangThai.getId();
-        String nameTTHD = trangThai.getName();
-        Long IDKH = khachhang.getId();
-        String HinhThucTT = txt_HTTT.getText();
-        java.util.Date utilNgay_den_du_kien = ngay_den_du_kien.getDate();
-        java.util.Date utilNgay_den_thuc_te = ngay_den_thuc_te.getDate();
-        java.util.Date utilngay_tra_du_kien = ngay_tra_du_kien.getDate();
-        Date date1 = null;
-        Date date2 = null;
-        Date date3 = null;
-        String messSuccess = "";
-        String messErr = "";
-        boolean checkDP = true;
-        Float tongTienDP = Float.valueOf(0);
-        if (utilNgay_den_thuc_te.after(utilngay_tra_du_kien) == true) {
-            JOptionPane.showMessageDialog(rootPane, "Thêm thất bại vì ngày trả trước ngày đến", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            ressetText();
-            checkDP = false;
-        } else {
-            String ngayDenTTStr = sf.format(utilNgay_den_thuc_te);
-            String ngayDenDK = sf.format(utilNgay_den_du_kien);
-            String ngayTraDK = sf.format(utilngay_tra_du_kien);
-            try {
-                date1 = sf.parse(ngayDenTTStr);
-                date2 = sf.parse(ngayDenDK);
-                date3 = sf.parse(ngayTraDK);
-            } catch (ParseException ex) {
-                Logger.getLogger(ITN_datphong.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            Long getDiffNgayTTAndNgayTra;
-            Long getDiffNgayTTAndNgayDK;
-            Long getDaysDiff;
-            Long getDaysDiffSD;
-            getDiffNgayTTAndNgayTra = date3.getTime() - date1.getTime();
-            getDaysDiffSD = getDiffNgayTTAndNgayTra / (24 * 60 * 60 * 1000);
-            khach_hangModel = khach_hangService.findOne(IDKH);
-            khuyen_maiModel = khuyen_maiService.findByCode("khachquen1234");
-            Float giamGia;
-            if (khach_hangModel.getNumberOfCheckIn() > 1) {
-                if (khuyen_maiModel != null) {
-                    giamGia = khuyen_maiModel.getValue();
+        if (txtIDP.getText().equals("...") == false) {
+            hoa_donModel getResultHDCheck = new hoa_donModel();
+            khach_hang_model khachhang = (khach_hang_model) cbxKhachHang.getSelectedItem();
+            trang_thai_hoa_donModel trangThai = (trang_thai_hoa_donModel) cbxTTHD.getSelectedItem();
+            Long idTT = trangThai.getId();
+            String nameTTHD = trangThai.getName();
+            Long IDKH = khachhang.getId();
+            String HinhThucTT = txt_HTTT.getText();
+            java.util.Date utilNgay_den_du_kien = ngay_den_du_kien.getDate();
+            java.util.Date utilNgay_den_thuc_te = ngay_den_thuc_te.getDate();
+            java.util.Date utilngay_tra_du_kien = ngay_tra_du_kien.getDate();
+            Date date1 = null;
+            Date date2 = null;
+            Date date3 = null;
+            String messSuccess = "";
+            String messErr = "";
+            boolean checkDP = true;
+            Float tongTienDP = Float.valueOf(0);
+            if (utilNgay_den_thuc_te.after(utilngay_tra_du_kien) == true) {
+                JOptionPane.showMessageDialog(rootPane, "Thêm thất bại vì ngày trả trước ngày đến", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                ressetText();
+                checkDP = false;
+            } else {
+                String ngayDenTTStr = sf.format(utilNgay_den_thuc_te);
+                String ngayDenDK = sf.format(utilNgay_den_du_kien);
+                String ngayTraDK = sf.format(utilngay_tra_du_kien);
+                try {
+                    date1 = sf.parse(ngayDenTTStr);
+                    date2 = sf.parse(ngayDenDK);
+                    date3 = sf.parse(ngayTraDK);
+                } catch (ParseException ex) {
+                    Logger.getLogger(ITN_datphong.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Long getDiffNgayTTAndNgayTra;
+                Long getDiffNgayTTAndNgayDK;
+                Long getDaysDiff;
+                Long getDaysDiffSD;
+                getDiffNgayTTAndNgayTra = date3.getTime() - date1.getTime();
+                getDaysDiffSD = getDiffNgayTTAndNgayTra / (24 * 60 * 60 * 1000);
+                khach_hangModel = khach_hangService.findOne(IDKH);
+                khuyen_maiModel = khuyen_maiService.findByCode("khachquen1234");
+                Float giamGia;
+                if (khach_hangModel.getNumberOfCheckIn() > 1) {
+                    if (khuyen_maiModel != null) {
+                        giamGia = khuyen_maiModel.getValue();
+                    } else {
+                        giamGia = Float.valueOf(0);
+                    }
                 } else {
                     giamGia = Float.valueOf(0);
                 }
-            } else {
-                giamGia = Float.valueOf(0);
-            }
-            for (String idP : lstMaPhong123) {
-                phongModel = phongSevice.findOne(idP);
-                if (utilNgay_den_du_kien.after(utilNgay_den_thuc_te) == false) {
-                    phongModel checkTGP = phongSevice.findOne(idP);
-                    if (checkTGP.getStatus().equals("Đã Đặt") == false) {
-                        if (utilNgay_den_du_kien != null) {
-                            java.sql.Date sqlNgay_den_du_kien = new java.sql.Date(utilNgay_den_du_kien.getTime());
-                            hoa_donModel.setNgay_den_du_kien(sqlNgay_den_du_kien);
-                        } else {
-                            hoa_donModel.setNgay_den_du_kien(null);
-                        }
-                        if (utilNgay_den_thuc_te != null) {
-                            java.sql.Date SQLNgay_den_thuc_te = new java.sql.Date(utilNgay_den_thuc_te.getTime());
-                            hoa_donModel.setNgay_den_thuc_te(SQLNgay_den_thuc_te);
-                        } else {
-                            hoa_donModel.setNgay_den_thuc_te(null);
-                        }
-                        if (utilngay_tra_du_kien != null) {
-                            java.sql.Date sql_ngay_tra_du_kien = new java.sql.Date(utilngay_tra_du_kien.getTime());
-                            hoa_donModel.setSo_ngay_du_kien(sql_ngay_tra_du_kien);
-                        } else {
-                            hoa_donModel.setSo_ngay_du_kien(null);
-                        }
-                        phongModel newPhongModel = new phongModel();
-                        Float tienPhong = checkTGP.getLoai_phong().getPrice();
-                        newPhongModel.setId(idP);
-                        newPhongModel.setId_LP(checkTGP.getId_LP());
-                        if (nameTTHD.equalsIgnoreCase("Đã Đặt Trước")) {
-                            newPhongModel.setStatus("Đặt Trước");
-                        } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
-                            newPhongModel.setStatus("Đã Đặt");
-                        } else {
-                            newPhongModel.setStatus("Đã Đặt");
-                        }
-                        tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
-                        hoa_donModel.setId_KH(IDKH);
-                        hoa_donModel.setId_P(idP);
-                        hoa_donModel.setHinh_thucTT(HinhThucTT);
-                        hoa_donModel.setId_TTHD(idTT);
-                        hoa_donModel.setSo_ngay(getDaysDiffSD);
-                        hoa_donModel.setTien_phong(tienPhong);
-                        hoa_donModel.setGiam_giaKH(giamGia);
-                        hoa_donModel.setThanh_tien(tongTienDP);
-                        phongSevice.edit(newPhongModel);
-                        Long key = hoa_donService.add(hoa_donModel);
-                        if (key > 0) {
-                            JOptionPane.showMessageDialog(this, "Đặt Phòng Thành Công!");
-                            loadDataKH();
-                            loadDataPhongTrong();
-                            ressetText();
-                            Reload();
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Đặt Phòng Thất Bại!");
-                            ressetText();
-                        }
-                    }
-                } else {
-                    getDiffNgayTTAndNgayDK = date2.getTime() - date1.getTime();
-                    getDaysDiff = getDiffNgayTTAndNgayDK / (24 * 60 * 60 * 1000);
-                    if (getDaysDiff < getDaysDiffSD / 2 || getDaysDiff == getDaysDiffSD / 2) {
-                        if (utilNgay_den_du_kien != null) {
-                            java.sql.Date sqlNgay_den_du_kien = new java.sql.Date(utilNgay_den_du_kien.getTime());
-                            hoa_donModel.setNgay_den_du_kien(sqlNgay_den_du_kien);
-                        } else {
-                            hoa_donModel.setNgay_den_du_kien(null);
-                        }
-                        if (utilNgay_den_thuc_te != null) {
-                            java.sql.Date SQLNgay_den_thuc_te = new java.sql.Date(utilNgay_den_thuc_te.getTime());
-                            hoa_donModel.setNgay_den_thuc_te(SQLNgay_den_thuc_te);
-                        } else {
-                            hoa_donModel.setNgay_den_thuc_te(null);
-                        }
-                        if (utilngay_tra_du_kien != null) {
-                            java.sql.Date sql_ngay_tra_du_kien = new java.sql.Date(utilngay_tra_du_kien.getTime());
-                            hoa_donModel.setSo_ngay_du_kien(sql_ngay_tra_du_kien);
-                        } else {
-                            hoa_donModel.setSo_ngay_du_kien(null);
-                        }
-                        phongModel newPhongModel = new phongModel();
-                        Float tienPhong = phongModel.getLoai_phong().getPrice();
-                        newPhongModel.setId(idP);
-                        newPhongModel.setId_LP(phongModel.getId_LP());
-                        if (nameTTHD.equalsIgnoreCase("Đã đặt trước")) {
-                            newPhongModel.setStatus("Đặt Trước");
-                        } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
-                            newPhongModel.setStatus("Đã Đặt");
-                        } else {
-                            newPhongModel.setStatus("Đã Đặt");
-                        }
-                        tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
-                        hoa_donModel.setId_KH(IDKH);
-                        hoa_donModel.setId_P(idP);
-                        hoa_donModel.setHinh_thucTT(HinhThucTT);
-                        hoa_donModel.setId_TTHD(idTT);
-                        hoa_donModel.setSo_ngay(getDaysDiffSD);
-                        hoa_donModel.setTien_phong(tienPhong);
-                        hoa_donModel.setGiam_giaKH(giamGia);
-                        hoa_donModel.setThanh_tien(tongTienDP);
-                        phongSevice.edit(newPhongModel);
-                        Long key = hoa_donService.add(hoa_donModel);
-                        if (key > 0) {
-                            JOptionPane.showMessageDialog(this, "Đặt Phòng Thành Công!");
-                            loadDataKH();
-                            loadDataPhongTrong();
-                            ressetText();
-                            Reload();
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Đặt Phòng Thất Bại!");
-                            ressetText();
+                for (String idP : lstMaPhong123) {
+                    phongModel = phongSevice.findOne(idP);
+                    if (utilNgay_den_du_kien.after(utilNgay_den_thuc_te) == false) {
+                        phongModel checkTGP = phongSevice.findOne(idP);
+                        if (checkTGP.getStatus().equals("Đã Đặt") == false) {
+                            if (utilNgay_den_du_kien != null) {
+                                java.sql.Date sqlNgay_den_du_kien = new java.sql.Date(utilNgay_den_du_kien.getTime());
+                                hoa_donModel.setNgay_den_du_kien(sqlNgay_den_du_kien);
+                            } else {
+                                hoa_donModel.setNgay_den_du_kien(null);
+                            }
+                            if (utilNgay_den_thuc_te != null) {
+                                java.sql.Date SQLNgay_den_thuc_te = new java.sql.Date(utilNgay_den_thuc_te.getTime());
+                                hoa_donModel.setNgay_den_thuc_te(SQLNgay_den_thuc_te);
+                            } else {
+                                hoa_donModel.setNgay_den_thuc_te(null);
+                            }
+                            if (utilngay_tra_du_kien != null) {
+                                java.sql.Date sql_ngay_tra_du_kien = new java.sql.Date(utilngay_tra_du_kien.getTime());
+                                hoa_donModel.setSo_ngay_du_kien(sql_ngay_tra_du_kien);
+                            } else {
+                                hoa_donModel.setSo_ngay_du_kien(null);
+                            }
+                            phongModel newPhongModel = new phongModel();
+                            Float tienPhong = checkTGP.getLoai_phong().getPrice();
+                            newPhongModel.setId(idP);
+                            newPhongModel.setId_LP(checkTGP.getId_LP());
+                            if (nameTTHD.equalsIgnoreCase("Đã Đặt Trước")) {
+                                newPhongModel.setStatus("Đặt Trước");
+                            } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
+                                newPhongModel.setStatus("Đã Đặt");
+                            } else {
+                                newPhongModel.setStatus("Đã Đặt");
+                            }
+                            tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
+                            hoa_donModel.setId_KH(IDKH);
+                            hoa_donModel.setId_P(idP);
+                            hoa_donModel.setHinh_thucTT(HinhThucTT);
+                            hoa_donModel.setId_TTHD(idTT);
+                            hoa_donModel.setSo_ngay(getDaysDiffSD);
+                            hoa_donModel.setTien_phong(tienPhong);
+                            hoa_donModel.setGiam_giaKH(giamGia);
+                            hoa_donModel.setThanh_tien(tongTienDP);
+                            phongSevice.edit(newPhongModel);
+                            Long key = hoa_donService.add(hoa_donModel);
+                            if (key > 0) {
+                                JOptionPane.showMessageDialog(this, "Đặt Phòng Thành Công!");
+                                getResultHDCheck = hoa_donService.findONe(key);
+                                loadDataKH();
+                                loadDataPhongTrong();
+                                ressetText();
+                                Reload();
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Đặt Phòng Thất Bại!");
+                                ressetText();
+                            }
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this, "Phòng Đã bị hủy do khách hàng đến quá hạn!");
-                        ressetText();
-                        loadDataKH();
-                        loadDataPhongTrong();
-                        dispose();
+                        if (getResultHDCheck.getId() == null || getResultHDCheck == null) {
+                            getDiffNgayTTAndNgayDK = date2.getTime() - date1.getTime();
+                            getDaysDiff = getDiffNgayTTAndNgayDK / (24 * 60 * 60 * 1000);
+                            if (getDaysDiff < getDaysDiffSD / 2 || getDaysDiff == getDaysDiffSD / 2) {
+                                if (utilNgay_den_du_kien != null) {
+                                    java.sql.Date sqlNgay_den_du_kien = new java.sql.Date(utilNgay_den_du_kien.getTime());
+                                    hoa_donModel.setNgay_den_du_kien(sqlNgay_den_du_kien);
+                                } else {
+                                    hoa_donModel.setNgay_den_du_kien(null);
+                                }
+                                if (utilNgay_den_thuc_te != null) {
+                                    java.sql.Date SQLNgay_den_thuc_te = new java.sql.Date(utilNgay_den_thuc_te.getTime());
+                                    hoa_donModel.setNgay_den_thuc_te(SQLNgay_den_thuc_te);
+                                } else {
+                                    hoa_donModel.setNgay_den_thuc_te(null);
+                                }
+                                if (utilngay_tra_du_kien != null) {
+                                    java.sql.Date sql_ngay_tra_du_kien = new java.sql.Date(utilngay_tra_du_kien.getTime());
+                                    hoa_donModel.setSo_ngay_du_kien(sql_ngay_tra_du_kien);
+                                } else {
+                                    hoa_donModel.setSo_ngay_du_kien(null);
+                                }
+                                phongModel newPhongModel = new phongModel();
+                                Float tienPhong = phongModel.getLoai_phong().getPrice();
+                                newPhongModel.setId(idP);
+                                newPhongModel.setId_LP(phongModel.getId_LP());
+                                if (nameTTHD.equalsIgnoreCase("Đã đặt trước")) {
+                                    newPhongModel.setStatus("Đặt Trước");
+                                } else if (nameTTHD.equalsIgnoreCase("Chưa Thanh Toán")) {
+                                    newPhongModel.setStatus("Đã Đặt");
+                                } else {
+                                    newPhongModel.setStatus("Đã Đặt");
+                                }
+                                tongTienDP = ((tienPhong * getDaysDiffSD) - giamGia);
+                                hoa_donModel.setId_KH(IDKH);
+                                hoa_donModel.setId_P(idP);
+                                hoa_donModel.setHinh_thucTT(HinhThucTT);
+                                hoa_donModel.setId_TTHD(idTT);
+                                hoa_donModel.setSo_ngay(getDaysDiffSD);
+                                hoa_donModel.setTien_phong(tienPhong);
+                                hoa_donModel.setGiam_giaKH(giamGia);
+                                hoa_donModel.setThanh_tien(tongTienDP);
+                                phongSevice.edit(newPhongModel);
+                                Long key = hoa_donService.add(hoa_donModel);
+                                if (key > 0) {
+                                    JOptionPane.showMessageDialog(this, "Đặt Phòng Thành Công!");
+                                    loadDataKH();
+                                    loadDataPhongTrong();
+                                    ressetText();
+                                    Reload();
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Đặt Phòng Thất Bại!");
+                                    ressetText();
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Phòng Đã bị hủy do khách hàng đến quá hạn!");
+                                ressetText();
+                                loadDataKH();
+                                loadDataPhongTrong();
+                                dispose();
+                            }
+                        }
                     }
                 }
-            }
 
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Xin Chọn Phòng");
         }
 
     }//GEN-LAST:event_jPanel7MouseClicked
